@@ -13,7 +13,7 @@ Estamos desenvolvendo um `software` capaz de ajudar pessoas que precisam de uma 
 
 
 ## Plataformas Utilizadas 🧰
-![Jira](https://img.shields.io/badge/jira-%230A0FFF.svg?style=for-the-badge&logo=jira&logoColor=white) 
+[![Jira](https://img.shields.io/badge/jira-%230A0FFF.svg?style=for-the-badge&logo=jira&logoColor=white)](https://fdsproject.atlassian.net/jira/software/projects/SCRUM/boards/1?atlOrigin=eyJpIjoiZDNiMTkzMmEzYjNkNDAxZGJiYjcyZmRkNjY5MjljNzAiLCJwIjoiaiJ9)
 ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)
 
 

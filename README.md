@@ -26,7 +26,6 @@ Estamos desenvolvendo um `software` capaz de ajudar pessoas que precisam de uma 
         <tr>
             <th>Nome</th>
             <th>Função</th>
-            <th>GitHub</th>
         </tr>
     </thead>
     <tbody>

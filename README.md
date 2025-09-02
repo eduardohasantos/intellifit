@@ -30,16 +30,12 @@ Estamos desenvolvendo um `software` capaz de ajudar pessoas que precisam de uma 
     </thead>
     <tbody>
         <tr>
-            <td>**Yan Ribeiro Nunes**</td>
+            <td>Yan Ribeiro Nunes</td>
             <td>Dev Back-end</td>
         </tr>
         <tr>
-            <td>**Nome do Membro 2**</td>
+            <td>Eduardo Henrique</td>
             <td>Dev Back-end</td>
-        </tr>
-        <tr>
-            <td>**Nome do Membro 3**</td>
-            <td>Designer UX/UI</td>
         </tr>
     </tbody>
 </table>

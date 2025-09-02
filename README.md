@@ -31,19 +31,16 @@ Estamos desenvolvendo um `software` capaz de ajudar pessoas que precisam de uma 
     </thead>
     <tbody>
         <tr>
-            <td>**Nome do Membro 1**</td>
-            <td>Dev Front-end</td>
-            <td><a href="https://github.com/usuario1" target="_blank">@usuario1</a></td>
+            <td>**Yan Ribeiro Nunes**</td>
+            <td>Dev Back-end</td>
         </tr>
         <tr>
             <td>**Nome do Membro 2**</td>
             <td>Dev Back-end</td>
-            <td><a href="https://github.com/usuario2" target="_blank">@usuario2</a></td>
         </tr>
         <tr>
             <td>**Nome do Membro 3**</td>
             <td>Designer UX/UI</td>
-            <td><a href="https://github.com/usuario3" target="_blank">@usuario3</a></td>
         </tr>
     </tbody>
 </table>

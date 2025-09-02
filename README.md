@@ -18,3 +18,32 @@ Estamos desenvolvendo um `software` capaz de ajudar pessoas que precisam de uma 
 <a href="https://docs.google.com/document/d/1rWpPc9J5-87vuPIHLwUFKLLXHsPweZNf7aWV6IrVm0c/edit?usp=sharing" target="_blank">
   <img src="https://img.shields.io/badge/Docs-4285F4?style=for-the-badge&logo=googledocs&logoColor=white" />
 </a>
+---
+
+## Desenvolvedores 💻
+<table align="center">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Função</th>
+            <th>GitHub</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>**Nome do Membro 1**</td>
+            <td>Dev Front-end</td>
+            <td><a href="https://github.com/usuario1" target="_blank">@usuario1</a></td>
+        </tr>
+        <tr>
+            <td>**Nome do Membro 2**</td>
+            <td>Dev Back-end</td>
+            <td><a href="https://github.com/usuario2" target="_blank">@usuario2</a></td>
+        </tr>
+        <tr>
+            <td>**Nome do Membro 3**</td>
+            <td>Designer UX/UI</td>
+            <td><a href="https://github.com/usuario3" target="_blank">@usuario3</a></td>
+        </tr>
+    </tbody>
+</table>

@@ -45,16 +45,10 @@ Estamos desenvolvendo um `software` capaz de ajudar pessoas que precisam de uma 
 
 ---
 
----
-
 ## Atividades 📌
 
 <details>
-  <summary>Entrega 01 - Planejamento do Projeto</summary>
-  
-  - Definição do escopo inicial do sistema  
-  - Escolha das ferramentas (Jira, Figma, Docs)  
-  - Estruturação das primeiras tarefas no backlog  
-  - Protótipos iniciais no Figma  
+  <summary>Entrega 01 - Planejamento do Projeto</summary>  
+
 </details>
 

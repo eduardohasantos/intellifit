@@ -49,7 +49,8 @@ Estamos desenvolvendo um `software` capaz de ajudar pessoas que precisam de uma 
 
 <details>
   <summary>Entrega 01 - Planejamento do Projeto</summary>  
-   ## Jira:
+  
+    ## Jira:
   <img width="1852" height="860" alt="image" src="https://github.com/user-attachments/assets/4d955895-32b7-49e3-a214-03e4f322f0d7" />
   <img width="1850" height="868" alt="image" src="https://github.com/user-attachments/assets/46847564-3916-445f-a5d8-7556fe408b11" />
 </details>

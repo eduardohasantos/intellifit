@@ -45,12 +45,7 @@ Estamos desenvolvendo um `software` capaz de ajudar pessoas que precisam de uma 
 
 ---
 
-## Entregas 📦
+## Entregas 01
 <details>
   <summary>Clique para ver as entregas</summary>
-  
-  ### Entrega 01
-  - [x] Definição de escopo
-  - [x] Análise de requisitos
-  
 </details>

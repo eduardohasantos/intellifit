@@ -28,7 +28,7 @@ Estamos desenvolvendo um `software` capaz de ajudar pessoas que precisam de uma 
       <td>Dev Back-end</td>
     </tr>
     <tr>
-      <td>Eduardo Henrique</td>
+      <td>Eduardo Henrique Santos</td>
       <td>Dev Back-end</td>
     </tr>
   </tbody>

@@ -28,7 +28,7 @@ Estamos desenvolvendo um `software` capaz de ajudar pessoas que precisam de uma 
       <td>Dev Back-end</td>
     </tr>
     <tr>
-      <td>Eduardo Henrique Santos</td>
+      <td>Eduardo Henrique</td>
       <td>Dev Back-end</td>
     </tr>
   </tbody>
@@ -42,3 +42,15 @@ Estamos desenvolvendo um `software` capaz de ajudar pessoas que precisam de uma 
 <a href="https://docs.google.com/document/d/1rWpPc9J5-87vuPIHLwUFKLLXHsPweZNf7aWV6IrVm0c/edit?usp=sharing" target="_blank">
   <img src="https://img.shields.io/badge/Docs-4285F4?style=for-the-badge&logo=googledocs&logoColor=white" />
 </a>
+
+---
+
+## Entregas 📦
+<details>
+  <summary>Clique para ver as entregas</summary>
+  
+  ### Entrega 01
+  - [x] Definição de escopo
+  - [x] Análise de requisitos
+  
+</details>

@@ -44,7 +44,7 @@ Estamos desenvolvendo um `software` capaz de ajudar pessoas que precisam de uma 
 ## Plataformas Utilizadas 🧰
 [![Jira](https://img.shields.io/badge/jira-%230A0FFF.svg?style=for-the-badge&logo=jira&logoColor=white)](https://fdsproject.atlassian.net/jira/software/projects/SCRUM/boards/1?atlOrigin=eyJpIjoiMDI4OTRhZmQ2ZTZjNDViZGE1ZDhlMWI3MjEzNjBmMjkiLCJwIjoiaiJ9)
 [![Figma](https://img.shields.io/badge/Figma-F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/design/RxhFwWJUIjyM97rbeF6BbS/INTELLIFIT-Figma-Copia?node-id=0-1&t=qVEjXIkqRru6ve1K-1)
-[![Docs](https://img.shields.io/badge/Docs-4285F4.svg?style=for-the-badge&logo=googledocs&logoColor=white)]([https://docs.google.com/document/d/1rWpPc9J5-87vuPIHLwUFKLLXHsPweZNf7aWV6IrVm0c/edit?usp=sharing](https://docs.google.com/document/d/1rWpPc9J5-87vuPIHLwUFKLLXHsPweZNf7aWV6IrVm0c/edit?usp=sharing))
+[![Docs](https://img.shields.io/badge/Docs-4285F4.svg?style=for-the-badge&logo=googledocs&logoColor=white)](https://docs.google.com/document/d/1rWpPc9J5-87vuPIHLwUFKLLXHsPweZNf7aWV6IrVm0c/edit?usp=sharing)
 ---
 
 ## Entregas 📌

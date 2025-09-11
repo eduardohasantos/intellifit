@@ -32,6 +32,11 @@ Estamos desenvolvendo um `software` capaz de ajudar pessoas que precisam de uma 
       <td>Dev Back-end</td>
     </tr>
   </tbody>
+   <tr>
+      <td>Miguel Tojal</td>
+      <td>Dev Front-end</td>
+    </tr>
+  </tbody>
 </table>
 
 ---

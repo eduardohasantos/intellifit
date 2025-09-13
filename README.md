@@ -36,7 +36,7 @@ Estamos desenvolvendo um `software` capaz de ajudar pessoas que precisam de uma 
       <td>Dev Front-end</td>
     </tr>
     <tr>
-      <td>Gabriela Vital</td>
+      <td>Gabrielle Vital</td>
       <td>Dev Front-end</td>
     </tr>
     <tr>
@@ -48,7 +48,7 @@ Estamos desenvolvendo um `software` capaz de ajudar pessoas que precisam de uma 
       <td>Dev Front-end</td>
     </tr>
     <tr>
-      <td>Tuca</td>
+      <td>Arthur Coelho</td>
       <td>Dev Back-end</td>
     </tr>
   </tbody>

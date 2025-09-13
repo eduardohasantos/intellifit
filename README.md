@@ -31,10 +31,25 @@ Estamos desenvolvendo um `software` capaz de ajudar pessoas que precisam de uma 
       <td>Eduardo Henrique</td>
       <td>Dev Back-end</td>
     </tr>
-  </tbody>
-   <tr>
+    <tr>
       <td>Miguel Tojal</td>
       <td>Dev Front-end</td>
+    </tr>
+    <tr>
+      <td>Gabriela Vital</td>
+      <td>Dev Front-end</td>
+    </tr>
+    <tr>
+      <td>Mariana Maliu</td>
+      <td>Dev Front-end</td>
+    </tr>
+    <tr>
+      <td>Sophia Brito</td>
+      <td>Dev Front-end</td>
+    </tr>
+    <tr>
+      <td>Tuca</td>
+      <td>Dev Back-end</td>
     </tr>
   </tbody>
 </table>

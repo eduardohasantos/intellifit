@@ -68,7 +68,7 @@ Estamos desenvolvendo um `software` capaz de ajudar pessoas que precisam de uma 
   <summary>Entrega 01 - Planejamento do Projeto</summary>
 
   <p align="center" style="">
-  <a href="https://youtu.be/XLVSyjqICkU">
+  <a href="https://youtu.be/ujLBuL6O5kk">
     <img src="https://img.shields.io/badge/screencast-BF9056?style=for-the-badge&logo=youtube&logoColor=white" height="35px"/></a>
   </p>
   

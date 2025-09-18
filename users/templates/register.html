@@ -1,1 +1,72 @@
-<h1>Cadastro</h1>
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IntelliFit - Registro</title>
+    <link rel="stylesheet" href="/templates/static/users/css/register.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="{% static 'users/img/intellifit-logo.png' %}" alt="IntelliFit Logo" class="logo">
+        </div>
+    </header>
+
+    <main>
+        <div class="registration-container">
+            <h1>Crie sua conta</h1>
+            <p>Junte-se ao IntelliFit para transformar sua saúde</p>
+            
+            <form class="registration-form">
+                <div class="form-group">
+                    <label for="username">Usuário</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="birthdate">Data de Nascimento</label>
+                    <input type="date" id="birthdate" name="birthdate" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Gênero</label>
+                    <div class="gender-options">
+                        <label class="radio-option">
+                            <input type="radio" name="gender" value="male" required>
+                            <span class="radio-checkmark"></span>
+                            Masculino
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="gender" value="female">
+                            <span class="radio-checkmark"></span>
+                            Feminino
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="gender" value="other">
+                            <span class="radio-checkmark"></span>
+                            Outro
+                        </label>
+                    </div>
+                </div>
+                
+                <button type="submit" class="register-btn">Registrar</button>
+            </form>
+            
+            <p class="login-link">Já tem uma conta? <a href="#">Faça login</a></p>
+        </div>
+    </main>
+</body>
+</html>

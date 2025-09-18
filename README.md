@@ -71,15 +71,19 @@ Estamos desenvolvendo um `software` capaz de ajudar pessoas que precisam de uma 
   <a href="https://youtu.be/ujLBuL6O5kk">
     <img src="https://img.shields.io/badge/screencast-BF9056?style=for-the-badge&logo=youtube&logoColor=white" height="35px"/></a>
   </p>
-
-  <details>
-  <summary>Entrega 02 - Desenvolvimento Inicial</summary>
-    
-</details>
-
+  
   <img width="1851" height="856" alt="image" src="https://github.com/user-attachments/assets/78c33eae-a679-480b-888b-0020fcdba5dd" />
   <img width="1847" height="864" alt="image" src="https://github.com/user-attachments/assets/7a82be47-c37e-4b66-ba21-9b08f50fe45d" />
 
-
 </details>
 
+
+<details>
+  <summary>Entrega 02 - Desenvolvimento Inicial</summary>
+
+  <p align="center" style="">
+  <a href="#">
+    
+  </p>
+  
+</details>

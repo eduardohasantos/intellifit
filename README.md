@@ -80,9 +80,8 @@ Estamos desenvolvendo um `software` capaz de ajudar pessoas que precisam de uma 
 
 <details>
   <summary>Entrega 02 - Desenvolvimento Inicial</summary>
-   ## JIRA
-<img width="1601" height="714" alt="image" src="https://github.com/user-attachments/assets/4c025aa1-3b25-4788-ab7e-edfd614e663b" />
-<img width="1611" height="563" alt="image" src="https://github.com/user-attachments/assets/05cea551-65ee-4804-93c5-eca55388c891" />
+## JIRA
+
 
   <p align="center" style="">
   <a href="#">

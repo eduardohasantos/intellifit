@@ -30,6 +30,19 @@ header {
     height: 70px;
 }
 
+.alert {
+  margin: 15px auto;
+  padding: 12px 20px;
+  width: 100%;
+  text-align: center;
+  border: 1px solid #e74c3c;
+  border-radius: 8px;
+  background-color: #f8d7da;
+  color: #721c24;
+  font-weight: 500;
+}
+
+
 .logo-container {
     display: flex;
     align-items: center;

@@ -1,6 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.models import User
+from django.contrib import messages
+from django.contrib.messages import constants
 
 def register(request):
     if request.method == "GET":
@@ -11,10 +13,17 @@ def register(request):
         password = request.POST.get('password')
         birthdate = request.POST.get('birthdate')
 
-        user = User.objects.filter(username=username).first()
-
-        if user:
-            return HttpResponse('Já existe um usuário com esse username')
+        if User.objects.filter(email=email).exists():
+            messages.add_message(request, constants.ERROR, "Email já cadastrado")
+            return render(request, 'register.html', {
+                'username': username,
+            })
+        
+        if User.objects.filter(username=username).exists():
+            messages.add_message(request, constants.ERROR, "Nome já cadastrado")
+            return render(request, 'register.html', {
+                'email': email,
+            })
         
         user = User.objects.create_user(username=username, email=email, password=password)
         user.save()

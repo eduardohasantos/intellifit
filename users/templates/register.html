@@ -20,6 +20,12 @@
             <div class="registration-container">
                 <h1>Crie sua conta</h1>
                 <p>Junte-se ao IntelliFit para transformar sua saúde</p>
+
+                {% if messages %}
+                {% for message in messages %}
+                    <div class="alert">{{ message }}</div>
+                {% endfor %}
+                {% endif %}
                 
                 <form class="registration-form" action="{% url 'register'%}" method="POST"> {% csrf_token %}
                     <div class="form-group">

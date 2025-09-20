@@ -1,1 +1,48 @@
-<h1>Login</h1>
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IntelliFit - Login</title>
+    <link rel="stylesheet" href="/static/users/css/login.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="{% static 'users/img/Intellifit-Logo-removebg-preview.png' %}" alt="IntelliFit Logo" class="logo">
+        </div>
+    </header>
+
+    <main>
+        <div class="login-container">
+            <h1>Bem-vindo de volta</h1>
+            <p>Faça login para continuar no IntelliFit</p>
+
+            {% if messages %}
+            {% for message in messages %}
+                <div class="alert">{{ message }}</div>
+            {% endfor %}
+            {% endif %}
+
+            <form class="login-form" action="{% url 'login' %}" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="username">Usuário</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+
+                <button type="submit" class="login-btn">Entrar</button>
+            </form>
+
+            <p class="register-link">Não tem conta? <a href="register.html">Inscreva-se agora</a></p>
+        </div>
+    </main>
+</body>
+</html>

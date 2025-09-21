@@ -1,1 +1,48 @@
-<h1>dashboard</h1>
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IntelliFit - DashBoard</title>
+    <link rel="stylesheet" href="/static/users/dashboard/dashboard.css">
+</head>
+
+<body>
+    <div class="dashboard-container">
+
+        <aside class="sidebar">
+            <div class="profile">
+                <div class="profile-avatar"><img src="" alt=""></div>
+                <h3>User Profile(name)</h3>
+            </div>
+
+            <div class="gerenciar-conta">
+                <h5>Edit Account <a href=""></a></h5>
+                <h5>Delete Account <a href=""></a></h5>
+                <h5 class="logout-btn">Logout</h5>
+            </div>
+
+            <div class="menu">
+                <h3>Menu</h3>
+                <h5>Criar Treino</h5>
+                <h5>Gerenciar Treino</h5>
+                <h5>Criar Dieta</h5>
+                <h5>Gerenciar Dieta</h5>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <h1>Bem Vindo(a) ao IntelliFit Dashboard</h1>
+            <div class="notes-section">
+                <h2>Notes:</h2>
+                <textarea placeholder="Digite Aqui..."></textarea>
+            </div>
+        </main>
+
+    </div>
+</body>
+</html>
+
+

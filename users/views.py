@@ -30,7 +30,7 @@ def register(request):
         user = User.objects.create_user(username=username, email=email, password=password)
         user.save()
 
-        messages.sucess(request, "Usuário cadastrado com sucesso!")
+        messages.success(request, "Usuário cadastrado com sucesso!")
         return redirect('login')
 
 def login(request):

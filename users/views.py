@@ -55,3 +55,6 @@ def login(request):
 @login_required(login_url = "/auth/login/")
 def dashboard(request):
     return render(request, 'dashboard.html')
+
+def home(request):
+    return render(request, "home.html")

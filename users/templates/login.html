@@ -6,17 +6,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IntelliFit - Login</title>
-    <link rel="stylesheet" href="/static/users/css/login.css">
+    <link rel="stylesheet" href="{% static 'users/css/login.css' %}">
 </head>
 <body>
-    <header>
-        <div class="logo-container">
-            <img src="{% static 'users/img/Intellifit-Logo-removebg-preview.png' %}" alt="IntelliFit Logo" class="logo">
-        </div>
-    </header>
-
     <main>
-        <div class="login-container">
+    <div class="login-container" style="border: 2px solid #bdbdbd; background-color: #e0e0e0;">
+
             <h1>Bem-vindo de volta</h1>
             <p>Faça login para continuar no IntelliFit</p>
 
@@ -41,7 +36,7 @@
                 <button type="submit" class="login-btn">Entrar</button>
             </form>
 
-            <p class="register-link">Não tem conta? <a href="register.html">Inscreva-se agora</a></p>
+            <p class="register-link">Não tem conta? <a href="{% url 'register' %}">Inscreva-se agora</a></p>
         </div>
     </main>
 </body>

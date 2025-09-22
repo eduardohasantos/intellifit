@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Excluir Perfil</title>
+    <style>
+        body { background-color: #343a40; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; font-family: Arial, sans-serif; }
+        .confirmation-box { background-color: #e9ecef; color: #212529; padding: 50px; border-radius: 10px; text-align: center; max-width: 450px; }
+        h2 { margin-bottom: 30px; font-size: 24px; }
+        .buttons { display: flex; justify-content: center; gap: 20px; }
+        .btn { padding: 10px 30px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 16px; text-decoration: none; display: inline-block; }
+        .btn-yes { background-color: #dc3545; color: white; }
+        .btn-no { background-color: #f8f9fa; color: #212529; }
+    </style>
+</head>
+<body>
+    <div class="confirmation-box">
+        <h2>Deseja realmente excluir o perfil?</h2>
+        <p>Esta ação não pode ser desfeita.</p>
+        <div class="buttons">
+            <a href="{% url 'dashboard' %}" class="btn btn-no">Não</a>
+            <form method="post" style="margin:0;">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-yes">Sim</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

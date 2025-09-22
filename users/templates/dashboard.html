@@ -6,7 +6,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IntelliFit - DashBoard</title>
-    <link rel="stylesheet" href="/static/users/dashboard/dashboard.css">
+    <link rel="stylesheet" href="{% static 'users/css/dashboard.css' %}">
+    
+    <style>
+        .gerenciar-conta {
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            gap: 15px; /* Aumentei um pouco o espaço */
+            padding: 20px 0; /* Adicionei um preenchimento vertical */
+        }
+        
+        /* ===== ESTA É A PARTE QUE FOI ALTERADA ===== */
+        .gerenciar-conta a {
+            color: black; /* Alterado para preto */
+            text-decoration: none;
+            font-size: 1.1em; /* Aumentei um pouco a fonte */
+            font-weight: bold;
+            width: 100%;
+            text-align: center;
+        }
+
+        .logout-btn {
+            background-color: #f44336; 
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 80%; 
+            font-size: 1em;
+            font-weight: bold;
+        }
+        .logout-btn:hover {
+            background-color: #d32f2f;
+        }
+    </style>
 </head>
 
 <body>
@@ -15,13 +50,16 @@
         <aside class="sidebar">
             <div class="profile">
                 <div class="profile-avatar"><img src="" alt=""></div>
-                <h3>User Profile(name)</h3>
+                <h3>{{ user.username }}</h3>
             </div>
 
             <div class="gerenciar-conta">
-                <h5>Edit Account <a href=""></a></h5>
-                <h5>Delete Account <a href=""></a></h5>
-                <h5 class="logout-btn">Logout</h5>
+                <a href="{% url 'edit_account' %}">Edit Account</a>
+                <a href="{% url 'delete_account' %}">Delete Account</a>
+                <form action="{% url 'logout' %}" method="post" style="width: 100%; display: flex; justify-content: center;">
+                    {% csrf_token %}
+                    <button type="submit" class="logout-btn">Logout</button>
+                </form>
             </div>
 
             <div class="menu">
@@ -44,5 +82,3 @@
     </div>
 </body>
 </html>
-
-

@@ -3,69 +3,53 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IntelliFit - DashBoard</title>
-    <link rel="stylesheet" href="{% static 'users/css/dashboard.css' %}">
-    <style>
-        .gerenciar-conta {
-            display: flex;
-            flex-direction: column;
-            align-items: center; 
-            gap: 15px; /* Aumentei um pouco o espaço */
-            padding: 20px 0; /* Adicionei um preenchimento vertical */
-        }
-        
-        /* ===== ESTA É A PARTE QUE FOI ALTERADA ===== */
-        .gerenciar-conta a {
-            color: black; /* Alterado para preto */
-            text-decoration: none;
-            font-size: 1.1em; /* Aumentei um pouco a fonte */
-            font-weight: bold;
-            width: 100%;
-            text-align: center;
-        }
-
-    </style>
-
-    <link rel="stylesheet" href="{%static 'users/dashboard/dashboard.css' %}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>IntelliFit - Dashboard</title>
+  <link rel="stylesheet" href="{% static 'users/css/dashboard.css' %}">
+  <script src="https://unpkg.com/feather-icons"></script>
 </head>
-
 <body>
-    <div class="dashboard-container">
-
-        <aside class="sidebar">
-            <div class="profile">
-                <div class="profile-avatar"><img src="" alt=""></div>
-                <h3>{{ user.username }}</h3>
-            </div>
-
-            <div class="gerenciar-conta">
-                <a href="{% url 'edit_account' %}">Edit Account</a>
-                <a href="{% url 'delete_account' %}">Delete Account</a>
-                <form action="{% url 'logout' %}" method="post" style="width: 100%; display: flex; justify-content: center;">
-                    {% csrf_token %}
-                    <button type="submit" class="logout-btn">Logout</button>
-                </form>
-            </div>
-
-            <div class="menu">
-                <h3>Menu</h3>
-                <h5>Criar Treino</h5>
-                <h5>Gerenciar Treino</h5>
-                <h5>Criar Dieta</h5>
-                <h5>Gerenciar Dieta</h5>
-            </div>
-        </aside>
-
-        <main class="main-content">
-            <h1>Bem Vindo(a) ao IntelliFit Dashboard</h1>
-            <div class="notes-section">
-                <h2>Notes:</h2>
-                <textarea placeholder="Digite Aqui..."></textarea>
-            </div>
-        </main>
-
+  <!-- Header -->
+  <header class="dashboard-header">
+    <div class="user-left">
+      <img src="{% static 'users/img/user-default.png' %}" alt="Usuário padrão">
+      <span class="username">{{ user.username }}</span>
     </div>
+    <nav class="header-actions">
+      <a href="{% url 'edit_account' %}" class="btn"><i data-feather="user"></i> Editar Perfil</a>
+      <a href="{% url 'delete_account' %}" class="btn danger"><i data-feather="trash-2"></i> Excluir Perfil</a>
+      <form action="{% url 'logout' %}" method="post" style="display:inline;">
+        {% csrf_token %}
+        <button type="submit" class="btn logout"><i data-feather="log-out"></i> Sair</button>
+      </form>
+    </nav>
+  </header>
+
+  <!-- Conteúdo principal -->
+  <main class="main-content">
+    <h2 class="welcome">Bem-vindo ao IntelliFit</h2>
+
+    <section class="cards">
+      <div class="card">
+        <i data-feather="activity"></i>
+        <h3>Treino</h3>
+      </div>
+      <div class="card">
+        <i data-feather="bar-chart-2"></i>
+        <h3>Progresso</h3>
+      </div>
+      <div class="card">
+        <i data-feather="coffee"></i>
+        <h3>Dietas</h3>
+      </div>
+      <div class="card">
+        <i data-feather="edit-3"></i>
+        <h3>Anotações</h3>
+      </div>
+    </section>
+  </main>
+
+  <script>feather.replace();</script>
 </body>
 </html>

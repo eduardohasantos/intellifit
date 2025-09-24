@@ -10,7 +10,6 @@
   <script src="https://unpkg.com/feather-icons"></script>
 </head>
 <body>
-  <!-- Header -->
   <header class="dashboard-header">
     <div class="user-left">
       <img src="{% static 'users/img/user-default.png' %}" alt="Usuário padrão">
@@ -26,7 +25,6 @@
     </nav>
   </header>
 
-  <!-- Conteúdo principal -->
   <main class="main-content">
     <h2 class="welcome">Bem-vindo ao IntelliFit</h2>
 
@@ -35,10 +33,14 @@
         <i data-feather="activity"></i>
         <h3>Treino</h3>
       </div>
-      <div class="card">
-        <i data-feather="bar-chart-2"></i>
-        <h3>Progresso</h3>
-      </div>
+      
+      <a href="{% url 'progress:progress_page' %}">
+        <div class="card">
+          <i data-feather="bar-chart-2"></i>
+          <h3>Progresso</h3>
+        </div>
+      </a>
+      
       <div class="card">
         <i data-feather="coffee"></i>
         <h3>Dietas</h3>

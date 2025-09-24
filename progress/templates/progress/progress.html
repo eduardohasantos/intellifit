@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Adicionar Progresso - IntelliFit</title>
+  <link rel="stylesheet" href="{% static 'users/css/dashboard.css' %}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="dashboard-header">
+    <div class="user-left">
+      <a href="{% url 'dashboard' %}" class="logo-user">
+        <img src="{% static 'users/img/user-default.png' %}" alt="Usuário padrão">
+        <span class="username">{{ user.username }}</span>
+      </a>
+    </div>
+    <nav class="header-actions">
+      <a href="{% url 'edit_account' %}" class="btn nav-btn"><i data-feather="user"></i> Editar</a>
+      <a href="{% url 'delete_account' %}" class="btn nav-btn danger"><i data-feather="trash-2"></i> Excluir</a>
+      <form action="{% url 'logout' %}" method="post" class="logout-form">
+        {% csrf_token %}
+        <button type="submit" class="btn nav-btn logout"><i data-feather="log-out"></i> Sair</button>
+      </form>
+    </nav>
+  </header>
+
+  <!-- CONTEÚDO -->
+  <main class="main-content">
+    <div class="form-container">
+      <h2 class="form-title">Adicionar Registro de Progresso</h2>
+
+      {% if messages %}
+        {% for message in messages %}
+          <p class="message {{ message.tags }}">{{ message }}</p>
+        {% endfor %}
+      {% endif %}
+
+      <form method="post">
+          {% csrf_token %}
+          
+          {% for field in form %}
+            <div class="form-group">
+              {{ field.label_tag }}
+              {{ field }}
+            </div>
+          {% endfor %}
+          
+          <button type="submit" class="btn primary">💾 Salvar Progresso</button>
+      </form>
+
+      <a href="{% url 'dashboard' %}" class="back-link">⬅ Voltar ao Dashboard</a>
+    </div>
+  </main>
+
+  <script>feather.replace();</script>
+</body>
+</html>

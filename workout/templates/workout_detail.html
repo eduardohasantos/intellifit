@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>{{ workout.name }}</title>
+  <link rel="stylesheet" href="{% static 'users/css/dashboard.css' %}">
+  <link rel="stylesheet" href="{% static 'users/css/form-container.css' %}">
+  <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+  <header class="dashboard-header">
+    <div class="user-left">
+      <img src="{% static 'users/img/user-default.png' %}" alt="Usuário padrão">
+      <span class="username">{{ user.username }}</span>
+    </div>
+    <nav class="header-actions">
+      <a href="{% url 'edit_account' %}" class="btn"><i data-feather="user"></i> Editar Perfil</a>
+      <a href="{% url 'delete_account' %}" class="btn danger"><i data-feather="trash-2"></i> Excluir Perfil</a>
+      <form action="{% url 'logout' %}" method="post" style="display:inline;">
+        {% csrf_token %}
+        <button type="submit" class="btn logout"><i data-feather="log-out"></i> Sair</button>
+      </form>
+    </nav>
+  </header>
+  <main class="main-content">
+    <div class="form-container" style="max-width: 500px; position: relative;">
+      {% if request.COOKIES.success_message %}
+        <div id="success-popup" style="position: absolute; top: -60px; left: 50%; transform: translateX(-50%); background: #4caf50; color: #fff; padding: 1rem 2rem; border-radius: 10px; font-size: 1.1rem; z-index: 10; box-shadow: 0 4px 10px rgba(0,0,0,0.08);">
+          {{ request.COOKIES.success_message }}
+        </div>
+        <script>
+          setTimeout(function() {
+            var popup = document.getElementById('success-popup');
+            if (popup) popup.style.display = 'none';
+            document.cookie = 'success_message=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=' + window.location.pathname + ';';
+          }, 3000);
+        </script>
+      {% endif %}
+      <h2>{{ workout.name }}</h2>
+      {% if workout.description %}
+        <p style="color: #333; margin-bottom: 1.5rem; text-align: center;">{{ workout.description }}</p>
+      {% endif %}
+      <h3 style="margin-bottom: 1rem; text-align: center;">Exercícios</h3>
+      {% if exercises %}
+        <ul style="list-style: none; padding: 0; width: 100%;">
+          {% for ex in exercises %}
+            <li style="background: #e0e0e0; border-radius: 10px; margin-bottom: 1rem; padding: 1rem; text-align: center;">
+              <strong>{{ ex.exercise.name }}</strong><br>
+              {{ ex.sets }} séries x {{ ex.reps }} repetições
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p style="text-align: center;">Nenhum exercício cadastrado.</p>
+      {% endif %}
+      <div style="display: flex; gap: 12px; margin-top: 2rem; justify-content: center;">
+        <a href="/workout/{{ workout.id }}/edit/" class="btn" style="background: var(--azul-claro); display: flex; align-items: center; justify-content: center; width: 150px;">Editar treino</a>
+        <form action="/workout/{{ workout.id }}/delete/" method="post" style="display: inline;">
+          {% csrf_token %}
+          <button type="submit" class="btn danger" style="display: flex; align-items: center; justify-content: center; width: 150px;">Excluir treino</button>
+        </form>
+      </div>
+    </div>
+  </main>
+  <script>feather.replace();</script>
+</body>
+</html>

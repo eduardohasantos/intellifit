@@ -1,16 +1,15 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>IntelliFit - Dashboard</title>
+  <title>Excluir Treino</title>
   <link rel="stylesheet" href="{% static 'users/css/dashboard.css' %}">
+  <link rel="stylesheet" href="{% static 'users/css/form-container.css' %}">
   <script src="https://unpkg.com/feather-icons"></script>
 </head>
 <body>
-  <!-- Header -->
   <header class="dashboard-header">
     <div class="user-left">
       <img src="{% static 'users/img/user-default.png' %}" alt="Usuário padrão">
@@ -25,31 +24,17 @@
       </form>
     </nav>
   </header>
-
-  <!-- Conteúdo principal -->
   <main class="main-content">
-    <h2 class="welcome">Bem-vindo ao IntelliFit</h2>
-
-    <section class="cards">
-      <a href="/workout/" class="card" style="text-decoration: none; color: inherit;">
-        <i data-feather="activity"></i>
-        <h3>Treino</h3>
-      </a>
-      <div class="card">
-        <i data-feather="bar-chart-2"></i>
-        <h3>Progresso</h3>
-      </div>
-      <div class="card">
-        <i data-feather="coffee"></i>
-        <h3>Dietas</h3>
-      </div>
-      <div class="card">
-        <i data-feather="edit-3"></i>
-        <h3>Anotações</h3>
-      </div>
-    </section>
+    <div class="form-container" style="max-width: 400px;">
+      <h2>Excluir Treino</h2>
+      <p style="text-align:center; margin-bottom:2rem;">Tem certeza que deseja excluir o treino <strong>{{ workout.name }}</strong>?</p>
+      <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn danger" style="width:100%;">Sim, excluir</button>
+        <a href="/workout/{{ workout.id }}/" class="btn secondary" style="width:100%; margin-top:1rem;">Cancelar</a>
+      </form>
+    </div>
   </main>
-
   <script>feather.replace();</script>
 </body>
 </html>

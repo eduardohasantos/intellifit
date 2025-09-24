@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Adicionar Exercício</title>
+  <link rel="stylesheet" href="{% static 'users/css/dashboard.css' %}">
+  <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+  <header class="dashboard-header">
+    <div class="user-left">
+      <img src="{% static 'users/img/user-default.png' %}" alt="Usuário padrão">
+      <span class="username">{{ user.username }}</span>
+    </div>
+    <nav class="header-actions">
+      <a href="{% url 'edit_account' %}" class="btn"><i data-feather="user"></i> Editar Perfil</a>
+      <a href="{% url 'delete_account' %}" class="btn danger"><i data-feather="trash-2"></i> Excluir Perfil</a>
+      <form action="{% url 'logout' %}" method="post" style="display:inline;">
+        {% csrf_token %}
+        <button type="submit" class="btn logout"><i data-feather="log-out"></i> Sair</button>
+      </form>
+    </nav>
+  </header>
+  <main class="main-content">
+    <div class="form-container">
+      <h2>Adicionar Exercício ao Treino</h2>
+      <form method="post" autocomplete="off">
+        {% csrf_token %}
+        {% for field in form %}
+          <div class="form-group">
+            {{ field.label_tag }}
+            {% if field.name == 'exercise_name' %}
+              <input type="text" name="exercise_name" id="id_exercise_name" class="form-control" placeholder="Digite o nome do exercício" list="exercise-list" autocomplete="off">
+              <datalist id="exercise-list">
+                {% for name in exercise_names %}
+                  <option value="{{ name }}">
+                {% endfor %}
+              </datalist>
+            {% else %}
+              {{ field }}
+            {% endif %}
+            {% if field.errors %}
+              <div class="alert">{{ field.errors|striptags }}</div>
+            {% endif %}
+          </div>
+        {% endfor %}
+        <button type="submit" class="btn">Adicionar exercício</button>
+      </form>
+      <div class="finalizar-link">
+        <a href="/workout/" class="btn secondary">Finalizar cadastro</a>
+      </div>
+    </div>
+  </main>
+  <link rel="stylesheet" href="{% static 'users/css/form-container.css' %}">
+  <script>feather.replace();</script>
+</body>
+</html>

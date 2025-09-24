@@ -32,32 +32,36 @@
 
   <!-- CONTEÚDO -->
   <main class="main-content">
-    <div class="form-container">
-      <h2 class="form-title">Adicionar Registro de Progresso</h2>
-
-      {% if messages %}
-        {% for message in messages %}
-          <p class="message {{ message.tags }}">{{ message }}</p>
-        {% endfor %}
-      {% endif %}
-
-      <form method="post">
-          {% csrf_token %}
-          
-          {% for field in form %}
-            <div class="form-group">
-              {{ field.label_tag }}
-              {{ field }}
-            </div>
-          {% endfor %}
-          
-          <button type="submit" class="btn primary">💾 Salvar Progresso</button>
-      </form>
-
-      <a href="{% url 'dashboard' %}" class="back-link">⬅ Voltar ao Dashboard</a>
+    <div class="cards">
+  
+      <!-- Peso -->
+      <div class="card">
+        <h3>Peso</h3>
+        <p class="info-label">Último registro:</p>
+        <p class="info-data">23/09/2025 — <strong>72.5 kg</strong></p>
+      </div>
+  
+      <!-- Água -->
+      <div class="card">
+        <h3>Água</h3>
+        <p class="info-label">Meta diária:</p>
+        <p class="info-data">2000 ml</p>
+        <p class="info-label">Consumido:</p>
+        <p class="info-data"><strong>1200 ml</strong></p>
+      </div>
+  
+      <!-- Calorias -->
+      <div class="card">
+        <h3>Calorias</h3>
+        <p class="info-label">Meta diária:</p>
+        <p class="info-data">2200 kcal</p>
+        <p class="info-label">Consumido:</p>
+        <p class="info-data"><strong>1450 kcal</strong></p>
+      </div>
+  
     </div>
   </main>
-
+  
   <script>feather.replace();</script>
 </body>
 </html>

@@ -156,6 +156,18 @@ body {
   font-size:1.2rem;
 }
 
+.info-label {
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 6px;
+}
+
+.info-data {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--azul-escuro);
+  margin-bottom: 6px;
+}
 
 .card:hover {
   transform: translateY(-5px);

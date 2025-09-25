@@ -6,37 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meu Progresso - IntelliFit</title>
     <link rel="stylesheet" href="{% static 'users/css/dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'users/css/progress.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/feather-icons"></script>
-    <style>
-        .container { max-width: 900px; margin: 2rem auto; padding: 0 1.5rem; }
-        .section-title { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; color: #333; text-align: center; }
-        .section-subtitle { text-align: center; font-size: 1rem; color: #6c757d; margin-top: 0; margin-bottom: 2rem; font-weight: 500;}
-        .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
-        .card { background: #fff; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.07); text-align: center; }
-        .card h3 { margin-top: 0; font-size: 1.1rem; color: #555; font-weight: 600; }
-        .card .data { font-size: 2rem; font-weight: 700; color: #007bff; margin: 0.5rem 0; }
-        .card .label { font-size: 0.9rem; color: #888; }
-        .edit-link { display: block; text-align: center; margin-bottom: 2.5rem; }
-        .edit-link .btn { background-color: #6c757d; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; }
-        .form-box { background: #f8f9fa; padding: 2rem; border-radius: 12px; border: 1px solid #e9ecef; }
-        .form-box label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: #555; }
-        .form-box input { width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; margin-bottom: 1rem; }
-        .form-box .btn-submit { width: 100%; padding: 0.9rem; background: #28a745; color: white; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer; font-weight: 600; }
-        .messages { text-align: center; padding: 1rem; margin-bottom: 1rem; border-radius: 8px; font-weight: 600; }
-        .messages.success { background-color: #d4edda; color: #155724; }
-        .empty-state { text-align: center; padding: 3rem; background: #f8f9fa; border-radius: 12px; }
-    </style>
 </head>
 <body>
     <header class="dashboard-header">
-        <div class="user-left"><a href="{% url 'dashboard' %}" class="logo-user"><img src="{% static 'users/img/user-default.png' %}" alt="Usuário padrão"><span class="username">{{ user.username }}</span></a></div>
+        <div class="user-left">
+            <a href="{% url 'dashboard' %}" class="logo-user">
+                <img src="{% static 'users/img/user-default.png' %}" alt="Usuário padrão">
+                <span class="username">{{ user.username }}</span>
+            </a>
+        </div>
         <nav class="header-actions">
             <a href="{% url 'edit_account' %}" class="btn nav-btn"><i data-feather="user"></i> Editar</a>
             <a href="{% url 'delete_account' %}" class="btn nav-btn danger"><i data-feather="trash-2"></i> Excluir</a>
-            <form action="{% url 'logout' %}" method="post" class="logout-form">{% csrf_token %}<button type="submit" class="btn nav-btn logout"><i data-feather="log-out"></i> Sair</button></form>
+            <form action="{% url 'logout' %}" method="post" class="logout-form">
+                {% csrf_token %}
+                <button type="submit" class="btn nav-btn logout"><i data-feather="log-out"></i> Sair</button>
+            </form>
         </nav>
     </header>
 
@@ -52,9 +42,21 @@
             <p class="section-subtitle">Registrado em: {{ latest_entry.date|date:"d/m/Y" }}</p>
 
             <div class="cards">
-                <div class="card"><h3>Peso</h3><p class="data">{{ latest_entry.weight|floatformat:2 }}</p><p class="label">kg</p></div>
-                <div class="card"><h3>Água</h3><p class="data">{{ latest_entry.water_ml }}</p><p class="label">ml consumidos</p></div>
-                <div class="card"><h3>Calorias</h3><p class="data">{{ latest_entry.calories }}</p><p class="label">kcal consumidas</p></div>
+                <div class="card">
+                    <h3>Peso</h3>
+                    <p class="data">{{ latest_entry.weight|floatformat:2 }}</p>
+                    <p class="label">kg</p>
+                </div>
+                <div class="card">
+                    <h3>Água</h3>
+                    <p class="data">{{ latest_entry.water_ml }}</p>
+                    <p class="label">ml consumidos</p>
+                </div>
+                <div class="card">
+                    <h3>Calorias</h3>
+                    <p class="data">{{ latest_entry.calories }}</p>
+                    <p class="label">kcal consumidas</p>
+                </div>
             </div>
         {% else %}
             <div class="empty-state">
@@ -83,6 +85,7 @@
                         </ul>
                     </div>
                 {% endif %}
+
                 <label for="{{ form.weight.id_for_label }}">Peso (kg)</label>
                 {{ form.weight }}
                 

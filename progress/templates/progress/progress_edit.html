@@ -6,20 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Progresso - IntelliFit</title>
     <link rel="stylesheet" href="{% static 'users/css/dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'users/css/progress.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/feather-icons"></script>
-    <style>
-        /* Reutilizando os mesmos estilos da página principal */
-        .container { max-width: 900px; margin: 2rem auto; padding: 0 1.5rem; }
-        .section-title { font-size: 1.8rem; font-weight: 700; margin-bottom: 1.5rem; color: #333; text-align: center; }
-        .form-box { background: #f8f9fa; padding: 2rem; border-radius: 12px; border: 1px solid #e9ecef; }
-        .form-box label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: #555; }
-        .form-box input { width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; margin-bottom: 1rem; }
-        .form-box .btn-submit { width: 100%; padding: 0.9rem; background: #007bff; color: white; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer; font-weight: 600; }
-        .cancel-link { display: block; text-align: center; margin-top: 1rem; color: #6c757d; text-decoration: none; }
-    </style>
 </head>
 <body>
     <!-- SEU HEADER ATUAL -->
@@ -43,7 +34,7 @@
                 {{ form.water_ml }}
                 <label for="{{ form.calories.id_for_label }}">Calorias (kcal)</label>
                 {{ form.calories }}
-                <button type="submit" class="btn-submit">Atualizar Progresso</button>
+                <button type="submit" class="btn-submit edit">Atualizar Progresso</button>
                 <a href="{% url 'progress:progress_page' %}" class="cancel-link">Cancelar</a>
             </form>
         </div>

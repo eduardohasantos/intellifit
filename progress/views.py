@@ -7,7 +7,7 @@ from .models import ProgressEntry
 @login_required
 def progress_page(request):
     # Busca o registro mais recente do usuário logado
-    latest_entry = ProgressEntry.objects.filter(user=request.user).order_by('-date').first()
+    latest_entry = ProgressEntry.objects.filter(user=request.user).order_by('-date', '-id').first()
 
     # Lógica para ADICIONAR um novo registro
     if request.method == 'POST':

@@ -1,5 +1,3 @@
-<!-- Arquivo: progress/templates/progress/progress.html -->
-
 {% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -14,8 +12,8 @@
     <script src="https://unpkg.com/feather-icons"></script>
     <style>
         .container { max-width: 900px; margin: 2rem auto; padding: 0 1.5rem; }
-        .section-title { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; color: #333; text-align: center; } /* Margem inferior reduzida */
-        .section-subtitle { text-align: center; font-size: 1rem; color: #6c757d; margin-top: 0; margin-bottom: 2rem; font-weight: 500;} /* Novo estilo para a data */
+        .section-title { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; color: #333; text-align: center; }
+        .section-subtitle { text-align: center; font-size: 1rem; color: #6c757d; margin-top: 0; margin-bottom: 2rem; font-weight: 500;}
         .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
         .card { background: #fff; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.07); text-align: center; }
         .card h3 { margin-top: 0; font-size: 1.1rem; color: #555; font-weight: 600; }
@@ -33,7 +31,6 @@
     </style>
 </head>
 <body>
-    <!-- SEU HEADER ATUAL -->
     <header class="dashboard-header">
         <div class="user-left"><a href="{% url 'dashboard' %}" class="logo-user"><img src="{% static 'users/img/user-default.png' %}" alt="Usuário padrão"><span class="username">{{ user.username }}</span></a></div>
         <nav class="header-actions">
@@ -44,21 +41,18 @@
     </header>
 
     <main class="container">
-        <!-- Mensagens de Sucesso -->
         {% if messages %}
             {% for message in messages %}
                 <div class="messages {{ message.tags }}">{{ message }}</div>
             {% endfor %}
         {% endif %}
 
-        <!-- Seção do Último Registro -->
         {% if latest_entry %}
             <h2 class="section-title">Último Registro do Progresso</h2>
-            <!-- LINHA ADICIONADA PARA MOSTRAR A DATA -->
             <p class="section-subtitle">Registrado em: {{ latest_entry.date|date:"d/m/Y" }}</p>
 
             <div class="cards">
-                <div class="card"><h3>Peso</h3><p class="data">{{ latest_entry.weight }}</p><p class="label">kg</p></div>
+                <div class="card"><h3>Peso</h3><p class="data">{{ latest_entry.weight|floatformat:2 }}</p><p class="label">kg</p></div>
                 <div class="card"><h3>Água</h3><p class="data">{{ latest_entry.water_ml }}</p><p class="label">ml consumidos</p></div>
                 <div class="card"><h3>Calorias</h3><p class="data">{{ latest_entry.calories }}</p><p class="label">kcal consumidas</p></div>
             </div>
@@ -69,17 +63,35 @@
             </div>
         {% endif %}
 
-        <!-- Formulário para Adicionar Novo Progresso -->
         <div class="form-box">
             <h2 class="section-title">Adicionar Novo Registro</h2>
             <form method="POST" action="{% url 'progress:progress_page' %}">
                 {% csrf_token %}
+
+                {% if form.errors %}
+                    <div style="color: #721c24; background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 1rem; margin-bottom: 1.5rem; border-radius: 8px;">
+                        <strong>Ocorreram erros no formulário:</strong>
+                        <ul style="margin-top: 0.5rem; margin-bottom: 0; padding-left: 20px;">
+                            {% for field in form %}
+                                {% for error in field.errors %}
+                                    <li>{{ field.label }}: {{ error }}</li>
+                                {% endfor %}
+                            {% endfor %}
+                            {% for error in form.non_field_errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
                 <label for="{{ form.weight.id_for_label }}">Peso (kg)</label>
                 {{ form.weight }}
+                
                 <label for="{{ form.water_ml.id_for_label }}">Água (ml)</label>
                 {{ form.water_ml }}
+                
                 <label for="{{ form.calories.id_for_label }}">Calorias (kcal)</label>
                 {{ form.calories }}
+                
                 <button type="submit" class="btn-submit">Salvar Novo Progresso</button>
             </form>
         </div>

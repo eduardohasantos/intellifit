@@ -53,7 +53,7 @@
 
         <!-- Seção do Último Registro -->
         {% if latest_entry %}
-            <h2 class="section-title">Seu Último Progresso</h2>
+            <h2 class="section-title">Último Registro do Progresso</h2>
             <!-- LINHA ADICIONADA PARA MOSTRAR A DATA -->
             <p class="section-subtitle">Registrado em: {{ latest_entry.date|date:"d/m/Y" }}</p>
 
@@ -62,7 +62,6 @@
                 <div class="card"><h3>Água</h3><p class="data">{{ latest_entry.water_ml }}</p><p class="label">ml consumidos</p></div>
                 <div class="card"><h3>Calorias</h3><p class="data">{{ latest_entry.calories }}</p><p class="label">kcal consumidas</p></div>
             </div>
-            <div class="edit-link"><a href="{% url 'progress:edit_progress' latest_entry.id %}" class="btn">Editar Registro</a></div>
         {% else %}
             <div class="empty-state">
                 <h2 class="section-title">Bem-vindo(a)!</h2>

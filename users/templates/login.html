@@ -6,12 +6,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IntelliFit - Login</title>
+    <link rel="stylesheet" href="{% static 'global/css/global.css' %}">
     <link rel="stylesheet" href="{% static 'users/css/login.css' %}">
 </head>
 <body>
-    <main>
-    <div class="login-container" style="border: 2px solid #bdbdbd; background-color: #e0e0e0;">
-
+    <main class="login-main">
+        <!-- Alert de sucesso fora do card -->
+        {% if registration_success %}
+        <div class="success-alert" id="successAlert">
+            <span class="alert-icon">✓</span>
+            Cadastro realizado com sucesso! Faça login para continuar.
+        </div>
+        {% endif %}
+        
+        <div class="login-container">
+            <div class="logo-top">
+                <img src="{% static 'global/img/logo_no_background.png' %}" alt="IntelliFit Logo" class="logo">
+            </div>
+            
             <h1>Bem-vindo de volta</h1>
             <p>Faça login para continuar no IntelliFit</p>
 
@@ -39,5 +51,22 @@
             <p class="register-link">Não tem conta? <a href="{% url 'register' %}">Inscreva-se agora</a></p>
         </div>
     </main>
+
+    <script>
+        // Auto-hide do alerta de sucesso após 5 segundos com fade-out
+        document.addEventListener('DOMContentLoaded', function() {
+            const successAlert = document.getElementById('successAlert');
+            if (successAlert) {
+                setTimeout(function() {
+                    successAlert.style.transition = 'opacity 0.5s ease';
+                    successAlert.style.opacity = '0';
+                    
+                    setTimeout(function() {
+                        successAlert.style.display = 'none';
+                    }, 500);
+                }, 4000); // 4 segundos visíveis + 0.5 segundos de fade-out
+            }
+        });
+    </script>
 </body>
 </html>

@@ -1,0 +1,349 @@
+/* Add Exercise Main Content - IDÊNTICO ao workout */
+.main-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background: var(--background);
+}
+
+/* Dashboard Container Card - IDÊNTICO ao workout */
+.dashboard-container {
+    background-color: var(--card);
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Welcome Section - IDÊNTICO ao workout */
+.welcome-section {
+    margin-bottom: 2.5rem;
+}
+
+.welcome {
+    color: var(--text);
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.welcome-subtitle {
+    color: #666;
+    font-size: 1.1rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Exercise Form */
+.exercise-form {
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.95rem;
+}
+
+.form-input,
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--background);
+    box-sizing: border-box;
+}
+
+.form-input:focus,
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: var(--light-blue);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(100, 181, 246, 0.1);
+    background-color: white;
+}
+
+/* Datalist styling */
+datalist {
+    position: absolute;
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+/* Error Styling */
+.error-list {
+    margin-top: 0.5rem;
+}
+
+.error {
+    color: var(--danger);
+    font-size: 0.85rem;
+    font-family: Arial, Helvetica, sans-serif;
+    display: block;
+}
+
+.help-text {
+    color: #666;
+    font-size: 0.8rem;
+    font-family: Arial, Helvetica, sans-serif;
+    display: block;
+    margin-top: 0.3rem;
+}
+
+/* Form Actions */
+.form-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.submit-btn {
+    background: var(--green);
+    color: white;
+    padding: 14px 30px;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: Arial, Helvetica, sans-serif;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.submit-btn:hover {
+    background: #3d8c40;
+    transform: translateY(-2px);
+}
+
+/* Finish Section */
+.finish-section {
+    border-top: 1px solid #e0e0e0;
+    padding-top: 2rem;
+    text-align: center;
+}
+
+.finish-btn {
+    background: var(--light-blue);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    border: 2px solid var(--light-blue);
+}
+
+.finish-btn:hover {
+    background: transparent;
+    color: var(--light-blue);
+    transform: translateY(-2px);
+}
+
+/* Header Actions - IDÊNTICO ao workout */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-btn {
+    padding: 8px 20px;
+    border: 2px solid white;
+    border-radius: 25px;
+    background: transparent;
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.nav-btn:hover {
+    background: white;
+    color: var(--dark-blue);
+}
+
+/* Delete Button - Vermelho no hover */
+.delete-btn:hover {
+    background: var(--danger) !important;
+    border-color: var(--danger) !important;
+    color: white !important;
+}
+
+/* Logout Button - Verde no hover */
+.logout-btn:hover {
+    background: var(--green) !important;
+    border-color: var(--green) !important;
+    color: white !important;
+}
+
+/* Logout Form */
+.logout-form {
+    margin: 0;
+    padding: 0;
+}
+
+/* Responsive Design - IDÊNTICO ao workout */
+@media (max-width: 900px) {
+    .dashboard-container {
+        padding: 2rem;
+    }
+    
+    .welcome {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .header-actions {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .nav-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .main-content {
+        padding: 1rem;
+    }
+    
+    .dashboard-container {
+        padding: 1.5rem;
+    }
+    
+    .welcome {
+        font-size: 1.6rem;
+    }
+    
+    .header-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .nav-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .submit-btn, .finish-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 400px) {
+    .dashboard-container {
+        padding: 1rem;
+    }
+    
+    .welcome {
+        font-size: 1.4rem;
+    }
+    
+    .form-input,
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        padding: 12px;
+    }
+}
+
+/* Number input styling */
+input[type="number"] {
+    appearance: textfield;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Success Popup - FORA do card (ADICIONAR ESTA PARTE) */
+.success-popup {
+    position: fixed;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--green);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: slideDown 0.3s ease;
+}
+
+.popup-icon {
+    width: 20px;
+    height: 20px;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* Adicione position: relative ao .main-content existente */
+.main-content {
+    position: relative; /* Adicione esta linha ao .main-content existente */
+    /* ... o resto do seu CSS existente permanece igual ... */
+}

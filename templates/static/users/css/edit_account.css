@@ -1,0 +1,227 @@
+/* Main Content */
+.main-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background: var(--background);
+}
+
+/* Edit Container */
+.edit-container {
+    width: 100%;
+    max-width: 500px;
+}
+
+.edit-card {
+    background-color: var(--card);
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Card Header */
+.card-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.header-icon {
+    width: 50px;
+    height: 50px;
+    color: var(--light-blue);
+    margin-bottom: 1rem;
+}
+
+.card-header h2 {
+    color: var(--text);
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.card-header p {
+    color: #666;
+    font-size: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Form Styling */
+.edit-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.95rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--background);
+    box-sizing: border-box;
+}
+
+.form-group input:focus {
+    border-color: var(--light-blue);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(100, 181, 246, 0.1);
+    background-color: white;
+}
+
+/* Error Styling */
+.error-list {
+    margin-top: 0.5rem;
+}
+
+.error {
+    color: var(--danger);
+    font-size: 0.85rem;
+    font-family: Arial, Helvetica, sans-serif;
+    display: block;
+}
+
+/* Save Button */
+.save-btn {
+    width: 100%;
+    padding: 14px;
+    background: var(--green);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 1rem;
+}
+
+.save-btn:hover {
+    background: #3d8c40;
+    transform: translateY(-2px);
+}
+
+/* Back Link */
+.back-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--light-blue);
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: color 0.3s ease;
+}
+
+.back-link:hover {
+    color: var(--dark-blue);
+    text-decoration: underline;
+}
+
+/* Alert Messages */
+.success-alert {
+    margin: 1rem 0;
+    padding: 12px 20px;
+    text-align: center;
+    border: 1px solid #28a745;
+    border-radius: 8px;
+    background-color: #d4edda;
+    color: #155724;
+    font-weight: 500;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .main-content {
+        padding: 1rem;
+    }
+    
+    .edit-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .card-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .header-icon {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 400px) {
+    .edit-card {
+        padding: 1.5rem 1rem;
+    }
+    
+    .card-header h2 {
+        font-size: 1.3rem;
+    }
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .header-actions {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .nav-btn {
+        padding: 10px 16px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-actions {
+        flex-direction: column;
+        width: 100%;
+        gap: 8px;
+    }
+    
+    .nav-btn {
+        width: 100%;
+        max-width: 200px;
+    }
+}

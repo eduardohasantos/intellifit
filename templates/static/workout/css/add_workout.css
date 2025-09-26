@@ -1,4 +1,4 @@
-/* Dashboard Main Content */
+/* Add Workout Main Content - IDÊNTICO ao workout */
 .main-content {
     flex: 1;
     display: flex;
@@ -8,21 +8,21 @@
     background: var(--background);
 }
 
-/* Dashboard Container Card */
+/* Dashboard Container Card - IDÊNTICO ao workout */
 .dashboard-container {
     background-color: var(--card);
     padding: 3rem;
     border-radius: 20px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
     width: 100%;
-    max-width: 1000px;
+    max-width: 600px;
     text-align: center;
     border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-/* Welcome Section */
+/* Welcome Section - IDÊNTICO ao workout */
 .welcome-section {
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
 }
 
 .welcome {
@@ -39,67 +39,123 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Cards Grid */
-.cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 25px;
-    width: 100%;
+/* Workout Form */
+.workout-form {
+    text-align: left;
 }
 
-/* Individual Cards */
-.card {
-    background: var(--card);
-    border-radius: 15px;
-    padding: 2rem 1.5rem;
-    text-align: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    cursor: pointer;
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
     color: var(--text);
-    border: 2px solid transparent;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 180px;
-    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.95rem;
 }
 
-.card i {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 15px;
-    color: var(--dark-blue);
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
     transition: all 0.3s ease;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--background);
+    box-sizing: border-box;
 }
 
-.card h3 {
-    font-size: 1.3rem;
-    margin-bottom: 8px;
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: var(--light-blue);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(100, 181, 246, 0.1);
+    background-color: white;
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: none;
+}
+
+/* Error Styling */
+.error-list {
+    margin-top: 0.5rem;
+}
+
+.error {
+    color: var(--danger);
+    font-size: 0.85rem;
+    font-family: Arial, Helvetica, sans-serif;
+    display: block;
+}
+
+.help-text {
+    color: #666;
+    font-size: 0.8rem;
+    font-family: Arial, Helvetica, sans-serif;
+    display: block;
+    margin-top: 0.3rem;
+}
+
+/* Form Actions */
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.cancel-btn {
+    background: var(--light-gray);
+    color: var(--text);
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
     font-weight: 600;
     font-family: Arial, Helvetica, sans-serif;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    border: 2px solid var(--light-gray);
 }
 
-.card p {
-    color: #666;
-    font-size: 0.9rem;
+.cancel-btn:hover {
+    background: #e0e0e0;
+    border-color: #e0e0e0;
+    transform: translateY(-2px);
+}
+
+.submit-btn {
+    background: var(--green);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
     font-family: Arial, Helvetica, sans-serif;
-    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
 }
 
-.card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-    border-color: var(--light-blue);
+.submit-btn:hover {
+    background: #3d8c40;
+    transform: translateY(-2px);
 }
 
-.card:hover i {
-    color: var(--light-blue);
-    transform: scale(1.1);
-}
-
-/* Header Actions */
+/* Header Actions - IDÊNTICO ao workout */
 .header-actions {
     display: flex;
     align-items: center;
@@ -148,15 +204,10 @@
     padding: 0;
 }
 
-/* Responsive Design */
+/* Responsive Design - IDÊNTICO ao workout */
 @media (max-width: 900px) {
     .dashboard-container {
         padding: 2rem;
-    }
-    
-    .cards {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
     }
     
     .welcome {
@@ -181,6 +232,15 @@
         padding: 10px 20px;
         font-size: 0.9rem;
     }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .cancel-btn, .submit-btn {
+        width: 100%;
+        justify-content: center;
+    }
 }
 
 @media (max-width: 600px) {
@@ -190,16 +250,6 @@
     
     .dashboard-container {
         padding: 1.5rem;
-    }
-    
-    .cards {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-    
-    .card {
-        padding: 1.5rem 1rem;
-        min-height: 150px;
     }
     
     .welcome {
@@ -226,7 +276,9 @@
         font-size: 1.4rem;
     }
     
-    .card h3 {
-        font-size: 1.1rem;
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        padding: 12px;
     }
 }

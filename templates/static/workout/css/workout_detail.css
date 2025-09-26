@@ -1,0 +1,529 @@
+/* Workout Detail Main Content - IDÊNTICO ao workout */
+.main-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background: var(--background);
+}
+
+/* Dashboard Container Card - IDÊNTICO ao workout */
+.dashboard-container {
+    background-color: var(--card);
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+}
+
+/* Success Popup */
+.success-popup {
+    position: absolute;
+    top: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--green);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+    font-family: Arial, Helvetica, sans-serif;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* Workout Header */
+.workout-header {
+    margin-bottom: 2.5rem;
+}
+
+.welcome {
+    color: var(--text);
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.workout-description {
+    color: #666;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    font-family: Arial, Helvetica, sans-serif;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* Exercises Section */
+.exercises-section {
+    margin-bottom: 2.5rem;
+}
+
+.exercises-title {
+    color: var(--text);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Exercises List */
+.exercises-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.exercise-card {
+    background: var(--light-gray);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
+    border-left: 4px solid var(--light-blue);
+}
+
+.exercise-card:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.exercise-icon {
+    width: 50px;
+    height: 50px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.exercise-icon i {
+    width: 24px;
+    height: 24px;
+    color: var(--light-blue);
+}
+
+.exercise-info {
+    text-align: left;
+    flex: 1;
+}
+
+.exercise-name {
+    color: var(--text);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.exercise-details {
+    color: #666;
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.exercise-rest {
+    color: #888;
+    font-size: 0.9rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+}
+
+/* Empty Exercises */
+.empty-exercises {
+    padding: 2rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+    border: 2px dashed #dee2e6;
+    text-align: center;
+}
+
+.empty-exercises i {
+    width: 50px;
+    height: 50px;
+    color: #6c757d;
+    margin-bottom: 1rem;
+}
+
+.empty-exercises p {
+    color: #666;
+    margin-bottom: 1.5rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.add-exercise-btn {
+    background: var(--green);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.3s ease;
+}
+
+.add-exercise-btn:hover {
+    background: #3d8c40;
+    transform: translateY(-2px);
+}
+
+/* Workout Actions - BOTÕES PADRONIZADOS */
+.workout-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.action-btn {
+    padding: 12px 30px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    background: var(--light-blue);
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    border: 2px solid var(--light-blue);
+    min-width: 160px;
+    justify-content: center;
+}
+
+/* Botão Editar - Azul que fica verde no hover */
+.action-btn:hover {
+    background: var(--green);
+    border-color: var(--green);
+    transform: translateY(-2px);
+}
+
+/* Botão Excluir - Azul que fica vermelho no hover */
+.delete-btn:hover {
+    background: var(--danger) !important;
+    border-color: var(--danger) !important;
+    transform: translateY(-2px);
+}
+
+.delete-form {
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Actions - IDÊNTICO ao dashboard */
+/* Header Actions - CORREÇÃO PARA OS BOTÕES FICAREM NA MESMA LINHA */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Garantir que o formulário de logout também seja flex */
+.logout-form {
+    margin: 0;
+    padding: 0;
+    display: flex; /* ADICIONAR ESTA LINHA */
+}
+
+.nav-btn {
+    padding: 8px 20px;
+    border: 2px solid white;
+    border-radius: 25px;
+    background: transparent;
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap; /* EVITA QUEBRA DE LINHA */
+}
+
+.nav-btn:hover {
+    background: white;
+    color: var(--dark-blue);
+}
+
+/* Delete Button - Vermelho no hover */
+.delete-btn:hover {
+    background: var(--danger) !important;
+    border-color: var(--danger) !important;
+    color: white !important;
+}
+
+/* Logout Button - Verde no hover */
+.logout-btn:hover {
+    background: var(--green) !important;
+    border-color: var(--green) !important;
+    color: white !important;
+}
+
+/* Logout Form */
+.logout-form {
+    margin: 0;
+    padding: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .dashboard-container {
+        padding: 2rem;
+    }
+    
+    .welcome {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .header-actions {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .nav-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .workout-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .action-btn {
+        width: 100%;
+        max-width: 250px;
+    }
+}
+
+@media (max-width: 600px) {
+    .main-content {
+        padding: 1rem;
+    }
+    
+    .dashboard-container {
+        padding: 1.5rem;
+    }
+    
+    .welcome {
+        font-size: 1.6rem;
+    }
+    
+    .header-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .nav-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .exercise-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.8rem;
+    }
+    
+    .exercise-info {
+        text-align: center;
+    }
+}
+
+@media (max-width: 400px) {
+    .dashboard-container {
+        padding: 1rem;
+    }
+    
+    .welcome {
+        font-size: 1.4rem;
+    }
+    
+    .success-popup {
+        top: -60px;
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+        max-width: 90%;
+    }
+    
+    .action-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+        min-width: 140px;
+    }
+}
+
+/* Modal de Confirmação de Exclusão */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-container {
+    background: var(--card);
+    border-radius: 15px;
+    padding: 2rem;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    animation: slideUp 0.3s ease;
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+}
+
+.modal-icon {
+    width: 30px;
+    height: 30px;
+    color: var(--danger);
+}
+
+.modal-header h3 {
+    color: var(--text);
+    font-size: 1.4rem;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
+.modal-content {
+    margin-bottom: 2rem;
+}
+
+.modal-content p {
+    color: var(--text);
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.modal-warning {
+    color: var(--danger) !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.modal-btn {
+    padding: 10px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    font-size: 0.95rem;
+    min-width: 120px;
+}
+
+.cancel-btn {
+    background: var(--light-gray);
+    color: var(--text);
+    border-color: var(--light-gray);
+}
+
+.cancel-btn:hover {
+    background: #e0e0e0;
+    border-color: #e0e0e0;
+    transform: translateY(-2px);
+}
+
+.confirm-btn {
+    background: var(--danger);
+    color: white;
+    border-color: var(--danger);
+}
+
+.confirm-btn:hover {
+    background: #c82333;
+    border-color: #c82333;
+    transform: translateY(-2px);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { 
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.header-actions > * {
+    display: flex;
+    align-items: center;
+}
+
+.logout-form .nav-btn {
+    margin: 0;
+    border: 2px solid white;
+}

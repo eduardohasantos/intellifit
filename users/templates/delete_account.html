@@ -3,28 +3,58 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Excluir Perfil</title>
-    <style>
-        body { background-color: #343a40; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; font-family: Arial, sans-serif; }
-        .confirmation-box { background-color: #e9ecef; color: #212529; padding: 50px; border-radius: 10px; text-align: center; max-width: 450px; }
-        h2 { margin-bottom: 30px; font-size: 24px; }
-        .buttons { display: flex; justify-content: center; gap: 20px; }
-        .btn { padding: 10px 30px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 16px; text-decoration: none; display: inline-block; }
-        .btn-yes { background-color: #dc3545; color: white; }
-        .btn-no { background-color: #f8f9fa; color: #212529; }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IntelliFit - Excluir Perfil</title>
+    <link rel="stylesheet" href="{% static 'global/css/global.css' %}">
+    <link rel="stylesheet" href="{% static 'users/css/delete_account.css' %}">
 </head>
 <body>
-    <div class="confirmation-box">
-        <h2>Deseja realmente excluir o perfil?</h2>
-        <p>Esta ação não pode ser desfeita.</p>
-        <div class="buttons">
-            <a href="{% url 'dashboard' %}" class="btn btn-no">Não</a>
-            <form method="post" style="margin:0;">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-yes">Sim</button>
-            </form>
+    <header class="header">
+        <a href="{% url 'dashboard' %}" class="logo-container">
+            <img src="{% static 'global/img/logo_no_background.png' %}" alt="IntelliFit Logo" class="logo-img">
+            <h1 class="site-name">IntelliFit</h1>
+        </a>
+        
+        <nav class="header-actions">
+            <a href="{% url 'edit_account' %}" class="nav-btn"><i data-feather="user"></i> Editar Perfil</a>
+            <a href="{% url 'dashboard' %}" class="nav-btn"><i data-feather="arrow-left"></i> Voltar</a>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <div class="confirmation-container">
+            <div class="confirmation-card">
+                <div class="warning-icon">
+                    <i data-feather="alert-triangle"></i>
+                </div>
+                
+                <h2>Excluir Conta Permanentemente</h2>
+                <p class="warning-text">Esta ação não pode ser desfeita. Todos os seus dados serão perdidos.</p>
+                
+                <div class="confirmation-details">
+                    <p><strong>O que será excluído:</strong></p>
+                    <ul>
+                        <li>Seu perfil de usuário</li>
+                        <li>Histórico de treinos</li>
+                        <li>Plano alimentar</li>
+                        <li>Todo o progresso salvo</li>
+                    </ul>
+                </div>
+
+                <div class="buttons">
+                    <a href="{% url 'dashboard' %}" class="btn btn-cancel">Cancelar</a>
+                    <form method="post" class="delete-form">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-delete">Excluir Minha Conta</button>
+                    </form>
+                </div>
+            </div>
         </div>
-    </div>
+    </main>
+
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+        feather.replace();
+    </script>
 </body>
 </html>

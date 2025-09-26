@@ -6,20 +6,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IntelliFit - Home</title>
-    <link rel="stylesheet" href="/static/users/css/home.css">
+    <link rel="stylesheet" href="{% static 'global/css/global.css' %}">
+    <link rel="stylesheet" href="{% static 'users/css/home.css' %}">
 </head>
+
 <body>
-    <header style="height:90px; display:flex; align-items:center; justify-content:flex-end; padding:0 2rem; background:#fff; box-shadow:0 2px 5px rgba(0,0,0,0.1);">
-        <nav class="nav-buttons" style="display:flex; align-items:center; justify-content:flex-end; width:100%;">
-            <a href="{% url 'login' %}" class="btn login">Login</a>
-            <a href="{% url 'register' %}" class="btn register">Registro</a>
-        </nav>
+    <header class="header">
+        <a href="{% url 'home' %}" class="logo-container">
+            <h1 class="site-name">IntelliFit</h1>
+        </a>
+        <div class="nav-buttons">
+            <a href="{% url 'login' %}" class="nav-btn login">Login</a>
+            <a href="{% url 'register' %}" class="nav-btn">Cadastrar</a>
+        </div>
     </header>
 
-    <main>
+    <main class="main-content">
+        {% block content %}
         <div class="content-container">
             <div class="logo-big">
-                <img src="{% static 'users/img/Intellifit-Logo-removebg-preview.png' %}" alt="IntelliFit Logo Grande">
+                <img src="{% static 'global/img/logo_no_background.png' %}" alt="IntelliFit Logo Grande">
             </div>
             <div class="text-container">
                 <h1>Treine seu corpo, alimente sua mente.</h1>
@@ -27,6 +33,7 @@
                 <a href="{% url 'register' %}" class="cta-btn">Comece Agora</a>
             </div>
         </div>
+        {% endblock %}
     </main>
 </body>
 </html>

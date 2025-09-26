@@ -32,12 +32,17 @@ def register(request):
         user = User.objects.create_user(username=username, email=email, password=password)
         user.save()
 
-        messages.success(request, "Usuário cadastrado com sucesso!")
+        request.session['registration_success'] = True
         return redirect('login')
 
 def login(request):
     if request.method == "GET":
-        return render(request, 'login.html')
+        # Verifica se veio de um registro bem-sucedido
+        registration_success = request.session.pop('registration_success', False)
+        
+        return render(request, 'login.html', {
+            'registration_success': registration_success
+        })
     else:
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -46,7 +51,6 @@ def login(request):
 
         if user:
             login_django(request, user)
-
             return redirect('dashboard')
         else:
             messages.add_message(request, constants.ERROR, 'Usuário ou senha inválidos')
@@ -54,7 +58,7 @@ def login(request):
                 'username': username,
             })
         
-@login_required(login_url = "/auth/login/")
+@login_required(login_url="/auth/login/")
 def dashboard(request):
     return render(request, 'dashboard.html')
 

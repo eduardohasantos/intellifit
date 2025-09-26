@@ -1,4 +1,4 @@
-/* Dashboard Main Content */
+/* Workout Main Content - IDÊNTICO ao dashboard */
 .main-content {
     flex: 1;
     display: flex;
@@ -8,7 +8,7 @@
     background: var(--background);
 }
 
-/* Dashboard Container Card */
+/* Dashboard Container Card - IDÊNTICO ao dashboard */
 .dashboard-container {
     background-color: var(--card);
     padding: 3rem;
@@ -18,9 +18,10 @@
     max-width: 1000px;
     text-align: center;
     border: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
 }
 
-/* Welcome Section */
+/* Welcome Section - IDÊNTICO ao dashboard */
 .welcome-section {
     margin-bottom: 3rem;
 }
@@ -39,15 +40,101 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Cards Grid */
+/* Success Popup */
+.success-popup {
+    position: absolute;
+    top: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--green);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+    font-family: Arial, Helvetica, sans-serif;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* Empty State */
+
+.empty-state {
+    text-align: center;
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.empty-icon-container {
+    margin-bottom: 2rem; /* Espaço entre ícone e título */
+}
+
+.empty-icon {
+    width: 100px; /* Aumentei um pouco o tamanho */
+    height: 100px;
+    color: var(--light-blue);
+}
+
+.empty-state h3 {
+    color: var(--text);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 0; /* Remove margem superior extra */
+}
+
+.empty-state p {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    max-width: 400px;
+    line-height: 1.5;
+}
+
+.cta-btn {
+    background: var(--green);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+    background: #3d8c40;
+    transform: translateY(-2px);
+}
+
+/* Cards Grid - IDÊNTICO ao dashboard */
 .cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 25px;
     width: 100%;
+    margin-bottom: 2rem;
 }
 
-/* Individual Cards */
+/* Individual Cards - IDÊNTICO ao dashboard */
 .card {
     background: var(--card);
     border-radius: 15px;
@@ -86,6 +173,7 @@
     font-size: 0.9rem;
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
+    line-height: 1.4;
 }
 
 .card:hover {
@@ -99,7 +187,34 @@
     transform: scale(1.1);
 }
 
-/* Header Actions */
+/* Add Workout Section */
+.add-workout-section {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.add-workout-btn {
+    background: var(--green);
+    color: white;
+    padding: 14px 35px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    border: 2px solid var(--green);
+}
+
+.add-workout-btn:hover {
+    background: transparent;
+    color: var(--green);
+    transform: translateY(-2px);
+}
+
+/* Header Actions - IDÊNTICO ao dashboard */
 .header-actions {
     display: flex;
     align-items: center;
@@ -148,7 +263,7 @@
     padding: 0;
 }
 
-/* Responsive Design */
+/* Responsive Design - IDÊNTICO ao dashboard */
 @media (max-width: 900px) {
     .dashboard-container {
         padding: 2rem;
@@ -228,5 +343,12 @@
     
     .card h3 {
         font-size: 1.1rem;
+    }
+    
+    .success-popup {
+        top: -60px;
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+        max-width: 90%;
     }
 }

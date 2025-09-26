@@ -2,110 +2,83 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1.0">
-	<title>Meus Treinos</title>
-	<link rel="stylesheet" href="{% static 'users/css/dashboard.css' %}">
-	<script src="https://unpkg.com/feather-icons"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IntelliFit - Meus Treinos</title>
+    <link rel="stylesheet" href="{% static 'global/css/global.css' %}">
+    <link rel="stylesheet" href="{% static 'workout/css/workout.css' %}">
 </head>
 <body>
-		<!-- Header -->
-		<header class="dashboard-header">
-			<div class="user-left">
-				<img src="{% static 'users/img/user-default.png' %}" alt="Usuário padrão">
-				<span class="username">{{ user.username }}</span>
-			</div>
-			<nav class="header-actions">
-				<a href="{% url 'edit_account' %}" class="btn"><i data-feather="user"></i> Editar Perfil</a>
-				<a href="{% url 'delete_account' %}" class="btn danger"><i data-feather="trash-2"></i> Excluir Perfil</a>
-				<form action="{% url 'logout' %}" method="post" style="display:inline;">
-					{% csrf_token %}
-					<button type="submit" class="btn logout"><i data-feather="log-out"></i> Sair</button>
-				</form>
-			</nav>
-		</header>
+    <!-- Header IDÊNTICO ao dashboard -->
+    <header class="header">
+        <a href="{% url 'dashboard' %}" class="logo-container">
+            <h1 class="site-name">IntelliFit</h1>
+        </a>
+        
+        <nav class="header-actions">
+            <a href="{% url 'edit_account' %}" class="nav-btn"><i data-feather="user"></i> Editar Perfil</a>
+            <a href="{% url 'delete_account' %}" class="nav-btn delete-btn"><i data-feather="trash-2"></i> Excluir Perfil</a>
+            <form action="{% url 'logout' %}" method="post" class="logout-form">
+                {% csrf_token %}
+                <button type="submit" class="nav-btn logout-btn"><i data-feather="log-out"></i> Sair</button>
+            </form>
+        </nav>
+    </header>
 
-			<main class="main-content">
-						<div class="form-container" id="treinos-container" style="max-width: 1200px; width: 100%; position: relative;">
-							{% if request.COOKIES.success_message %}
-								<div id="success-popup" style="position: absolute; top: -60px; left: 50%; transform: translateX(-50%); background: #4caf50; color: #fff; padding: 1rem 2rem; border-radius: 10px; font-size: 1.1rem; z-index: 10; box-shadow: 0 4px 10px rgba(0,0,0,0.08);">
-									{{ request.COOKIES.success_message }}
-								</div>
-								<script>
-									setTimeout(function() {
-										var popup = document.getElementById('success-popup');
-										if (popup) popup.style.display = 'none';
-										document.cookie = 'success_message=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-									}, 3000);
-								</script>
-							{% endif %}
-						<h2 style="text-align: center;">Meus Treinos</h2>
-						{% if not workouts %}
-							<div style="width: 100%; text-align: center; margin-bottom: 1.5rem;">
-								<p style="font-size: 1.2rem; color: var(--azul-escuro); margin-bottom: 2rem;">Você ainda não possui nenhum treino registrado, que tal cadastrar um agora?</p>
-							</div>
-							<a href="/workout/add/" class="btn">Cadastrar treino</a>
-						{% else %}
-									<div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
-										<div style="width: 100%; display: flex; justify-content: center;">
-											<section class="cards" style="
-												margin-bottom: 2.5rem;
-												display: grid;
-												grid-template-columns: repeat(5, minmax(0, 1fr));
-												gap: 30px;
-												width: 100%;
-												max-width: 1200px;
-												justify-items: center;
-												align-items: center;
-												box-sizing: border-box;
-											">
-												{% for workout in workouts %}
-													<a href="/workout/{{ workout.id }}/" class="card" style="text-decoration: none; color: inherit;">
-														<i data-feather="activity"></i>
-														<h3>{{ workout.name }}</h3>
-																		{% if workout.description %}
-																			{% if workout.description|length > 60 %}
-																				<p style="margin-top: 10px; color: #333; font-size: 0.95rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 180px; margin-left: auto; margin-right: auto;">
-																					{{ workout.description|slice:":60" }}... 
-																				</p>
-																			{% else %}
-																				<p style="margin-top: 10px; color: #333; font-size: 0.95rem; max-width: 180px; margin-left: auto; margin-right: auto;">
-																					{{ workout.description }}
-																				</p>
-																			{% endif %}
-																		{% endif %}
-													</a>
-												{% endfor %}
-											</section>
-										</div>
-										<div style="width: 100%; display: flex; justify-content: center;">
-											<a href="/workout/add/" class="btn" style="max-width: 300px; width: 100%;">Cadastrar treino</a>
-										</div>
-									</div>
-						{% endif %}
-					</div>
-					<style>
-						@media (max-width: 1200px) {
-							#treinos-container .cards {
-								grid-template-columns: repeat(4, 1fr) !important;
-								max-width: 950px !important;
-							}
-						}
-						@media (max-width: 900px) {
-							#treinos-container .cards {
-								grid-template-columns: repeat(2, 1fr) !important;
-								max-width: 500px !important;
-							}
-						}
-						@media (max-width: 600px) {
-							#treinos-container .cards {
-								grid-template-columns: 1fr !important;
-								max-width: 300px !important;
-							}
-						}
-					</style>
-			</main>
-			<link rel="stylesheet" href="{% static 'users/css/form-container.css' %}">
-	<script>feather.replace();</script>
+    <main class="main-content">
+        <!-- Card principal CENTRALIZADO igual ao dashboard -->
+        <div class="dashboard-container">
+            <!-- Mensagens do Django -->
+        {% if request.session.workout_deleted %}
+            <div class="success-popup">
+                <i data-feather="check" class="popup-icon"></i>
+                Treino excluído com sucesso!
+            </div>
+            
+            <!-- Limpa a session após exibir -->
+            <script>
+                setTimeout(function() {
+                    window.location.href = "{% url 'workout_list' %}";
+                }, 2000);
+            </script>
+        {% endif %}
+
+            <div class="welcome-section">
+                <h2 class="welcome">Meus Treinos</h2>
+                <p class="welcome-subtitle">Gerencie seus planos de exercícios</p>
+            </div>
+
+            {% if not workouts %}
+                <div class="empty-state">
+                    <!-- Ícone CENTRALIZADO entre título e texto -->
+                    <div class="empty-icon-container">
+                        <i data-feather="activity" class="empty-icon"></i>
+                    </div>
+                    <h3>Nenhum treino cadastrado</h3>
+                    <p>Você ainda não possui nenhum treino registrado, que tal cadastrar um agora?</p>
+                    <a href="{% url 'add_workout' %}" class="cta-btn"><i data-feather="plus"></i> Cadastrar Primeiro Treino</a>
+                </div>
+            {% else %}
+                <section class="cards">
+                    {% for workout in workouts %}
+                        <a href="{% url 'workout_detail' workout.id %}" class="card">
+                            <i data-feather="activity"></i>
+                            <h3>{{ workout.name }}</h3>
+                            {% if workout.description %}
+                                <p>{{ workout.description|truncatechars:80 }}</p>
+                            {% endif %}
+                        </a>
+                    {% endfor %}
+                </section>
+
+                <div class="add-workout-section">
+                    <a href="{% url 'add_workout' %}" class="add-workout-btn"><i data-feather="plus"></i> Adicionar Novo Treino</a>
+                </div>
+            {% endif %}
+        </div>
+    </main>
+
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>feather.replace();</script>
 </body>
 </html>

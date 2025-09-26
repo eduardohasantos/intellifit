@@ -3,34 +3,70 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Editar Perfil</title>
-    <style>
-        body { background-color: #343a40; color: #f8f9fa; font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .container { background-color: #212529; padding: 40px; border-radius: 15px; text-align: center; width: 400px; }
-        h1 { margin-bottom: 25px; }
-        form { display: flex; flex-direction: column; }
-        form p { display: flex; flex-direction: column; text-align: left; }
-        form label { margin-bottom: 5px; color: #adb5bd; }
-        input { padding: 12px; margin-bottom: 20px; border: none; border-radius: 8px; background-color: #495057; color: #f8f9fa; font-size: 16px; }
-        button { padding: 12px 20px; background-color: #6c757d; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: bold; }
-        button:hover { background-color: #5a6268; }
-        a { color: #adb5bd; text-decoration: none; margin-top: 20px; display: inline-block; }
-        .errorlist { list-style-type: none; padding: 0; color: #dc3545; margin: -10px 0 10px 0; }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IntelliFit - Editar Perfil</title>
+    <link rel="stylesheet" href="{% static 'global/css/global.css' %}">
+    <link rel="stylesheet" href="{% static 'users/css/edit_account.css' %}">
 </head>
 <body>
-    <div class="container">
-        <h1>Editar Perfil</h1>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }} {% if form.errors %}
-                <div class="errors">
-                    {{ form.errors }}
+    <header class="header">
+        <a href="{% url 'dashboard' %}" class="logo-container">
+            <h1 class="site-name">IntelliFit</h1>
+        </a>
+        
+        <nav class="header-actions">
+            <a href="{% url 'dashboard' %}" class="nav-btn"><i data-feather="arrow-left"></i> Voltar</a>
+            <a href="{% url 'delete_account' %}" class="nav-btn delete-btn"><i data-feather="trash-2"></i> Excluir Perfil</a>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <div class="edit-container">
+            <div class="edit-card">
+                <div class="card-header">
+                    <i data-feather="user" class="header-icon"></i>
+                    <h2>Editar Perfil</h2>
+                    <p>Atualize suas informações pessoais</p>
                 </div>
-            {% endif %}
-            <button type="submit">Salvar</button>
-        </form>
-        <a href="{% url 'dashboard' %}">Voltar ao Dashboard</a>
-    </div>
+
+                {% if messages %}
+                {% for message in messages %}
+                    <div class="alert success-alert">{{ message }}</div>
+                {% endfor %}
+                {% endif %}
+
+                <form method="post" class="edit-form">
+                    {% csrf_token %}
+                    
+                    {% for field in form %}
+                    <div class="form-group">
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{ field }}
+                        {% if field.errors %}
+                        <div class="error-list">
+                            {% for error in field.errors %}
+                            <span class="error">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+
+                    <button type="submit" class="save-btn">
+                        <i data-feather="save"></i> Salvar Alterações
+                    </button>
+                </form>
+
+                <a href="{% url 'dashboard' %}" class="back-link">
+                    <i data-feather="arrow-left"></i> Voltar ao Dashboard
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+        feather.replace();
+    </script>
 </body>
 </html>

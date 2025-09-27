@@ -6,52 +6,67 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>IntelliFit - Dashboard</title>
+  <link rel="stylesheet" href="{% static 'global/css/global.css' %}">
   <link rel="stylesheet" href="{% static 'users/css/dashboard.css' %}">
   <script src="https://unpkg.com/feather-icons"></script>
 </head>
 <body>
-  <header class="dashboard-header">
-    <div class="user-left">
-      <img src="{% static 'users/img/user-default.png' %}" alt="Usuário padrão">
-      <span class="username">{{ user.username }}</span>
-    </div>
-    <nav class="header-actions">
-      <a href="{% url 'edit_account' %}" class="btn"><i data-feather="user"></i> Editar Perfil</a>
-      <a href="{% url 'delete_account' %}" class="btn danger"><i data-feather="trash-2"></i> Excluir Perfil</a>
-      <form action="{% url 'logout' %}" method="post" style="display:inline;">
+  <!-- Header IDÊNTICO ao dele -->
+  <header class="header">
+    <a href="{% url 'dashboard' %}" class="logo-container">
+      <h1 class="site-name">IntelliFit</h1>
+    </a>
+    
+    <nav class="nav-buttons">
+      <a href="{% url 'edit_account' %}" class="nav-btn"><i data-feather="user"></i> Editar Perfil</a>
+      <a href="{% url 'delete_account' %}" class="nav-btn"><i data-feather="trash-2"></i> Excluir Perfil</a>
+      <form action="{% url 'logout' %}" method="post" style="display: inline;">
         {% csrf_token %}
-        <button type="submit" class="btn logout"><i data-feather="log-out"></i> Sair</button>
+        <button type="submit" class="nav-btn"><i data-feather="log-out"></i> Sair</button>
       </form>
     </nav>
   </header>
 
+  <!-- Conteúdo principal -->
   <main class="main-content">
-    <h2 class="welcome">Bem-vindo ao IntelliFit</h2>
+    <div class="dashboard-container">
+      <div class="welcome-section">
+        <h2 class="welcome">Bem-vindo, {{ user.username }}!</h2>
+        <p class="welcome-subtitle">O que você gostaria de fazer hoje?</p>
+      </div>
 
-    <section class="cards">
-      <div class="card">
-        <i data-feather="activity"></i>
-        <h3>Treino</h3>
-      </div>
-      
-      <a href="{% url 'progress:progress_page' %}">
+      <section class="cards">
         <div class="card">
-          <i data-feather="bar-chart-2"></i>
-          <h3>Progresso</h3>
+          <i data-feather="activity"></i>
+          <h3>Treino</h3>
+          <p>Gerencie seus exercícios</p>
         </div>
-      </a>
-      
-      <div class="card">
-        <i data-feather="coffee"></i>
-        <h3>Dietas</h3>
-      </div>
-      <div class="card">
-        <i data-feather="edit-3"></i>
-        <h3>Anotações</h3>
-      </div>
-    </section>
+        
+        <a href="{% url 'progress:progress_page' %}" class="card-link">
+          <div class="card">
+            <i data-feather="bar-chart-2"></i>
+            <h3>Progresso</h3>
+            <p>Acompanhe seus resultados</p>
+          </div>
+        </a>
+        
+        <div class="card">
+          <i data-feather="coffee"></i>
+          <h3>Dietas</h3>
+          <p>Planeje sua alimentação</p>
+        </div>
+        
+        <div class="card">
+          <i data-feather="edit-3"></i>
+          <h3>Anotações</h3>
+          <p>Registre observações</p>
+        </div>
+      </section>
+    </div>
   </main>
 
-  <script>feather.replace();</script>
+  <script>
+    feather.replace();
+  </script>
 </body>
 </html>

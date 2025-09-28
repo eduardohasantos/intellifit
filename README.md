@@ -102,3 +102,5 @@ Para otimizar o desenvolvimento e garantir entregas de qualidade, decidimos orga
   </p>
   
 </details>
+# 🐛 Issues / Bugs
+<img width="1107" height="457" alt="image" src="https://github.com/user-attachments/assets/6d6644a1-4b21-4cce-9d4d-bd9444d40896" />

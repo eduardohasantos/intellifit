@@ -80,6 +80,12 @@ Estamos desenvolvendo um `software` capaz de ajudar pessoas que precisam de uma 
 
 <details>
   <summary>Entrega 02 - Desenvolvimento Inicial</summary>
+
+  <p align="center" style="">
+  <a href="https://youtu.be/cycTfg8quoE">
+    <img src="https://img.shields.io/badge/screencast-BF9056?style=for-the-badge&logo=youtube&logoColor=white" height="35px"/></a>
+  </p>
+  
   JIRA:
   <img width="1620" height="722" alt="image" src="https://github.com/user-attachments/assets/62cd8724-c9c8-497c-96ad-7ae58914442d" />
 

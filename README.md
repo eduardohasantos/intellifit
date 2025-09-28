@@ -81,8 +81,10 @@ Estamos desenvolvendo um `software` capaz de ajudar pessoas que precisam de uma 
 <details>
   <summary>Entrega 02 - Desenvolvimento Inicial</summary>
   JIRA:
-  <img width="1609" height="687" alt="image" src="https://github.com/user-attachments/assets/dd0d5967-e733-46c5-bbd2-727d9ff77c2e" />
-  <img width="1615" height="625" alt="image" src="https://github.com/user-attachments/assets/c7cfa981-6d9d-456b-8de6-093652149ddd" />
+  <img width="1610" height="714" alt="image" src="https://github.com/user-attachments/assets/8ec5dbe3-baae-4d3a-9de5-d618500fd6ca" />
+
+  <img width="1621" height="552" alt="image" src="https://github.com/user-attachments/assets/0bdc5422-4a9f-4b6e-8135-d553a97367a1" />
+
 
   ### 🤝 Programação em Par
 

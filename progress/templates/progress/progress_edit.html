@@ -1,13 +1,12 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>IntelliFit - Dashboard</title>
+  <title>IntelliFit - Editar Progresso</title>
   <link rel="stylesheet" href="{% static 'global/css/global.css' %}">
-  <link rel="stylesheet" href="{% static 'users/css/dashboard.css' %}">
+  <link rel="stylesheet" href="{% static 'users/css/progress_edit.css' %}">
   <script src="https://unpkg.com/feather-icons"></script>
 </head>
 <body>
@@ -31,31 +30,30 @@
   <main class="main-content">
     <div class="dashboard-container">
       <div class="welcome-section">
-        <h2 class="welcome">Bem-vindo, {{ user.username }}!</h2>
-        <p class="welcome-subtitle">O que você gostaria de fazer hoje?</p>
+        <h2 class="welcome">Editar Progresso</h2>
+        <p class="welcome-subtitle">Atualize suas métricas de acompanhamento</p>
       </div>
 
-      <section class="cards">
-        <a href="/workout/" class="card" style="text-decoration: none; color: inherit;">
-          <i data-feather="activity"></i>
-          <h3>Treino</h3>
-          <p>Gerencie seus exercícios</p>
-        </a>
-        <a href="/progress/" class="card" style="text-decoration: none; color: inherit;">
-          <i data-feather="bar-chart-2"></i>
-          <h3>Progresso</h3>
-          <p>Acompanhe seus resultados</p>
-        </a>
-        <a href="#" class="card" style="text-decoration: none; color: inherit;">
-          <i data-feather="coffee"></i>
-          <h3>Dietas</h3>
-          <p>Planeje sua alimentação</p>
-        </a>
-        <a href="#" class="card" style="text-decoration: none; color: inherit;">
-          <i data-feather="edit-3"></i>
-          <h3>Anotações</h3>
-          <p>Registre observações</p>
-        </a>
+      <section class="form-section">
+        <form method="POST" action="{% url 'progress:edit_progress' entry_id %}" class="progress-form">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="{{ form.weight.id_for_label }}">Peso (kg)</label>
+            {{ form.weight }}
+          </div>
+          <div class="form-group">
+            <label for="{{ form.water_ml.id_for_label }}">Água (ml)</label>
+            {{ form.water_ml }}
+          </div>
+          <div class="form-group">
+            <label for="{{ form.calories.id_for_label }}">Calorias (kcal)</label>
+            {{ form.calories }}
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn-submit">Atualizar Progresso</button>
+            <a href="{% url 'progress:progress_page' %}" class="cancel-btn">Cancelar</a>
+          </div>
+        </form>
       </section>
     </div>
   </main>

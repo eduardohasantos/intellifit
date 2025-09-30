@@ -1,4 +1,3 @@
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/f1a5eaca-3830-4a18-a3d9-2921489d3c51" /><h1 align="center">
   IntelliFit 🏋️🍃
 </h1>
 

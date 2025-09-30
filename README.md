@@ -1,4 +1,4 @@
-<h1 align="center">
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/f1a5eaca-3830-4a18-a3d9-2921489d3c51" /><h1 align="center">
   IntelliFit 🏋️🍃
 </h1>
 
@@ -87,9 +87,10 @@ Estamos desenvolvendo um `software` capaz de ajudar pessoas que precisam de uma 
   </p>
   
   # JIRA:
-  <img width="1620" height="722" alt="image" src="https://github.com/user-attachments/assets/62cd8724-c9c8-497c-96ad-7ae58914442d" />
+  <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/8b5f6246-ca87-4c14-af90-780e3044c00a" />
 
-  <img width="1629" height="567" alt="image" src="https://github.com/user-attachments/assets/1555e968-b8fd-4c90-9c21-f2647c099fbe" />
+
+  <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/668015c3-f451-4f2a-92c2-32d613f3e727" />
 
 
   # 🤝 Programação em Par

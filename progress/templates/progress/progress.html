@@ -10,12 +10,10 @@
   <script src="https://unpkg.com/feather-icons"></script>
 </head>
 <body>
-  <!-- Header -->
   <header class="header">
     <a href="{% url 'dashboard' %}" class="logo-container">
       <h1 class="site-name">IntelliFit</h1>
     </a>
-    
     <nav class="header-actions">
       <a href="{% url 'edit_account' %}" class="nav-btn"><i data-feather="user"></i> Editar Perfil</a>
       <a href="{% url 'delete_account' %}" class="nav-btn delete-btn"><i data-feather="trash-2"></i> Excluir Perfil</a>
@@ -26,7 +24,6 @@
     </nav>
   </header>
 
-  <!-- Conteúdo principal -->
   <main class="main-content">
     <div class="dashboard-container">
       {% if messages %}
@@ -35,12 +32,12 @@
         {% endfor %}
       {% endif %}
 
-      {% if latest_entry %}
+      {% if all_entries %}
+        {% with latest_entry=all_entries.first %}
         <div class="welcome-section">
           <h2 class="welcome">Último Registro do Progresso</h2>
           <p class="welcome-subtitle">Registrado em: {{ latest_entry.date|date:"d/m/Y" }}</p>
         </div>
-
         <section class="cards">
           <div class="card">
             <i data-feather="trending-up"></i>
@@ -58,6 +55,7 @@
             <p class="data">{{ latest_entry.calories }} kcal</p>
           </div>
         </section>
+        {% endwith %}
       {% else %}
         <div class="welcome-section">
           <h2 class="welcome">Bem-vindo(a)!</h2>
@@ -69,41 +67,40 @@
         <h2 class="section-title">Adicionar Novo Registro</h2>
         <form method="POST" action="{% url 'progress:progress_page' %}" class="progress-form">
           {% csrf_token %}
-
-          {% if form.errors %}
-            <div class="form-errors">
-              <strong>Ocorreram erros no formulário:</strong>
-              <ul>
-                {% for field in form %}
-                  {% for error in field.errors %}
-                    <li>{{ field.label }}: {{ error }}</li>
-                  {% endfor %}
-                {% endfor %}
-                {% for error in form.non_field_errors %}
-                  <li>{{ error }}</li>
-                {% endfor %}
-              </ul>
-            </div>
-          {% endif %}
-
           <div class="form-group">
             <label for="{{ form.weight.id_for_label }}">Peso (kg)</label>
             {{ form.weight }}
           </div>
-          
           <div class="form-group">
             <label for="{{ form.water_ml.id_for_label }}">Água (ml)</label>
             {{ form.water_ml }}
           </div>
-          
           <div class="form-group">
             <label for="{{ form.calories.id_for_label }}">Calorias (kcal)</label>
             {{ form.calories }}
           </div>
-          
           <button type="submit" class="btn-submit">Salvar Novo Progresso</button>
         </form>
       </section>
+
+      {% comment %} --- ÁREA ALTERADA --- {% endcomment %}
+      <section class="history-section">
+        {% comment %} O TÍTULO H2 FOI REMOVIDO DAQUI {% endcomment %}
+        {% if all_entries %}
+          <ul class="history-list">
+            {% for entry in all_entries %}
+              <li class="history-item">
+                {% comment %} O TEXTO SPAN FOI REMOVIDO DAQUI {% endcomment %}
+                <div class="action-buttons">
+                  <a href="{% url 'progress:edit_progress' entry.id %}" class="btn-action edit">Editar</a>
+                  <a href="{% url 'progress:delete_progress' entry.id %}" class="btn-action delete">Excluir</a>
+                </div>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </section>
+      {% comment %} --- FIM DA ÁREA ALTERADA --- {% endcomment %}
     </div>
   </main>
 

@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmar Exclusão - IntelliFit</title>
+    <link rel="stylesheet" href="{% static 'global/css/global.css' %}">
+    <link rel="stylesheet" href="{% static 'progress/css/progress.css' %}">
+</head>
+<body>
+    <header class="header">
+        <a href="{% url 'dashboard' %}" class="logo-container">
+            <h1 class="site-name">IntelliFit</h1>
+        </a>
+    </header>
+
+    <main class="main-content">
+        <div class="dashboard-container is-compact">
+            <section class="form-section">
+                <h2 class="section-title">Confirmar Exclusão</h2>
+                <p>Você tem certeza que deseja excluir o registro do dia <strong>{{ entry.date|date:"d/m/Y" }}</strong>?</p>
+                <p class="welcome-subtitle">Esta ação não pode ser desfeita.</p>
+                
+                <form method="POST" class="progress-form">
+                    {% csrf_token %}
+                    <div class="form-actions">
+                        <button type="submit" class="btn-submit delete-btn">Sim, Excluir</button>
+                        <a href="{% url 'progress:progress_page' %}" class="cancel-btn">Cancelar</a>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </main>
+</body>
+</html>

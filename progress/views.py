@@ -6,10 +6,8 @@ from .models import ProgressEntry
 
 @login_required
 def progress_page(request):
-    # Busca o registro mais recente do usuário logado
-    latest_entry = ProgressEntry.objects.filter(user=request.user).order_by('-date', '-id').first()
+    all_entries = ProgressEntry.objects.filter(user=request.user).order_by('-date', '-id')
 
-    # Lógica para ADICIONAR um novo registro
     if request.method == 'POST':
         form = ProgressEntryForm(request.POST)
         if form.is_valid():
@@ -23,16 +21,13 @@ def progress_page(request):
 
     context = {
         'form': form,
-        'latest_entry': latest_entry,
+        'all_entries': all_entries,
     }
     return render(request, 'progress/progress.html', context)
 
 @login_required
 def edit_progress_page(request, entry_id):
-    # Busca o registro específico que o usuário quer editar
     entry_to_edit = get_object_or_404(ProgressEntry, id=entry_id, user=request.user)
-
-    # Lógica para EDITAR um registro
     if request.method == 'POST':
         form = ProgressEntryForm(request.POST, instance=entry_to_edit)
         if form.is_valid():
@@ -47,3 +42,16 @@ def edit_progress_page(request, entry_id):
         'entry_id': entry_id
     }
     return render(request, 'progress/progress_edit.html', context)
+
+@login_required
+def delete_progress_page(request, entry_id):
+    entry_to_delete = get_object_or_404(ProgressEntry, id=entry_id, user=request.user)
+    if request.method == 'POST':
+        entry_to_delete.delete()
+        messages.success(request, 'Registro excluído com sucesso!')
+        return redirect('progress:progress_page')
+    
+    context = {
+        'entry': entry_to_delete
+    }
+    return render(request, 'progress/progress_confirm_delete.html', context)

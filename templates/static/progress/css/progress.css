@@ -1,26 +1,32 @@
-/* Progress Main Content */
+/* Main Content & Layout */
 .main-content {
     flex: 1;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* Alinhado ao topo para melhor visualização */
     padding: 2rem;
     background: var(--background);
 }
 
-/* Dashboard Container Card */
 .dashboard-container {
     background-color: var(--card);
     padding: 3rem;
     border-radius: 20px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
     width: 100%;
-    max-width: 1000px;
+    max-width: 1000px; /* Largura padrão para a página principal */
     text-align: center;
     border: 1px solid rgba(0, 0, 0, 0.05);
+    margin-top: 2rem; /* Espaço do topo */
+    margin-bottom: 2rem;
 }
 
-/* Welcome Section */
+/* Classe modificadora para contêineres mais estreitos (páginas de edição/exclusão) */
+.dashboard-container.is-compact {
+    max-width: 600px;
+}
+
+/* Welcome & Titles */
 .welcome-section {
     margin-bottom: 3rem;
 }
@@ -30,16 +36,22 @@
     font-size: 2.2rem;
     margin-bottom: 0.5rem;
     font-weight: 600;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 .welcome-subtitle {
     color: #666;
     font-size: 1.1rem;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Cards Grid */
+.section-title {
+    color: var(--text);
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Cards Grid (Específico da página principal) */
 .cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -48,7 +60,6 @@
     margin-bottom: 3rem;
 }
 
-/* Individual Cards */
 .card {
     background: var(--card);
     border-radius: 15px;
@@ -56,7 +67,6 @@
     text-align: center;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
-    cursor: pointer;
     color: var(--text);
     border: 2px solid transparent;
     display: flex;
@@ -64,37 +74,6 @@
     align-items: center;
     justify-content: center;
     min-height: 180px;
-    text-decoration: none;
-}
-
-.card i {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 15px;
-    color: var(--dark-blue);
-    transition: all 0.3s ease;
-}
-
-.card h3 {
-    font-size: 1.3rem;
-    margin-bottom: 8px;
-    font-weight: 600;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.card .data {
-    color: var(--text);
-    font-size: 1.1rem;
-    font-weight: 600;
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0;
-}
-
-.card p:not(.data) {
-    color: #666;
-    font-size: 0.9rem;
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0;
 }
 
 .card:hover {
@@ -103,24 +82,29 @@
     border-color: var(--light-blue);
 }
 
-.card:hover i {
-    color: var(--light-blue);
-    transform: scale(1.1);
+.card i {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 15px;
+    color: var(--dark-blue);
 }
 
-/* Form Section */
+.card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.card .data {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* Forms (Estilos unificados para todos os formulários) */
 .form-section {
     width: 100%;
     text-align: left;
-}
-
-.section-title {
-    color: var(--text);
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
-    font-weight: 600;
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
 }
 
 .progress-form {
@@ -134,7 +118,6 @@
 .form-group {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     gap: 0.5rem;
 }
 
@@ -142,7 +125,6 @@
     color: var(--text);
     font-weight: 600;
     font-size: 1rem;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 .form-group input {
@@ -151,7 +133,6 @@
     border: 2px solid #e0e0e0;
     border-radius: 10px;
     font-size: 1rem;
-    font-family: Arial, Helvetica, sans-serif;
     transition: all 0.3s ease;
     background-color: var(--card);
     color: var(--text);
@@ -163,32 +144,14 @@
     box-shadow: 0 0 0 3px rgba(100, 181, 246, 0.1);
 }
 
-/* Form Errors */
-.form-errors {
-    background-color: #f8d7da;
-    border: 1px solid #f5c6cb;
-    border-radius: 10px;
-    padding: 1rem;
-    margin-bottom: 1.5rem;
-    color: #721c24;
-    font-family: Arial, Helvetica, sans-serif;
+/* Botões do Formulário */
+.form-actions {
+    display: flex;
+    flex-direction: column; /* Empilha os botões em telas pequenas */
+    gap: 1rem;
+    margin-top: 1rem;
 }
 
-.form-errors strong {
-    display: block;
-    margin-bottom: 0.5rem;
-}
-
-.form-errors ul {
-    margin: 0;
-    padding-left: 1.5rem;
-}
-
-.form-errors li {
-    margin-bottom: 0.25rem;
-}
-
-/* Submit Button */
 .btn-submit {
     background: var(--dark-blue);
     color: white;
@@ -197,15 +160,12 @@
     border-radius: 25px;
     font-size: 1rem;
     font-weight: 600;
-    font-family: Arial, Helvetica, sans-serif;
     cursor: pointer;
     transition: all 0.3s ease;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 44px;
-    margin-top: 1rem;
     width: 100%;
 }
 
@@ -215,107 +175,127 @@
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Alert Messages */
+.btn-submit.delete-btn {
+    background: var(--danger);
+}
+.btn-submit.delete-btn:hover {
+    background: #c82333; /* Um vermelho mais escuro no hover */
+}
+
+.cancel-btn {
+    background: transparent;
+    color: #666;
+    border: 2px solid #e0e0e0;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.cancel-btn:hover {
+    background: #f0f0f0;
+    border-color: #ccc;
+    color: var(--text);
+}
+
+
+/* Histórico de Registros (Com as últimas alterações) */
+.history-section {
+    margin-top: 3rem; /* Garante um bom espaço após o formulário */
+}
+
+.history-list {
+    list-style: none;
+    padding: 0;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.history-item {
+    display: flex;
+    justify-content: center; /* Centraliza o conteúdo horizontalmente */
+    align-items: center;
+    padding: 15px 10px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Garante que o último item da lista não tenha uma borda embaixo */
+.history-item:last-child {
+    border-bottom: none;
+}
+
+.action-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.btn-action {
+    text-decoration: underline;
+    color: var(--dark-blue);
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.btn-action:hover {
+    color: var(--light-blue);
+}
+
+.btn-action.delete {
+    margin-left: 20px; /* Mantém o espaçamento entre os botões */
+    color: var(--danger);
+}
+
+.btn-action.delete:hover {
+    color: #c82333;
+}
+
+
+/* Mensagens de Alerta */
 .alert {
-    margin: 15px auto;
+    margin: 0 auto 2rem auto;
     padding: 12px 20px;
     width: 100%;
     text-align: center;
-    border: 1px solid #e74c3c;
     border-radius: 8px;
-    background-color: #f8d7da;
-    color: #721c24;
     font-weight: 500;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 .alert.success {
-    border-color: #28a745;
+    border: 1px solid #28a745;
     background-color: #d4edda;
     color: #155724;
 }
 
-/* Header Actions */
-.header-actions {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.nav-btn {
-    padding: 8px 20px;
-    border: 2px solid white;
-    border-radius: 25px;
-    background: transparent;
-    color: white;
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    font-family: Arial, Helvetica, sans-serif;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.nav-btn:hover {
-    background: white;
-    color: var(--dark-blue);
-}
-
-/* Delete Button - Vermelho no hover */
-.delete-btn:hover {
-    background: var(--danger) !important;
-    border-color: var(--danger) !important;
-    color: white !important;
-}
-
-/* Logout Button - Verde no hover */
-.logout-btn:hover {
-    background: var(--green) !important;
-    border-color: var(--green) !important;
-    color: white !important;
-}
-
-/* Logout Form */
-.logout-form {
-    margin: 0;
-    padding: 0;
-}
-
-/* Responsive Design */
-@media (max-width: 900px) {
-    .dashboard-container {
-        padding: 2rem;
+/* Design Responsivo Unificado */
+@media (min-width: 769px) {
+    .form-actions {
+        flex-direction: row; /* Lado a lado em telas maiores */
     }
-    
-    .cards {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-    }
-    
-    .welcome {
-        font-size: 1.8rem;
+    .btn-submit, .cancel-btn {
+        width: auto; /* Largura automática em telas maiores */
     }
 }
 
 @media (max-width: 768px) {
-    .header {
-        padding: 1rem;
+    .dashboard-container {
+        padding: 2rem;
+        margin-top: 1rem;
+    }
+    .cards {
+        grid-template-columns: 1fr 1fr;
+    }
+    .history-item {
         flex-direction: column;
-        gap: 1rem;
-    }
-    
-    .header-actions {
-        width: 100%;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-    
-    .nav-btn {
-        padding: 10px 20px;
-        font-size: 0.9rem;
+        align-items: center;
+        gap: 10px;
     }
 }
 
@@ -323,46 +303,10 @@
     .main-content {
         padding: 1rem;
     }
-    
     .dashboard-container {
         padding: 1.5rem;
     }
-    
     .cards {
         grid-template-columns: 1fr;
-        gap: 15px;
-    }
-    
-    .card {
-        padding: 1.5rem 1rem;
-        min-height: 150px;
-    }
-    
-    .welcome {
-        font-size: 1.6rem;
-    }
-    
-    .header-actions {
-        flex-direction: column;
-        width: 100%;
-    }
-    
-    .nav-btn {
-        width: 100%;
-        justify-content: center;
-    }
-}
-
-@media (max-width: 400px) {
-    .dashboard-container {
-        padding: 1rem;
-    }
-    
-    .welcome {
-        font-size: 1.4rem;
-    }
-    
-    .card h3 {
-        font-size: 1.1rem;
     }
 }

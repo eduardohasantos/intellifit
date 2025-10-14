@@ -3,6 +3,9 @@ from . import views
 
 app_name = 'diet'
 
-urlPatterns=[
-    path('create/', views.add_Diet, name="add workout"),
+urlpatterns=[
+    path('', views.add_Diet, name="add_Diet"),
+    #path('create/', views.add_Diet, name="add_diet"),
+    #path('/delete',)
+    #path('/')
 ]

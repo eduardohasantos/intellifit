@@ -1,0 +1,186 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7f6;
+    margin: 0;
+    color: #333;
+}
+
+header {
+    background-color: #1A3D6C;
+    color: white;
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+.user-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.user-actions a {
+    color: white;
+    text-decoration: none;
+    border: 1px solid #ffffff80;
+    padding: 8px 16px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.user-actions a:hover {
+    background-color: #ffffff1a;
+    border-color: #fff;
+}
+
+.user-actions svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+}
+
+.content {
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 2.5em;
+}
+
+
+.diet-list { list-style: none; padding: 0; }
+.diet-item { background-color: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; margin-bottom: 20px; transition: box-shadow 0.3s ease; }
+.diet-item:hover { box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); }
+.diet-item h2 { margin-top: 0; color: #0056b3; border-bottom: 2px solid #e0e0e0; padding-bottom: 10px; margin-bottom: 15px; }
+.diet-details p { margin: 5px 0; font-size: 1em; color: #555; }
+.diet-details strong { color: #333; }
+.meal-times { margin-top: 15px; padding-top: 15px; border-top: 1px dashed #ccc; }
+.meal-times p { font-style: italic; }
+.add-diet-container { text-align: center; margin-top: 30px; }
+.btn-create-diet { background-color: #1A3D6C; color: white; border: none; padding: 12px 25px; border-radius: 5px; font-size: 1.1em; font-weight: bold; cursor: pointer; transition: background-color 0.3s ease; }
+.btn-create-diet:hover { background-color: #24528a; }
+
+
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+.divider {
+    border-top: 1px solid #e0e0e0;
+    margin: 30px 0;
+}
+
+h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.meal-card {
+    background-color: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+.food-item {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.food-item input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+.submit-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.btn-save-diet {
+    background-color: #1A3D6C;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-save-diet:hover {
+    background-color: #24528a;
+}
+.add-food-container {
+    text-align: right;
+    margin-top: 15px;
+}
+
+.btn-add-food {
+    background-color: transparent;
+    color: #1A3D6C;
+    border: 1px solid #1A3D6C;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-add-food:hover {
+    background-color: #1A3D6C;
+    color: white;
+}

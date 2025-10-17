@@ -7,9 +7,12 @@ from .forms import WorkoutForm, WorkoutExerciseForm
 
 def workout_list(request):
     """
-    Lista todos os workouts
+    Lista os workouts do usuário autenticado
     """
-    workouts = Workout.objects.all()
+    if request.user.is_authenticated:
+        workouts = Workout.objects.filter(user=request.user)
+    else:
+        workouts = Workout.objects.none()
     
     # Verifica se veio de uma exclusão bem-sucedida
     workout_deleted = request.session.pop('workout_deleted', False)
@@ -23,9 +26,9 @@ def workout_list(request):
 
 def workout_detail(request, workout_id):
     """
-    Exibe os detalhes de um workout específico
+    Exibe os detalhes de um workout específico (somente do owner)
     """
-    workout = get_object_or_404(Workout, id=workout_id)
+    workout = get_object_or_404(Workout, id=workout_id, user=request.user)
     exercises = WorkoutExercise.objects.filter(workout=workout).select_related('exercise').order_by('id')
     
     context = {
@@ -41,7 +44,11 @@ def add_workout(request):
     if request.method == 'POST':
         form = WorkoutForm(request.POST)
         if form.is_valid():
-            workout = form.save()
+            workout = form.save(commit=False)
+            # Atribui o usuário autenticado como owner
+            if request.user.is_authenticated:
+                workout.user = request.user
+            workout.save()
             
             response = redirect('add_exercise', workout_id=workout.id)  # Corrigido: adicionar workout_id
             response.set_cookie('success_message', 'Treino criado com sucesso! Agora adicione os exercícios.', max_age=5)
@@ -57,7 +64,7 @@ def add_exercise(request, workout_id):  # Corrigido: adicionar workout_id como p
     """
     Adiciona exercícios a um workout específico
     """
-    workout = get_object_or_404(Workout, id=workout_id)
+    workout = get_object_or_404(Workout, id=workout_id, user=request.user)
     exercise_names = Exercise.objects.values_list('name', flat=True)
     
     if request.method == 'POST':
@@ -87,7 +94,7 @@ def edit_workout(request, workout_id):
     """
     Edita um workout existente
     """
-    workout = get_object_or_404(Workout, id=workout_id)
+    workout = get_object_or_404(Workout, id=workout_id, user=request.user)
     exercises = WorkoutExercise.objects.filter(workout=workout).select_related('exercise').order_by('id')
     exercise_names = Exercise.objects.values_list('name', flat=True)
     
@@ -150,7 +157,7 @@ def delete_workout(request, workout_id):
     """
     Exclui um workout
     """
-    workout = get_object_or_404(Workout, id=workout_id)
+    workout = get_object_or_404(Workout, id=workout_id, user=request.user)
     
     if request.method == 'POST':
         workout_name = workout.name

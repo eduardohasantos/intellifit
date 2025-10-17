@@ -1,0 +1,147 @@
+/* Conteúdo principal */
+.main-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2rem;
+    background: var(--background);
+}
+
+/* Container central */
+.dashboard-container {
+    background-color: var(--card);
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+/* Welcome Section */
+.welcome-section {
+    margin-bottom: 2.5rem;
+}
+
+.welcome {
+    color: var(--text);
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.welcome-subtitle {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+/* Formulário */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%; /* Descrição igual ao título */
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+/* Meal Card */
+.meal-card {
+    background-color: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.meal-card h3 {
+    margin-bottom: 15px;
+    color: var(--dark-blue);
+}
+
+/* Campos de prato e calorias */
+.food-item {
+    display: flex;
+    gap: 15px;
+}
+
+.food-item input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+/* Botão adicionar prato */
+.add-food-container {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.btn-add-food {
+    background-color: transparent;
+    color: var(--dark-blue);
+    border: 2px solid var(--dark-blue);
+    padding: 8px 15px;
+    border-radius: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.3s ease;
+}
+
+.btn-add-food:hover {
+    background-color: var(--dark-blue);
+    color: var(--card);
+}
+
+/* Botão criar dieta */
+.submit-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.btn-save-diet {
+    background-color: var(--card);
+    color: var(--dark-blue);
+    border: 2px solid var(--light-blue);
+    padding: 15px 30px;
+    border-radius: 15px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-save-diet:hover {
+    border-color: var(--light-blue);
+    background-color: var(--card);
+    color: var(--dark-blue);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .food-item {
+        flex-direction: column;
+    }
+}

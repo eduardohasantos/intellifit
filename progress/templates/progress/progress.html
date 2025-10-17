@@ -10,6 +10,7 @@
   <script src="https://unpkg.com/feather-icons"></script>
 </head>
 <body>
+  <!-- Header -->
   <header class="header">
     <a href="{% url 'dashboard' %}" class="logo-container">
       <h1 class="site-name">IntelliFit</h1>
@@ -24,6 +25,7 @@
     </nav>
   </header>
 
+  <!-- Conteúdo Principal -->
   <main class="main-content">
     <div class="dashboard-container">
       {% if messages %}
@@ -63,6 +65,7 @@
         </div>
       {% endif %}
 
+      <!-- Formulário de Novo Registro -->
       <section class="form-section">
         <h2 class="section-title">Adicionar Novo Registro</h2>
         <form method="POST" action="{% url 'progress:progress_page' %}" class="progress-form">
@@ -83,14 +86,12 @@
         </form>
       </section>
 
-      {% comment %} --- ÁREA ALTERADA --- {% endcomment %}
+      <!-- Histórico de Registros -->
       <section class="history-section">
-        {% comment %} O TÍTULO H2 FOI REMOVIDO DAQUI {% endcomment %}
         {% if all_entries %}
           <ul class="history-list">
             {% for entry in all_entries %}
               <li class="history-item">
-                {% comment %} O TEXTO SPAN FOI REMOVIDO DAQUI {% endcomment %}
                 <div class="action-buttons">
                   <a href="{% url 'progress:edit_progress' entry.id %}" class="btn-action edit">Editar</a>
                   <a href="{% url 'progress:delete_progress' entry.id %}" class="btn-action delete">Excluir</a>
@@ -100,7 +101,6 @@
           </ul>
         {% endif %}
       </section>
-      {% comment %} --- FIM DA ÁREA ALTERADA --- {% endcomment %}
     </div>
   </main>
 

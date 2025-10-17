@@ -1,15 +1,24 @@
 from django.db import models
 
-#Uma dieta pode estar em vários dias. Um dia só pode ter uma dieta, ou seja, a relação de dietas para semana é de 1 <-> N
-#e a de dietas para dias é de 1 <-> 1.
-
 class DietPersist(models.Model):
     dietTitle = models.CharField(max_length=20)
     dietDescription = models.TextField(blank=False, null=True)
     dietData = models.DateField(auto_now_add=True)
+    user = models.ForeignKey(
+        'auth.User',
+        on_delete=models.CASCADE,
+        related_name='dietas',
+        null=True,
+        blank=True,
+    )
 
     def __str__(self):
         return self.dietTitle
+
+class DietMeal(models.Model):
+    diet = models.ForeignKey(DietPersist, on_delete=models.CASCADE, related_name='meals')
+    food_name = models.CharField(max_length=100)
+    calories = models.IntegerField()
 
 
 class DaysOfTheWeek(models.Model):

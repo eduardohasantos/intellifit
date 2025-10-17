@@ -1,0 +1,116 @@
+/* Cards de Dieta seguindo Dashboard */
+.diet-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    width: 100%;
+}
+
+/* Diet Cards */
+.diet-cards .card {
+    min-height: 200px;
+    flex-direction: column;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+
+.diet-cards .card:hover {
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.diet-description {
+    color: #666;
+    margin: 10px 0;
+    font-size: 0.9em;
+}
+
+/* Meal times dentro do card */
+.meal-times {
+    margin-top: 15px;
+    border-top: 1px dashed #ccc;
+    padding-top: 15px;
+}
+
+.meal-times h4 {
+    color: #444;
+    margin-bottom: 10px;
+}
+
+.meal-item {
+    background: #f8f9fa;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+}
+
+.meal-item p {
+    margin: 0;
+    line-height: 1.4;
+}
+
+.no-diets-message {
+    text-align: center;
+    color: #666;
+    grid-column: 1 / -1;
+    padding: 20px;
+}
+
+.meal-times p {
+    font-style: italic;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+/* Botão "Criar Nova Dieta" igual aos cards do Dashboard */
+.create-diet-card {
+    background-color: var(--card); /* branco */
+    border: 2px solid transparent;
+    color: var(--dark-blue);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 180px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.create-diet-card i {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 15px;
+    color: var(--dark-blue); /* ícone permanece azul escuro */
+    transition: all 0.3s ease;
+}
+
+.create-diet-card h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--dark-blue); /* texto permanece azul escuro */
+}
+
+/* Hover: apenas a borda muda para azul claro */
+.create-diet-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    border-color: var(--light-blue);
+}
+
+/* Centralizando botão */
+.add-diet-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}

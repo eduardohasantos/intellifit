@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Dietas - IntelliFit</title>
+    <link rel="stylesheet" href="{% static 'global/css/global.css' %}">
+    <link rel="stylesheet" href="{% static 'users/css/dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'diet/css/diet.css' %}">
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <a href="{% url 'dashboard' %}" class="logo-container">
+            <h1 class="site-name">IntelliFit</h1>
+        </a>
+        <nav class="header-actions">
+            <a href="{% url 'edit_account' %}" class="nav-btn"><i data-feather="user"></i> Editar Perfil</a>
+            <a href="{% url 'delete_account' %}" class="nav-btn delete-btn"><i data-feather="trash-2"></i> Excluir Perfil</a>
+            <form action="{% url 'logout' %}" method="post" class="logout-form">
+                {% csrf_token %}
+                <button type="submit" class="nav-btn logout-btn"><i data-feather="log-out"></i> Sair</button>
+            </form>
+        </nav>
+    </header>
+
+    <!-- Conteúdo principal -->
+    <main class="main-content">
+        <div class="dashboard-container">
+            {% if messages %}
+                <div class="messages">
+                    {% for message in messages %}
+                        <div class="success-popup">
+                            <i data-feather="check" class="popup-icon"></i>
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <div class="welcome-section">
+                <h2 class="welcome">Minhas Dietas</h2>
+                <p class="welcome-subtitle">Gerencie suas dietas e refeições</p>
+            </div>
+
+            <section class="cards diet-cards">
+                {% for dieta in dietas %}
+                <a href="{% url 'diet:diet_detail' dieta.id %}" class="card">
+                    <i data-feather="coffee"></i>
+                    <h3>{{ dieta.dietTitle }}</h3>
+                    <p>{{ dieta.dietData|date:"d/m/Y" }}</p>
+                </a>
+                {% empty %}
+                <p class="no-diets-message">Nenhuma dieta cadastrada ainda.</p>
+                {% endfor %}
+            </section>
+
+            <div class="add-diet-container">
+                <a href="{% url 'diet:add_diet' %}" class="card create-diet-card">
+                    <i data-feather="plus-circle"></i>
+                    <h3>Criar Nova Dieta</h3>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        feather.replace();
+    </script>
+</body>
+</html>

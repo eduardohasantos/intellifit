@@ -1,0 +1,123 @@
+/* Layout geral */
+.main-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2rem;
+    background: var(--background);
+}
+
+/* Card centralizado */
+.dashboard-container.is-compact {
+    background-color: var(--card);
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 700px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    margin-top: 2rem;
+}
+
+/* Cabeçalho da dieta */
+.diet-detail-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.diet-title {
+    font-size: 2rem;
+    color: var(--text);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.diet-description {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+/* Card interno (lista de pratos) */
+.diet-card {
+    background: var(--card);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.diet-card:hover {
+    border-color: var(--light-blue);
+}
+
+/* Lista de pratos */
+.meal-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 1.5rem 0;
+}
+
+.meal-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8f9fa;
+    padding: 12px 16px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #e0e0e0;
+    transition: background 0.3s ease;
+}
+
+.meal-item:hover {
+    background: #eef5ff;
+}
+
+.meal-name {
+    font-weight: 600;
+    color: var(--text);
+}
+
+.meal-calories {
+    font-weight: 500;
+    color: var(--dark-blue);
+}
+
+/* Total de calorias */
+.total-calories {
+    font-weight: 600;
+    color: var(--text);
+    text-align: right;
+    margin-top: 10px;
+}
+
+/* Texto quando não há pratos */
+.no-meals {
+    text-align: center;
+    color: #888;
+    font-style: italic;
+    margin-top: 1rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .dashboard-container.is-compact {
+        padding: 2rem;
+    }
+
+    .diet-card {
+        padding: 1.5rem;
+    }
+
+    .meal-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .total-calories {
+        text-align: left;
+    }
+}

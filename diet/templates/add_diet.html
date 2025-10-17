@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Dieta - IntelliFit</title>
+    <link rel="stylesheet" href="{% static 'global/css/global.css' %}">
+    <link rel="stylesheet" href="{% static 'users/css/dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'diet/css/add_diet.css' %}">
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <a href="{% url 'dashboard' %}" class="logo-container">
+            <h1 class="site-name">IntelliFit</h1>
+        </a>
+        <nav class="header-actions">
+            <a href="{% url 'edit_account' %}" class="nav-btn"><i data-feather="user"></i> Editar Perfil</a>
+            <a href="{% url 'delete_account' %}" class="nav-btn delete-btn"><i data-feather="trash-2"></i> Excluir Perfil</a>
+            <form action="{% url 'logout' %}" method="post" class="logout-form">
+                {% csrf_token %}
+                <button type="submit" class="nav-btn logout-btn"><i data-feather="log-out"></i> Sair</button>
+            </form>
+        </nav>
+    </header>
+
+    <!-- Conteúdo principal -->
+    <main class="main-content">
+        <div class="dashboard-container">
+            <div class="welcome-section">
+                <h2 class="welcome">Criar Nova Dieta</h2>
+                <p class="welcome-subtitle">Adicione os detalhes da dieta e os pratos</p>
+            </div>
+
+            <form method="POST">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    {{ form.dietTitle.label_tag }}
+                    {{ form.dietTitle }}
+                    {% if form.dietTitle.errors %}
+                        <small class="error-text">{{ form.dietTitle.errors }}</small>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    {{ form.dietDescription.label_tag }}
+                    {{ form.dietDescription }}
+                    {% if form.dietDescription.errors %}
+                        <small class="error-text">{{ form.dietDescription.errors }}</small>
+                    {% endif %}
+                </div>
+
+                <!-- Container de pratos -->
+                <div id="meals-container">
+                    <div class="meal-card">
+                        <h3>Prato 1</h3>
+                        <div class="food-item">
+                            <input type="text" name="food_name[]" placeholder="Nome do prato" required>
+                            <input type="number" name="food_calories[]" placeholder="Calorias" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botão adicionar prato -->
+                <div class="add-food-container">
+                    <button type="button" class="btn-add-food" id="add-food-btn"><i data-feather="plus-circle"></i> Adicionar Prato</button>
+                </div>
+
+                <div class="submit-container">
+                    <button type="submit" class="btn-save-diet">Criar Dieta</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        feather.replace();
+
+        const addFoodBtn = document.getElementById('add-food-btn');
+        const mealsContainer = document.getElementById('meals-container');
+
+        let mealCount = 1;
+
+        addFoodBtn.addEventListener('click', () => {
+            mealCount++;
+            const mealCard = document.createElement('div');
+            mealCard.classList.add('meal-card');
+            mealCard.innerHTML = `
+                <h3>Prato ${mealCount}</h3>
+                <div class="food-item">
+                    <input type="text" name="food_name[]" placeholder="Nome do prato" required>
+                    <input type="number" name="food_calories[]" placeholder="Calorias" required>
+                </div>
+            `;
+            mealsContainer.appendChild(mealCard);
+        });
+    </script>
+
+</body>
+</html>

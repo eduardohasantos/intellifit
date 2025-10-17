@@ -1,9 +1,18 @@
+/* Header alinhado igual ao dashboard */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.logout-form {
+    margin: 0;
+}
 /* Main Content & Layout */
 .main-content {
     flex: 1;
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Alinhado ao topo para melhor visualização */
+    align-items: flex-start; /* Alinhado ao topo */
     padding: 2rem;
     background: var(--background);
 }
@@ -14,14 +23,14 @@
     border-radius: 20px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
     width: 100%;
-    max-width: 1000px; /* Largura padrão para a página principal */
+    max-width: 1000px;
     text-align: center;
     border: 1px solid rgba(0, 0, 0, 0.05);
-    margin-top: 2rem; /* Espaço do topo */
+    margin-top: 2rem;
     margin-bottom: 2rem;
 }
 
-/* Classe modificadora para contêineres mais estreitos (páginas de edição/exclusão) */
+/* Compact Container (edição/exclusão) */
 .dashboard-container.is-compact {
     max-width: 600px;
 }
@@ -51,7 +60,7 @@
     text-align: center;
 }
 
-/* Cards Grid (Específico da página principal) */
+/* Cards Grid */
 .cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -101,7 +110,7 @@
     margin: 0;
 }
 
-/* Forms (Estilos unificados para todos os formulários) */
+/* Forms */
 .form-section {
     width: 100%;
     text-align: left;
@@ -144,16 +153,9 @@
     box-shadow: 0 0 0 3px rgba(100, 181, 246, 0.1);
 }
 
-/* Botões do Formulário */
-.form-actions {
-    display: flex;
-    flex-direction: column; /* Empilha os botões em telas pequenas */
-    gap: 1rem;
-    margin-top: 1rem;
-}
-
+/* Botão Salvar Novo Progresso (igual dashboard) */
 .btn-submit {
-    background: var(--dark-blue);
+    background-color: var(--dark-blue);
     color: white;
     border: none;
     padding: 12px 30px;
@@ -170,16 +172,9 @@
 }
 
 .btn-submit:hover {
-    background: var(--light-blue);
+    background-color: var(--light-blue);
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.btn-submit.delete-btn {
-    background: var(--danger);
-}
-.btn-submit.delete-btn:hover {
-    background: #c82333; /* Um vermelho mais escuro no hover */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 .cancel-btn {
@@ -205,10 +200,9 @@
     color: var(--text);
 }
 
-
-/* Histórico de Registros (Com as últimas alterações) */
+/* Histórico de Registros */
 .history-section {
-    margin-top: 3rem; /* Garante um bom espaço após o formulário */
+    margin-top: 3rem;
 }
 
 .history-list {
@@ -220,13 +214,12 @@
 
 .history-item {
     display: flex;
-    justify-content: center; /* Centraliza o conteúdo horizontalmente */
+    justify-content: center;
     align-items: center;
     padding: 15px 10px;
     border-bottom: 1px solid #eee;
 }
 
-/* Garante que o último item da lista não tenha uma borda embaixo */
 .history-item:last-child {
     border-bottom: none;
 }
@@ -249,14 +242,13 @@
 }
 
 .btn-action.delete {
-    margin-left: 20px; /* Mantém o espaçamento entre os botões */
+    margin-left: 20px;
     color: var(--danger);
 }
 
 .btn-action.delete:hover {
     color: #c82333;
 }
-
 
 /* Mensagens de Alerta */
 .alert {
@@ -274,13 +266,13 @@
     color: #155724;
 }
 
-/* Design Responsivo Unificado */
+/* Responsividade */
 @media (min-width: 769px) {
     .form-actions {
-        flex-direction: row; /* Lado a lado em telas maiores */
+        flex-direction: row;
     }
     .btn-submit, .cancel-btn {
-        width: auto; /* Largura automática em telas maiores */
+        width: auto;
     }
 }
 

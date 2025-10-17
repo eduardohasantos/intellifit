@@ -1,32 +1,53 @@
+from django.http import Http404
+def diet_detail(request, diet_id):
+    try:
+        dieta = DietPersist.objects.prefetch_related('meals').get(id=diet_id, user=request.user)
+    except DietPersist.DoesNotExist:
+        raise Http404('Dieta não encontrada')
+    total_calorias = sum(meal.calories for meal in dieta.meals.all())
+    return render(request, 'diet_detail.html', {'dieta': dieta, 'total_calorias': total_calorias})
 from django.shortcuts import render
 from .forms import DietForm
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from users.views import dashboard
-
-# Sugestão de correção na views.py:
-# A sua view 'add_Diet' está importando 'dietForm' (com 'd' minúsculo)
-# Mude a importação para usar a classe que definimos acima, que chamei de DietForm (com 'D' maiúsculo, convenção Python para classes)
-# from .forms import DietForm 
-# e na views.py use: form = DietForm(request.POST)
+from .models import DietPersist, DietMeal
 
 
-def add_Diet(request):
+def diet_page(request):
     """
-    Adiciona um novo workout
+    Exibe a página principal de dietas
     """
+    # Buscar dietas do usuário autenticado
+    if request.user.is_authenticated:
+        dietas = DietPersist.objects.filter(user=request.user).prefetch_related('meals')
+    else:
+        dietas = DietPersist.objects.none()
+    context = {
+        'dietas': dietas
+    }
+    return render(request, 'diet.html', context)
+
+def add_diet(request):
     if request.method == 'POST':
         form = DietForm(request.POST)
         if form.is_valid():
-            diet = form.save()
-            
-            #response = redirect('gerenciar_dietas', diet_id=diet.id)
-            response = redirect('dashboard') 
-            response.set_cookie('success_message', 'Dieta criada com sucesso!!', max_age=5)
-            request.session['diet_id'] = diet.id
-            return response
+            diet = form.save(commit=False)
+            diet.user = request.user
+            diet.save()
+            # Processar os pratos
+            food_names = request.POST.getlist('food_name[]')
+            food_calories = request.POST.getlist('food_calories[]')
+            for name, calories in zip(food_names, food_calories):
+                if name and calories:
+                    DietMeal.objects.create(
+                        diet=diet,
+                        food_name=name,
+                        calories=int(calories)
+                    )
+            messages.success(request, 'Dieta criada com sucesso!')
+            return redirect('diet:diet_page')
     else:
         form = DietForm()
     
-    context = {'form': form}
-    return render(request, 'add_diet.html', context)
+    return render(request, 'add_diet.html', {'form': form})

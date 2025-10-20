@@ -15,10 +15,6 @@ from .models import DietPersist, DietMeal
 
 
 def diet_page(request):
-    """
-    Exibe a página principal de dietas
-    """
-    # Buscar dietas do usuário autenticado
     if request.user.is_authenticated:
         dietas = DietPersist.objects.filter(user=request.user).prefetch_related('meals')
     else:

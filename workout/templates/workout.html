@@ -29,18 +29,13 @@
         <!-- Card principal CENTRALIZADO igual ao dashboard -->
         <div class="dashboard-container">
             <!-- Mensagens do Django -->
-        {% if request.session.workout_deleted %}
-            <div class="success-popup">
-                <i data-feather="check" class="popup-icon"></i>
-                Treino excluído com sucesso!
-            </div>
-            
-            <!-- Limpa a session após exibir -->
-            <script>
-                setTimeout(function() {
-                    window.location.href = "{% url 'workout_list' %}";
-                }, 2000);
-            </script>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="success-popup">
+                    <i data-feather="check" class="popup-icon"></i>
+                    {{ message }}
+                </div>
+            {% endfor %}
         {% endif %}
 
             <div class="welcome-section">

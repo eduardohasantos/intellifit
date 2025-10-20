@@ -1,33 +1,23 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponseRedirect, JsonResponse
-from django.urls import reverse
+from django.http import JsonResponse
 from django.contrib import messages
 from .models import Workout, WorkoutExercise, Exercise
 from .forms import WorkoutForm, WorkoutExerciseForm
 
+
 def workout_list(request):
-    """
-    Lista os workouts do usuário autenticado
-    """
+    """Lista os workouts do usuário autenticado"""
     if request.user.is_authenticated:
         workouts = Workout.objects.filter(user=request.user)
     else:
         workouts = Workout.objects.none()
     
-    # Verifica se veio de uma exclusão bem-sucedida
-    workout_deleted = request.session.pop('workout_deleted', False)
-    if workout_deleted:
-        messages.success(request, 'Treino excluído com sucesso!')
-    
-    context = {
-        'workouts': workouts,
-    }
+    context = {'workouts': workouts}
     return render(request, 'workout.html', context)
 
+
 def workout_detail(request, workout_id):
-    """
-    Exibe os detalhes de um workout específico (somente do owner)
-    """
+    """Exibe os detalhes de um workout específico (somente do dono)"""
     workout = get_object_or_404(Workout, id=workout_id, user=request.user)
     exercises = WorkoutExercise.objects.filter(workout=workout).select_related('exercise').order_by('id')
     
@@ -37,33 +27,29 @@ def workout_detail(request, workout_id):
     }
     return render(request, 'workout_detail.html', context)
 
+
 def add_workout(request):
-    """
-    Adiciona um novo workout
-    """
+    """Cria um novo treino"""
     if request.method == 'POST':
         form = WorkoutForm(request.POST)
         if form.is_valid():
             workout = form.save(commit=False)
-            # Atribui o usuário autenticado como owner
             if request.user.is_authenticated:
                 workout.user = request.user
             workout.save()
-            
-            response = redirect('add_exercise', workout_id=workout.id)  # Corrigido: adicionar workout_id
+
+            response = redirect('add_exercise', workout_id=workout.id)
             response.set_cookie('success_message', 'Treino criado com sucesso! Agora adicione os exercícios.', max_age=5)
             request.session['workout_id'] = workout.id
             return response
     else:
         form = WorkoutForm()
     
-    context = {'form': form}
-    return render(request, 'add_workout.html', context)
+    return render(request, 'add_workout.html', {'form': form})
 
-def add_exercise(request, workout_id):  # Corrigido: adicionar workout_id como parâmetro
-    """
-    Adiciona exercícios a um workout específico
-    """
+
+def add_exercise(request, workout_id):
+    """Adiciona exercícios a um treino"""
     workout = get_object_or_404(Workout, id=workout_id, user=request.user)
     exercise_names = Exercise.objects.values_list('name', flat=True)
     
@@ -71,7 +57,7 @@ def add_exercise(request, workout_id):  # Corrigido: adicionar workout_id como p
         form = WorkoutExerciseForm(request.POST)
         if form.is_valid():
             exercise_name = form.cleaned_data['exercise_name']
-            exercise_obj, created = Exercise.objects.get_or_create(name=exercise_name)
+            exercise_obj, _ = Exercise.objects.get_or_create(name=exercise_name)
             
             workout_exercise = form.save(commit=False)
             workout_exercise.workout = workout
@@ -79,7 +65,7 @@ def add_exercise(request, workout_id):  # Corrigido: adicionar workout_id como p
             workout_exercise.save()
             
             messages.success(request, f'Exercício "{exercise_name}" adicionado com sucesso!')
-            return redirect('add_exercise', workout_id=workout.id)  # Corrigido: manter workout_id
+            return redirect('add_exercise', workout_id=workout.id)
     else:
         form = WorkoutExerciseForm()
     
@@ -90,15 +76,15 @@ def add_exercise(request, workout_id):  # Corrigido: adicionar workout_id como p
     }
     return render(request, 'add_exercise.html', context)
 
+
 def edit_workout(request, workout_id):
-    """
-    Edita um workout existente
-    """
+    """Edita um treino existente"""
     workout = get_object_or_404(Workout, id=workout_id, user=request.user)
     exercises = WorkoutExercise.objects.filter(workout=workout).select_related('exercise').order_by('id')
     exercise_names = Exercise.objects.values_list('name', flat=True)
     
     if request.method == 'POST':
+        # Remover exercício
         if 'remove_exercise' in request.POST:
             ex_id = request.POST.get('remove_exercise')
             try:
@@ -110,11 +96,12 @@ def edit_workout(request, workout_id):
                 messages.error(request, 'Exercício não encontrado.')
             return redirect('edit_workout', workout_id=workout.id)
         
+        # Adicionar exercício
         elif 'add_exercise' in request.POST:
             form = WorkoutExerciseForm(request.POST)
             if form.is_valid():
                 exercise_name = form.cleaned_data['exercise_name']
-                exercise_obj, created = Exercise.objects.get_or_create(name=exercise_name)
+                exercise_obj, _ = Exercise.objects.get_or_create(name=exercise_name)
                 
                 workout_exercise = form.save(commit=False)
                 workout_exercise.workout = workout
@@ -123,6 +110,7 @@ def edit_workout(request, workout_id):
                 messages.success(request, f'Exercício "{exercise_name}" adicionado!')
             return redirect('edit_workout', workout_id=workout.id)
         
+        # Salvar treino
         elif 'save_workout' in request.POST:
             workout.name = request.POST.get('name', workout.name)
             workout.description = request.POST.get('description', workout.description)
@@ -153,36 +141,32 @@ def edit_workout(request, workout_id):
     }
     return render(request, 'edit_workout.html', context)
 
+
 def delete_workout(request, workout_id):
-    """
-    Exclui um workout
-    """
+    """Exclui um treino"""
     workout = get_object_or_404(Workout, id=workout_id, user=request.user)
     
     if request.method == 'POST':
         workout_name = workout.name
         workout.delete()
-        request.session['workout_deleted'] = True
         messages.success(request, f'Treino "{workout_name}" excluído com sucesso!')
         return redirect('workout_list')
     
-    context = {'workout': workout}
-    return render(request, 'delete_workout.html', context)
+    return render(request, 'delete_workout.html', {'workout': workout})
+
 
 def finalize_workout(request):
-    """
-    Finaliza o cadastro do workout
-    """
+    """Finaliza o cadastro do treino"""
     workout_id = request.session.get('workout_id')
     if workout_id:
         del request.session['workout_id']
         messages.success(request, 'Treino finalizado com sucesso!')
     return redirect('workout_list')
 
+
+
 def exercise_autocomplete(request):
-    """
-    Retorna lista de exercícios para autocomplete
-    """
+    """Retorna lista de exercícios para autocomplete"""
     if 'term' in request.GET:
         term = request.GET.get('term')
         exercises = Exercise.objects.filter(name__icontains=term).values_list('name', flat=True)

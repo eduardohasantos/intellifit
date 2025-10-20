@@ -37,7 +37,8 @@ body {
 .logo-container {
   display: flex;
   align-items: center;
-  gap: 12px;
+  margin-right: auto;
+  padding-left: 0;
   text-decoration: none;
   color: white;
 }

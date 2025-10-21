@@ -1,0 +1,60 @@
+name: Deploy to EC2
+
+# Definindo quando o workflow será executado
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # Checkout do código do repositório
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Configurar a chave SSH para conexão com EC2
+      - name: Configure SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/ec2.key
+          chmod 600 ~/.ssh/ec2.key
+          echo "StrictHostKeyChecking no" > ~/.ssh/config
+
+      # Conectar via SSH e executar o deploy
+      - name: Deploy to EC2
+        env:
+          EC2_HOST: 3.150.112.118
+          EC2_USER: ubuntu
+        run: |
+          ssh -i ~/.ssh/ec2.key $EC2_USER@$EC2_HOST '
+            # Navegar até o diretório do projeto
+            cd intellifit
+
+            # Atualizar o código do repositório
+            git pull origin main
+
+            # Ativar o ambiente virtual (assumindo que existe)
+            source venv/bin/activate
+
+            # Executar migrações do Django
+            python3 manage.py makemigrations intellifit
+            python3 manage.py migrate
+
+            # Matar qualquer processo rodando na porta 8000 (caso exista)
+            sudo lsof -t -i:8000 | xargs -r sudo kill -9
+            
+            # Iniciar o servidor Django em background
+            nohup python3 manage.py runserver 0.0.0.0:8000 > django.log 2>&1 &
+            
+            # Aguardar alguns segundos para o servidor iniciar
+            sleep 5
+          '
+
+      # Verificar se o serviço está respondendo
+      - name: Health check
+        run: |
+          # Tentar acessar o site
+          curl --fail http://3.150.112.118:8000 || exit 1

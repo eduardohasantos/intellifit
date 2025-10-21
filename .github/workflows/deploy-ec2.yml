@@ -40,7 +40,7 @@ jobs:
       # Preparação da aplicação (migrações e arquivos estáticos)
       - name: Prepare application
         run: |
-          python manage.py makemigrations intellifit
+          python manage.py makemigrations
           python manage.py migrate
           python manage.py collectstatic --noinput
 

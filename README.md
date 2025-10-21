@@ -111,4 +111,27 @@ Para otimizar o desenvolvimento e garantir entregas de qualidade, decidimos orga
   <img width="1107" height="457" alt="image" src="https://github.com/user-attachments/assets/c83f4858-cd90-4281-b6f5-b5abb0406d22" />
 </details>
 
+<details>
+  <summary>Entrega 03 - Desenvolvimento Intermediario</summary>
+
+  ### Screencast - CI/CD Build com deployment automatizado
+  <p align="Left" style="">
+  <a href="https://youtu.be/pAQXpJ9YmP0">
+    <img src="https://img.shields.io/badge/screencast-BF9056?style=for-the-badge&logo=youtube&logoColor=white" height="35px"/></a>
+  </p>
+
+  ### Screencast - Site atualizado - 2 novas histórias
+  <p align="Left" style="">
+  <a href="https://youtu.be/pAQXpJ9YmP0">
+    <img src="https://img.shields.io/badge/screencast-BF9056?style=for-the-badge&logo=youtube&logoColor=white" height="35px"/></a>
+  </p>
+
+  ### Screencast - Testes automatizados E2E (Selenium)
+  <p align="Left" style="">
+  <a href="https://youtu.be/pAQXpJ9YmP0">
+    <img src="https://img.shields.io/badge/screencast-BF9056?style=for-the-badge&logo=youtube&logoColor=white" height="35px"/></a>
+  </p>
+  
+</details>
+
 

@@ -111,4 +111,47 @@ Para otimizar o desenvolvimento e garantir entregas de qualidade, decidimos orga
   <img width="1107" height="457" alt="image" src="https://github.com/user-attachments/assets/c83f4858-cd90-4281-b6f5-b5abb0406d22" />
 </details>
 
+<details>
+  <summary>Entrega 03 - Desenvolvimento Intermediario</summary>
+
+  ### Screencast - CI/CD Build com deployment automatizado
+  <p align="Left" style="">
+  <a href="https://youtu.be/pAQXpJ9YmP0">
+    <img src="https://img.shields.io/badge/screencast-BF9056?style=for-the-badge&logo=youtube&logoColor=white" height="35px"/></a>
+  </p>
+
+  ### Screencast - Site atualizado - 2 novas histórias
+  <p align="Left" style="">
+  <a href=" https://youtu.be/jQQCKy4dwn8">
+    <img src="https://img.shields.io/badge/screencast-BF9056?style=for-the-badge&logo=youtube&logoColor=white" height="35px"/></a>
+  </p>
+
+  ### Screencast - Testes automatizados E2E (Selenium)
+  <p align="Left" style="">
+  <a href="https://youtu.be/pAQXpJ9YmP0">
+    <img src="https://img.shields.io/badge/screencast-BF9056?style=for-the-badge&logo=youtube&logoColor=white" height="35px"/></a>
+  </p>
+
+  # JIRA
+  <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/c8a40e07-34e6-41e3-b8d5-806822545b0e" />
+
+  # 🤝 Programação em Par
+
+  Com o mesmo objetivo, otimizar o desenvolvimento e elevar a qualidade das entregas, estruturamos nossas equipes em novas duplas focadas em histórias de usuário específicas. Essa abordagem aumentou a eficiência, permitindo que cada dupla se aprofundasse nos requisitos de sua funcionalidade. Utilizamos o Discord para sessões de pareamento com compartilhamento de tela, estabelecendo um canal direto para comunicação instantânea e revisão de código em tempo real.
+  
+  Vimos sucesso nessa dinâmica:
+  `Miguel Tojal` e `Arthur Coelho` utilizaram o pareamento para revisar e ajustar implementações ágeis, sendo elas do código do site ou do código da automatização pelo selenium. 
+  `Eduardo Henrique` e `Yan Nunes` mantiveram um fluxo de trabalho contínuo, resolvendo dúvidas instantaneamente e garantindo o alinhamento constante.
+  
+Além das duplas focadas, a colaboração foi enriquecida pelas contribuições de `Mariana Maliu`, `Sophia Brito` e `Gabrielle Vital`, que trouxeram suas experiências e soluções criativas para o processo coletivo.
+Esse modelo de colaboração integrada provou , novamente , ser altamente eficaz. Ele não apenas acelerou o desenvolvimento, mas também reduziu drasticamente o retrabalho, pois as dúvidas eram sanadas no momento. A troca contínua de ideias e a revisão mútua resultaram em um código final mais robusto, de qualidade superior e perfeitamente alinhado às expectativas a serem atingidas.
+
+   # 🐛 Issues / Bugs
+ <img width="1547" height="491" alt="image" src="https://github.com/user-attachments/assets/8f02910e-1c7e-474b-8398-0a9e2446ba02" />
+
+</details>
+  
+  
+</details>
+
 

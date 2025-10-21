@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    name: Build Application
+    name: Build
     runs-on: ubuntu-latest
     
     steps:
@@ -43,7 +43,7 @@ jobs:
           python manage.py migrate
 
   deploy:
-    name: Deploy to EC2
+    name: Deploy
     needs: build  # Garante que o deploy só rode após o build
     runs-on: ubuntu-latest
     

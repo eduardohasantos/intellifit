@@ -134,6 +134,8 @@ Para otimizar o desenvolvimento e garantir entregas de qualidade, decidimos orga
 
   # JIRA
   <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/c8a40e07-34e6-41e3-b8d5-806822545b0e" />
+  <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/ee110157-ec77-45ec-9ee0-5ac6df6f443c"/>
+  
 
   # 🤝 Programação em Par
 

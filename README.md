@@ -128,7 +128,7 @@ Para otimizar o desenvolvimento e garantir entregas de qualidade, decidimos orga
 
   ### Screencast - Testes automatizados E2E (Selenium)
   <p align="Left" style="">
-  <a href="https://youtu.be/pAQXpJ9YmP0">
+  <a href="https://youtu.be/Tq4SAs4FBq8">
     <img src="https://img.shields.io/badge/screencast-BF9056?style=for-the-badge&logo=youtube&logoColor=white" height="35px"/></a>
   </p>
 

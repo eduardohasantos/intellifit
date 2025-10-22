@@ -116,13 +116,13 @@ Para otimizar o desenvolvimento e garantir entregas de qualidade, decidimos orga
 
   ### Screencast - CI/CD Build com deployment automatizado
   <p align="Left" style="">
-  <a href="https://youtu.be/pAQXpJ9YmP0">
+  <a href="https://youtu.be/tQNfnpQLO8Q">
     <img src="https://img.shields.io/badge/screencast-BF9056?style=for-the-badge&logo=youtube&logoColor=white" height="35px"/></a>
   </p>
 
   ### Screencast - Site atualizado - 2 novas histórias
   <p align="Left" style="">
-  <a href=" https://youtu.be/jQQCKy4dwn8">
+  <a href="https://youtu.be/jQQCKy4dwn8">
     <img src="https://img.shields.io/badge/screencast-BF9056?style=for-the-badge&logo=youtube&logoColor=white" height="35px"/></a>
   </p>
 

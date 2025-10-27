@@ -32,7 +32,7 @@
         <div class="dashboard-container">
             <div class="welcome-section">
                 <h2 class="welcome">Criar Nova Dieta</h2>
-                <p class="welcome-subtitle">Adicione os detalhes da dieta e os pratos</p>
+                <p class="welcome-subtitle">Adicione os detalhes da dieta e os Ingredientes</p>
             </div>
 
             <form method="POST">
@@ -54,20 +54,20 @@
                     {% endif %}
                 </div>
 
-                <!-- Container de pratos -->
+                <!-- Container de Ingredientes -->
                 <div id="meals-container">
                     <div class="meal-card">
-                        <h3>Prato 1</h3>
+                        <h3>Ingrediente 1</h3>
                         <div class="food-item">
-                            <input type="text" name="food_name[]" placeholder="Nome do prato" required>
+                            <input type="text" name="food_name[]" placeholder="Nome do Ingrediente" required>
                             <input type="number" name="food_calories[]" placeholder="Calorias" required>
                         </div>
                     </div>
                 </div>
 
-                <!-- Botão adicionar prato -->
+                <!-- Botão adicionar Ingrediente -->
                 <div class="add-food-container">
-                    <button type="button" class="btn-add-food" id="add-food-btn"><i data-feather="plus-circle"></i> Adicionar Prato</button>
+                    <button type="button" class="btn-add-food" id="add-food-btn"><i data-feather="plus-circle"></i> Adicionar Ingrediente</button>
                 </div>
 
                 <div class="submit-container">
@@ -90,9 +90,9 @@
             const mealCard = document.createElement('div');
             mealCard.classList.add('meal-card');
             mealCard.innerHTML = `
-                <h3>Prato ${mealCount}</h3>
+                <h3>Ingrediente ${mealCount}</h3>
                 <div class="food-item">
-                    <input type="text" name="food_name[]" placeholder="Nome do prato" required>
+                    <input type="text" name="food_name[]" placeholder="Nome do Ingrediente" required>
                     <input type="number" name="food_calories[]" placeholder="Calorias" required>
                 </div>
             `;

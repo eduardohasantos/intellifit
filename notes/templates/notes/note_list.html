@@ -1,0 +1,32 @@
+{% extends 'notes/base.html' %}
+{% load static %}
+
+{% block title %}Minhas Anotações{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'notes/css/note.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="notes-container">
+    <div class="notes-header">
+        <h2 class="notes-title">Minhas Anotações</h2>
+        <a href="{% url 'notes:note_create' %}" class="btn-new-note">
+            <i data-feather="plus-circle"></i> Criar Nova Anotação
+        </a>
+    </div>
+
+    {% if notes %}
+        <div class="notes-grid">
+            {% for note in notes %}
+                <a href="{% url 'notes:note_detail' note.pk %}" class="note-card">
+                    <h3 class="note-card-title">{{ note.title }}</h3>
+                    <p class="note-card-date">Última atualização: {{ note.updated_at|date:"d/m/Y H:i" }}</p>
+                </a>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="no-notes">Você ainda não tem nenhuma anotação. Que tal criar a primeira?</p>
+    {% endif %}
+</div>
+{% endblock %}

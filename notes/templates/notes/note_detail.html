@@ -1,0 +1,25 @@
+{% extends 'notes/base.html' %}
+{% load static %}
+
+{% block title %}{{ note.title }}{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'notes/css/note.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="notes-container">
+    <div class="note-detail-header">
+        <h2 class="notes-title">{{ note.title }}</h2>
+        <p class="note-card-date">Última atualização: {{ note.updated_at|date:"d/m/Y H:i" }}</p>
+    </div>
+
+    <div class="note-content">
+        {{ note.content|linebreaks }}
+    </div>
+
+    <a href="{% url 'notes:note_list' %}" class="btn-back">
+        <i data-feather="arrow-left"></i> Voltar para a Lista
+    </a>
+</div>
+{% endblock %}

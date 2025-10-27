@@ -121,3 +121,69 @@
         text-align: left;
     }
 }
+/* Em /static/diet/css/diet_detail.css */
+
+/* 1. Container dos botões */
+/* Usamos seletores longos para aumentar a especificidade */
+main.main-content .dashboard-container .diet-detail-actions-section {
+  display: flex !important;
+  justify-content: center !important;
+  gap: 15px !important;
+  margin-top: 30px !important;
+  margin-bottom: 20px !important;
+  width: 100% !important; /* Garante que o container ocupe a largura */
+  padding: 0 15px !important;
+  box-sizing: border-box !important;
+  flex-wrap: wrap !important;
+}
+
+/* 2. Estilo BASE dos botões (Obrigatório) */
+/* Este é o seletor que vai "forçar" o estilo */
+main.main-content .dashboard-container .diet-detail-actions-section .action-btn {
+  /* Layout Interno */
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+
+  /* Cores e Fundo (Obrigatório) */
+  background-color: #8fbdf5 !important; /* O AZUL CLARO DA IMAGEM "PUSH" */
+  color: white !important;
+  
+  /* Forma e Tamanho (Obrigatório) */
+  padding: 12px 25px !important;
+  border-radius: 50px !important; /* BORDAS "PILL" */
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  line-height: 1 !important;
+  
+  /* Resets (Obrigatório) */
+  text-decoration: none !important; /* REMOVE O SUBLINHADO */
+  border: none !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease-in-out !important;
+  box-shadow: 0 4px 10px rgba(143, 189, 245, 0.3) !important;
+  white-space: nowrap !important;
+}
+
+/* 3. HOVERS (com alta especificidade) */
+main.main-content .dashboard-container .action-btn.action-edit:hover {
+  background-color: #28a745 !important; /* Verde */
+  color: white !important;
+  box-shadow: 0 6px 15px rgba(40, 167, 69, 0.3) !important;
+  transform: translateY(-2px) !important;
+}
+
+main.main-content .dashboard-container .action-btn.action-delete:hover {
+  background-color: #dc3545 !important; /* Vermelho */
+  color: white !important;
+  box-shadow: 0 6px 15px rgba(220, 53, 69, 0.3) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* 4. Ícones (com alta especificidade) */
+main.main-content .dashboard-container .action-btn i {
+    stroke: white !important;
+    stroke-width: 2.5 !important;
+    color: white !important; /* Garante que o ícone (se for fonte) seja branco */
+}

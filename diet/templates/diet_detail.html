@@ -10,7 +10,6 @@
     <script src="https://unpkg.com/feather-icons"></script>
 </head>
 <body>
-    <!-- Header padrão -->
     <header class="header">
         <a href="{% url 'dashboard' %}" class="logo-container">
             <h1 class="site-name">IntelliFit</h1>
@@ -25,7 +24,6 @@
         </nav>
     </header>
 
-    <!-- Conteúdo principal -->
     <main class="main-content">
         <div class="dashboard-container is-compact">
             <div class="diet-detail-header">
@@ -49,6 +47,16 @@
                     <p class="no-meals">Nenhum prato cadastrado.</p>
                 {% endif %}
             </div>
+
+        <div class="diet-detail-actions-section">
+            <a href="{% url 'diet:edit_diet' diet_id=dieta.id %}" class="action-btn action-edit">
+            <i data-feather="edit-2"></i> Editar Dieta
+            </a>
+            <a href="{% url 'diet:delete_diet' diet_id=dieta.id %}" class="action-btn action-delete">
+            <i data-feather="trash-2"></i> Excluir Dieta
+            </a>
+        </div>
+
         </div>
     </main>
 

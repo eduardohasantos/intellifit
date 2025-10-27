@@ -1,0 +1,108 @@
+/* delete_diet.css */
+
+/* Container principal centralizado */
+.dashboard-container {
+    max-width: 600px;
+    margin: 4rem auto;
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* Cabeçalho de alerta */
+.delete-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.warning-icon {
+    font-size: 3rem;
+    color: #f59e0b; /* laranja alerta */
+    margin-bottom: 0.5rem;
+}
+
+.delete-header h2.welcome {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.warning-text {
+    font-size: 1rem;
+    color: #374151;
+}
+
+/* Detalhes da confirmação */
+.confirmation-details {
+    background-color: #fef3c7; /* fundo amarelo claro */
+    border-left: 4px solid #f59e0b;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+.confirmation-details p {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.confirmation-details ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+    color: #374151;
+}
+
+/* Formulário de ações */
+.delete-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.cancel-btn, .delete-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+/* Botão cancelar */
+.cancel-btn {
+    background-color: #e5e7eb; /* cinza claro */
+    color: #374151;
+}
+
+.cancel-btn:hover {
+    background-color: #d1d5db;
+}
+
+/* Botão deletar */
+.delete-btn {
+    background-color: #ef4444; /* vermelho */
+    color: #ffffff;
+    border: none;
+}
+
+.delete-btn:hover {
+    background-color: #dc2626;
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+    .delete-form {
+        flex-direction: column;
+    }
+
+    .cancel-btn, .delete-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}

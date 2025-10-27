@@ -5,7 +5,7 @@ def diet_detail(request, diet_id):
     except DietPersist.DoesNotExist:
         raise Http404('Dieta não encontrada')
     total_calorias = sum(meal.calories for meal in dieta.meals.all())
-    return render(request, 'diet_detail.html', {'dieta': dieta, 'total_calorias': total_calorias})
+    return render(request, 'diet/diet_detail.html', {'dieta': dieta, 'total_calorias': total_calorias})
 from django.shortcuts import render
 from .forms import DietForm,DietMealFormSet
 from django.shortcuts import render, redirect, get_object_or_404
@@ -24,7 +24,7 @@ def diet_page(request):
     context = {
         'dietas': dietas
     }
-    return render(request, 'diet.html', context)
+    return render(request, 'diet/diet.html', context)
 
 def add_diet(request):
     if request.method == 'POST':
@@ -48,7 +48,7 @@ def add_diet(request):
     else:
         form = DietForm()
     
-    return render(request, 'add_diet.html', {'form': form})
+    return render(request, 'diet/add_diet.html', {'form': form})
 
 @login_required
 def edit_diet(request, diet_id):
@@ -72,7 +72,7 @@ def edit_diet(request, diet_id):
         form = DietForm(instance=dieta)
         formset = DietMealFormSet(instance=dieta)
 
-    return render(request, 'edit_diet.html', {
+    return render(request, 'diet/edit_diet.html', {
         'form': form,
         'formset': formset,
         'dieta': dieta
@@ -91,5 +91,6 @@ def delete_diet(request, diet_id):
         return redirect('diet:diet_page') 
     
     # 1. Se for GET, apenas mostra a página de confirmação
-    return render(request, 'delete_diet_confirm.html', {'dieta': dieta})
+    return render(request, 'diet/confirm_diet_delete.html', {'dieta': dieta})
+
 

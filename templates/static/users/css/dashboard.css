@@ -42,9 +42,23 @@
 /* Cards Grid */
 .cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-areas: 
+        "treino progresso dieta"
+        ". anotacoes .";
     gap: 25px;
     width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cards > a:nth-child(1) { grid-area: treino; }
+.cards > a:nth-child(2) { grid-area: progresso; }
+.cards > a:nth-child(3) { grid-area: dieta; }
+.cards > a:nth-child(4) { 
+    grid-area: anotacoes;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 300px;
 }
 
 /* Individual Cards */

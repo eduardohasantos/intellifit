@@ -9,4 +9,5 @@ urlpatterns = [
     path("", include("users.urls")),
     path('progress/', include('progress.urls')),
     path('diet/', include('diet.urls')),
+    path('notes/', include('notes.urls')),
 ]

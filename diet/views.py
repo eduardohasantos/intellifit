@@ -55,19 +55,24 @@ def edit_diet(request, diet_id):
     dieta = get_object_or_404(DietPersist, id=diet_id, user=request.user)
 
     if request.method == 'POST':
-        form = DietForm(request.POST, instance=dieta)
+        # 1. Remover prato se clicou no botão de lixeira
+        if 'remove_meal' in request.POST:
+            meal_id = request.POST.get('remove_meal')
+            DietMeal.objects.filter(id=meal_id, diet=dieta).delete()
+            messages.success(request, 'Prato removido com sucesso!')
+            return redirect('diet:edit_diet', diet_id=dieta.id)
 
-        # Se clicou no botão "Adicionar prato", apenas adiciona um formulário vazio
-        if 'add' in request.POST:
-            formset = DietMealFormSet(request.POST, instance=dieta, extra=1)
+        # 2. Editar dieta normalmente
+        form = DietForm(request.POST, instance=dieta)
+        formset = DietMealFormSet(request.POST, instance=dieta)
+
+        if form.is_valid() and formset.is_valid():
+            form.save()
+            formset.save()
+            messages.success(request, 'Dieta atualizada com sucesso!')
+            return redirect('diet:diet_detail', diet_id=dieta.id)
         else:
-            formset = DietMealFormSet(request.POST, instance=dieta)
-            # Se clicou em "Salvar"
-            if form.is_valid() and formset.is_valid():
-                form.save()
-                formset.save()
-                messages.success(request, 'Dieta atualizada com sucesso!')
-                return redirect('diet:diet_detail', diet_id=dieta.id)
+            messages.error(request, 'Corrija os erros antes de salvar.')
     else:
         form = DietForm(instance=dieta)
         formset = DietMealFormSet(instance=dieta)
@@ -78,7 +83,8 @@ def edit_diet(request, diet_id):
         'dieta': dieta
     })
 
-    
+
+
 @login_required
 def delete_diet(request, diet_id):
     dieta = get_object_or_404(DietPersist, id=diet_id, user=request.user)

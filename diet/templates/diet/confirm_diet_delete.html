@@ -15,7 +15,6 @@
         <a href="{% url 'dashboard' %}" class="logo-container">
             <h1 class="site-name">IntelliFit</h1>
         </a>
-        
         <nav class="header-actions">
             <a href="{% url 'edit_account' %}" class="nav-btn"><i data-feather="user"></i> Editar Perfil</a>
             <a href="{% url 'diet:diet_page' %}" class="nav-btn"><i data-feather="arrow-left"></i> Voltar</a>
@@ -54,17 +53,6 @@
                     </button>
                 </div>
             </form>
-            {% if messages %}
-        <div class="messages-container">
-            {% for message in messages %}
-            {% if message.tags == 'success' %}
-                <div class="message-success">
-            {{ message }}
-                </div>
-            {% endif %}
-            {% endfor %}
-        </div>
-{% endif %}
         </div>
     </main>
 

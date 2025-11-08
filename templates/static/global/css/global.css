@@ -219,3 +219,58 @@ body {
 .register-link a:hover {
   text-decoration: underline;
 }
+
+.messages-container {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    margin-left: -20px;
+    margin-right: -20px;
+    margin-top: -20px;
+}
+
+.message-banner {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 8px;
+}
+
+/* Mensagem de sucesso */
+.msgsuccess {
+    color: #0f5132;             /* Texto verde escuro */
+    background-color: #d1e7dd;  /* Fundo verde claro */
+    border-color: #badbcc;      /* Borda verde suave */
+}
+
+/* Mensagem de erro */
+.msgerror {
+    color: #842029;             /* Texto vermelho escuro */
+    background-color: #f8d7da;  /* Fundo vermelho claro */
+    border-color: #f5c2c7;      /* Borda vermelha suave */
+}
+
+.alert {
+    padding: 12px 18px;
+    border-radius: 8px;
+    margin: 15px auto;
+    width: 80%;
+    text-align: center;
+    font-weight: 500;
+    transition: opacity 0.3s ease;
+}
+
+.alert.success {
+    background-color: #e6ffed;
+    color: #2d7a32;
+    border: 1px solid #8be199;
+}
+
+.alert.error {
+    background-color: #ffe6e6;
+    color: #b30000;
+    border: 1px solid #ff9999;
+}

@@ -121,10 +121,8 @@
         text-align: left;
     }
 }
-/* Em /static/diet/css/diet_detail.css */
 
-/* 1. Container dos botões */
-/* Usamos seletores longos para aumentar a especificidade */
+
 main.main-content .dashboard-container .diet-detail-actions-section {
   display: flex !important;
   justify-content: center !important;
@@ -137,8 +135,6 @@ main.main-content .dashboard-container .diet-detail-actions-section {
   flex-wrap: wrap !important;
 }
 
-/* 2. Estilo BASE dos botões (Obrigatório) */
-/* Este é o seletor que vai "forçar" o estilo */
 main.main-content .dashboard-container .diet-detail-actions-section .action-btn {
   /* Layout Interno */
   display: inline-flex !important;
@@ -146,19 +142,19 @@ main.main-content .dashboard-container .diet-detail-actions-section .action-btn 
   justify-content: center !important;
   gap: 8px !important;
 
-  /* Cores e Fundo (Obrigatório) */
-  background-color: #8fbdf5 !important; /* O AZUL CLARO DA IMAGEM "PUSH" */
+
+  background-color: #8fbdf5 !important; 
   color: white !important;
   
-  /* Forma e Tamanho (Obrigatório) */
+
   padding: 12px 25px !important;
-  border-radius: 50px !important; /* BORDAS "PILL" */
+  border-radius: 50px !important; 
   font-size: 1rem !important;
   font-weight: 600 !important;
   line-height: 1 !important;
   
-  /* Resets (Obrigatório) */
-  text-decoration: none !important; /* REMOVE O SUBLINHADO */
+
+  text-decoration: none !important; 
   border: none !important;
   cursor: pointer !important;
   transition: all 0.2s ease-in-out !important;
@@ -166,7 +162,7 @@ main.main-content .dashboard-container .diet-detail-actions-section .action-btn 
   white-space: nowrap !important;
 }
 
-/* 3. HOVERS (com alta especificidade) */
+
 main.main-content .dashboard-container .action-btn.action-edit:hover {
   background-color: #28a745 !important; /* Verde */
   color: white !important;
@@ -181,9 +177,64 @@ main.main-content .dashboard-container .action-btn.action-delete:hover {
   transform: translateY(-2px) !important;
 }
 
-/* 4. Ícones (com alta especificidade) */
+
 main.main-content .dashboard-container .action-btn i {
     stroke: white !important;
     stroke-width: 2.5 !important;
     color: white !important; /* Garante que o ícone (se for fonte) seja branco */
+}
+
+.flash-message-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px;
+  position: relative;
+  width: 100%;
+  z-index: 10;
+}
+
+.flash-message {
+  min-width: 320px;
+  max-width: 600px;
+  text-align: center;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  animation: fadeOut 4s ease-in-out forwards;
+}
+
+.flash-message.success {
+  background-color: #d4f8d4;
+  color: #155724;
+  border: 1px solid #b5e0b5;
+}
+
+.flash-message.error {
+  background-color: #ffdede;
+  color: #8b0000;
+  border: 1px solid #ffbcbc;
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+
+.delete-meal-btn {
+  background: none;
+  border: none;
+  color: #dc3545;
+  cursor: pointer;
+  margin-left: 8px;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.delete-meal-btn:hover {
+  color: #b02a37;
+  transform: scale(1.1);
 }

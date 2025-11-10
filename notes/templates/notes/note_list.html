@@ -11,22 +11,51 @@
 <div class="notes-container">
     <div class="notes-header">
         <h2 class="notes-title">Minhas Anotações</h2>
-        <a href="{% url 'notes:note_create' %}" class="btn-new-note">
-            <i data-feather="plus-circle"></i> Criar Nova Anotação
+         <a href="{% url 'notes:note_create' %}" class="btn-new-note">
+            <i data-feather="plus-circle"></i>
+            Criar Nova Anotação
         </a>
     </div>
+
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            <i data-feather="check-circle"></i>
+            {{ message }}
+        </div>
+        {% endfor %}
+    {% endif %}
 
     {% if notes %}
         <div class="notes-grid">
             {% for note in notes %}
+            <div class="note-card">
                 <a href="{% url 'notes:note_detail' note.pk %}" class="note-card">
                     <h3 class="note-card-title">{{ note.title }}</h3>
-                    <p class="note-card-date">Última atualização: {{ note.updated_at|date:"d/m/Y H:i" }}</p>
+                    <p class="note-card-date">
+                        Última atualização: {{ note.updated_at|date:"d/m/Y H:i" }}
+                    </p>
                 </a>
+                
+                <div class="note-card-actions">
+                    <a href="{% url 'notes:edit_notes' note.pk %}" class="btn-edit" title="Editar anotação">
+                        <i data-feather="edit-2"></i>
+                        Editar
+                    </a>
+                    <a href="{% url 'notes:delete_notes' note.pk %}" class="btn-delete" title="Excluir anotação">
+                        <i data-feather="trash-2"></i>
+                        Excluir
+                    </a>
+                </div>
+            </div>
             {% endfor %}
         </div>
     {% else %}
-        <p class="no-notes">Você ainda não tem nenhuma anotação. Que tal criar a primeira?</p>
+        <p class="no-notes">Você ainda não criou nenhuma anotação. Comece criando sua primeira!</p>
     {% endif %}
 </div>
+
+<script>
+    feather.replace();
+</script>
 {% endblock %}

@@ -48,3 +48,4 @@ venv.bak
 # IDE files
 .vscode/
 .idea/
+/compare

@@ -12,6 +12,9 @@
 <div class="notes-container">
     <h2 class="section-title">Criar Nova Anotação</h2>
 
+    <!--Aqui é onde as informações são inseridas: um formulário é criado e preenchido com informações, e enviados para uma função views-->
+
+    <!-- O atributo da tag "POST" define em que formato essa será enviada. -->
     <form method="POST" class="note-form">
         {% csrf_token %}
         <div class="form-group">

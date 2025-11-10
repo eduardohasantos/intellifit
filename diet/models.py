@@ -1,7 +1,7 @@
 from django.db import models
 
 class DietPersist(models.Model):
-    dietTitle = models.CharField(max_length=20)
+    dietTitle = models.CharField(max_length=70)
     dietDescription = models.TextField(blank=False, null=True)
     dietData = models.DateField(auto_now_add=True)
     user = models.ForeignKey(

@@ -45,6 +45,8 @@ def edit_notes(request, pk):
             form.save()
             messages.success(request, "Nota editada com sucesso!")
             return redirect("notes:note_list")  # Nome da URL, não caminho do HTML
+        else:
+            messages.error(request, "Falha na edição. Por favor, verifique os campos obrigatórios.")
     else:
         # GET: Renderiza o formulário com os dados atuais
         form = editNotesForm(instance=selected_note)

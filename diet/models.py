@@ -1,15 +1,15 @@
 from django.db import models
 
 class DietPersist(models.Model):
-    dietTitle = models.CharField(max_length=70)
+    dietTitle = models.CharField(max_length=60)
     dietDescription = models.TextField(blank=False, null=True)
     dietData = models.DateField(auto_now_add=True)
     user = models.ForeignKey(
         'auth.User',
         on_delete=models.CASCADE,
         related_name='dietas',
-        null=True,
-        blank=True,
+        # null=True,
+        # blank=True,
     )
 
     def __str__(self):

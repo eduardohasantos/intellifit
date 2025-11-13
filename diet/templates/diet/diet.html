@@ -30,16 +30,18 @@
     <!-- Conteúdo principal -->
     <main class="main-content">
         <div class="dashboard-container">
+            
             {% if messages %}
-                <div class="messages">
+                <div class="messages-container">
                     {% for message in messages %}
-                        <div class="success-popup">
-                            <i data-feather="check" class="popup-icon"></i>
+                        <div class="message-banner 
+                            {% if message.tags == 'success' %}msgsuccess{% elif message.tags == 'error' %}msgerror{% endif %}">
                             {{ message }}
                         </div>
                     {% endfor %}
                 </div>
             {% endif %}
+            
             <div class="welcome-section">
                 <h2 class="welcome">Minhas Dietas</h2>
                 <p class="welcome-subtitle">Gerencie suas dietas e refeições</p>
@@ -47,13 +49,13 @@
 
             <section class="cards diet-cards">
                 {% for dieta in dietas %}
-                <a href="{% url 'diet:diet_detail' dieta.id %}" class="card">
-                    <i data-feather="coffee"></i>
-                    <h3>{{ dieta.dietTitle }}</h3>
-                    <p>{{ dieta.dietData|date:"d/m/Y" }}</p>
-                </a>
+                    <a href="{% url 'diet:diet_detail' dieta.id %}" class="card">
+                        <i data-feather="coffee"></i>
+                        <h3>{{ dieta.dietTitle }}</h3>
+                        <p>{{ dieta.dietData|date:"d/m/Y" }}</p>
+                    </a>
                 {% empty %}
-                <p class="no-diets-message">Nenhuma dieta cadastrada ainda.</p>
+                    <p class="no-diets-message">Nenhuma dieta cadastrada ainda.</p>
                 {% endfor %}
             </section>
 

@@ -156,4 +156,45 @@ Esse modelo de colaboração integrada provou , novamente , ser altamente eficaz
   
 </details>
 
+<details>
+  <summary>Entrega 04 - Desenvolvimento Final</summary>
+
+  ### Screencast - CI/CD Build, Deploy e Testes automatizados
+  <p align="Left" style="">
+  <a href="VIDEO AQUI">
+    <img src="https://img.shields.io/badge/screencast-BF9056?style=for-the-badge&logo=youtube&logoColor=white" height="35px"/></a>
+  </p>
+
+  ### Screencast - Site atualizado - Últimas histórias
+  <p align="Left" style="">
+  <a href="VIDEO AQUI">
+    <img src="https://img.shields.io/badge/screencast-BF9056?style=for-the-badge&logo=youtube&logoColor=white" height="35px"/></a>
+  </p>
+
+  ### Screencast - Testes automatizados E2E (Selenium)
+  <p align="Left" style="">
+  <a href="VIDEO AQUI">
+    <img src="https://img.shields.io/badge/screencast-BF9056?style=for-the-badge&logo=youtube&logoColor=white" height="35px"/></a>
+  </p>
+
+  # JIRA
+  Falta adicionar!
+
+  # 🐛 Issues / Bugs
+  <img width="1651" height="611" alt="image" src="https://github.com/user-attachments/assets/90ab5e15-25b3-483d-93ca-ef3a429e6d00" />
+
+  # 🤝 Programação em Par
+
+  Após alguns meses de continuidade nesse formato de trabalho em par, consolidamos ainda mais nossa rotina colaborativa e ampliamos os resultados obtidos. As duplas mantiveram a mesma sinergia e passaram a atuar com maior autonomia, aprimorando práticas de revisão e documentação. As sessões de pareamento pelo Discord se tornaram parte essencial do fluxo de desenvolvimento, agora com agendas mais estruturadas e foco em revisões temáticas, garantindo uma comunicação ainda mais clara e produtiva.
+
+Miguel Tojal e Arthur Coelho aprofundaram-se na automação de testes e integração contínua, refinando scripts do Selenium e otimizando rotinas do site.
+Eduardo Henrique e Yan Nunes fortaleceram a padronização do código e a integração entre back-end e front-end, o que reduziu inconsistências e acelerou as entregas.
+
+Além disso, Mariana Maliu, Sophia Brito e Gabrielle Vital continuaram contribuindo com análises e melhorias visuais, propondo soluções criativas que elevaram a usabilidade e a consistência das interfaces.
+
+Esse amadurecimento coletivo tornou o processo mais fluido e previsível. O pareamento deixou de ser apenas uma prática de revisão para se consolidar como uma metodologia de aprendizado contínuo, fortalecendo tanto a qualidade técnica quanto a coesão do grupo. O resultado foi um ciclo de desenvolvimento mais ágil, transparente e sustentável, sustentado por colaboração constante e evolução conjunta.
+
+
+</details>
+
 

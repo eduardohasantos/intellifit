@@ -17,7 +17,7 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 3rem;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
     gap: 1rem;
 }
 
@@ -50,7 +50,7 @@
     transform: translateY(-2px);
 }
 
-/* Lista de anotações (os títulos) */
+/* Lista de anotações */
 .notes-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -92,7 +92,7 @@
     padding: 3rem 0;
 }
 
-/* Estilos para o formulário */
+/* Formulário */
 .note-form {
     display: flex;
     flex-direction: column;
@@ -126,7 +126,19 @@
     border-color: var(--light-blue);
     box-shadow: 0 0 0 3px rgba(100, 181, 246, 0.1);
 }
-/* Estilos para a página de detalhes */
+
+/* Erro nos campos */
+.field-error {
+    border: 2px solid red !important;
+}
+
+.error-msg {
+    color: red;
+    font-size: 0.85rem;
+    margin-top: 4px;
+}
+
+/* Página de detalhes */
 .note-detail-header {
     text-align: left;
     margin-bottom: 2rem;
@@ -134,36 +146,56 @@
     padding-bottom: 1.5rem;
 }
 
-.note-detail-header .notes-title {
-    margin-bottom: 0.5rem;
-}
-
 .note-content {
     text-align: left;
     font-size: 1.1rem;
     line-height: 1.7;
     color: #333;
-    white-space: pre-wrap; /* Garante quebras de linha e espaços */
+    white-space: pre-wrap;
     margin-bottom: 3rem;
 }
 
-.btn-back {
-    background-color: #f0f0f0;
-    color: #333;
-    border: 1px solid #ddd;
-    padding: 10px 25px;
-    border-radius: 25px;
-    font-size: 1rem;
+/* Botões arredondados */
+.form-actions-center {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.btn-save-rounded,
+.btn-cancel-rounded {
+    padding: 12px 28px;
+    border-radius: 30px;
     font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
+    font-size: 1rem;
     display: inline-flex;
     align-items: center;
     gap: 8px;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-.btn-back:hover {
-    background-color: #e0e0e0;
-    border-color: #ccc;
+/* Salvar = verde */
+.btn-save-rounded {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-save-rounded:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+/* Cancelar = vermelho */
+.btn-cancel-rounded {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-cancel-rounded:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
 }

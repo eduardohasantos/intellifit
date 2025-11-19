@@ -15,11 +15,17 @@
             <h1 class="site-name">IntelliFit</h1>
         </a>
         <nav class="header-actions">
-            <a href="{% url 'edit_account' %}" class="nav-btn"><i data-feather="user"></i> Editar Perfil</a>
-            <a href="{% url 'delete_account' %}" class="nav-btn delete-btn"><i data-feather="trash-2"></i> Excluir Perfil</a>
+            <a href="{% url 'edit_account' %}" class="nav-btn">
+                <i data-feather="user"></i> Editar Perfil
+            </a>
+            <a href="{% url 'delete_account' %}" class="nav-btn delete-btn">
+                <i data-feather="trash-2"></i> Excluir Perfil
+            </a>
             <form action="{% url 'logout' %}" method="post" class="logout-form">
                 {% csrf_token %}
-                <button type="submit" class="nav-btn logout-btn"><i data-feather="log-out"></i> Sair</button>
+                <button type="submit" class="nav-btn logout-btn">
+                    <i data-feather="log-out"></i> Sair
+                </button>
             </form>
         </nav>
     </header>
@@ -27,47 +33,47 @@
     <main class="main-content">
         <div class="notes-container">
             <div class="note-detail-header">
-               <form method="POST" class="note-form">
+
+<form method="POST" class="note-form">
     {% csrf_token %}
-    
+
+    <!-- CAMPO TÍTULO -->
     <div class="form-group">
         <label for="{{ form.title.id_for_label }}">{{ form.title.label }}</label>
-        
-        {{ form.title }} 
-        
+
         {% if form.title.errors %}
-            <div class="error-list">
-                {% for error in form.title.errors %}
-                    <span class="text-danger">{{ error }}</span>
-                {% endfor %}
-            </div>
+            {{ form.title }}
+            <div class="error-msg">Não pode salvar em branco.</div>
+        {% else %}
+            {{ form.title }}
         {% endif %}
     </div>
 
+    <!-- CAMPO CONTEÚDO -->
     <div class="form-group">
         <label for="{{ form.content.id_for_label }}">{{ form.content.label }}</label>
-        
-        {{ form.content }}
-        
+
         {% if form.content.errors %}
-            <div class="error-list">
-                {% for error in form.content.errors %}
-                    <span class="text-danger">{{ error }}</span>
-                {% endfor %}
-            </div>
+            {{ form.content }}
+            <div class="error-msg">Não pode salvar em branco.</div>
+        {% else %}
+            {{ form.content }}
         {% endif %}
     </div>
-    
+
     {{ form.non_field_errors }}
 
-    <div class="form-actions">
-        <a href="{% url 'notes:note_list' %}" class="btn-cancel-form">Cancelar</a>
-        <button type="submit" class="btn-submit">
-            <i data-feather="save"></i>
-            Salvar Alterações
+    <!-- BOTÕES -->
+    <div class="form-actions-center">
+        <a href="{% url 'notes:note_list' %}" class="btn-cancel-rounded">Cancelar</a>
+        <button type="submit" class="btn-save-rounded">
+            <i data-feather="save"></i> Salvar Alterações
         </button>
     </div>
 </form>
+
+            </div>
+        </div>
     </main>
 
     <script>

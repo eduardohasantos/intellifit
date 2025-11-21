@@ -12,10 +12,15 @@ from selenium.webdriver.support import expected_conditions as EC
 import time
 import string
 import unittest # Necessário para asserções
+import random
+from diet import models
+from django.contrib.auth.models import User
 
+#py manage.py test users.tests.MySeleniumTests.test_intellifit_stories
 
 class MySeleniumTests(StaticLiveServerTestCase):
-    fixtures = ["user-data.json"]
+    #fixtures = ["user-data.json"]
+    textos = ["maduro cantando imagine John lennon", "sou o pedro de formiga", "basculante", "escolas de assassinos ensinando o mal"]
 
     @classmethod
     def setUpTestData(cls):
@@ -27,17 +32,39 @@ class MySeleniumTests(StaticLiveServerTestCase):
         cls.raw_password = 'arthur'
         user_arthur.set_password(cls.raw_password)
         user_arthur.save()
+        
+        cls.test_user = User.objects.create_user(
+            username='teste', 
+            password='123'
+        )
+        
+        cls.dieta1 = models.DietPersist.objects.create(
+            dietTitle="Dieta de teste",
+            dietDescription="geraaaaaaa",
+            user=cls.test_user
+        )
+        
+        cls.prato1 = models.DietMeal.objects.create(
+            diet = cls.dieta1,
+            food_name="bife de avestruz",
+            calories= random.randint(1, 1000)
+        )
 
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
         cls.selenium = WebDriver()
         cls.selenium.implicitly_wait(10)
+        
 
     @classmethod
     def tearDownClass(cls):
         cls.selenium.quit()
         super().tearDownClass()
+        
+    def acoesPausadas(self):
+        time.sleep(2)
+        return self.selenium
 
     def running_page(self, page=""):
         self.selenium.get(f"{self.live_server_url}/{page}/")
@@ -73,7 +100,7 @@ class MySeleniumTests(StaticLiveServerTestCase):
     def get_water_input(self):
         return self.selenium.find_element(By.NAME, "water_ml")
     
-    def get_send_button(self):
+    def get_submit_button(self):
         return self.selenium.find_elements(By.XPATH, "//button[@type='submit']")
     
     def find_by_name(self, name, size=0):
@@ -116,10 +143,10 @@ class MySeleniumTests(StaticLiveServerTestCase):
         # --- CENÁRIO 3 (DESFAVORÁVEL): Tentar salvar edição incompleta/cadastro incompleto ---
         
         # Tenta salvar sem preencher peso ou medidas (assumindo que o botão [1] salva)
-        send_buttons = self.get_send_button()
+        send_buttons = self.get_submit_button()
         if len(send_buttons) > 1:
             send_buttons[1].click()
-        time.sleep(5)
+        time.sleep(3)
 
         weight = 400
         water = 700
@@ -136,7 +163,7 @@ class MySeleniumTests(StaticLiveServerTestCase):
         
         register = self.selenium.find_element(By.XPATH, "/html/body/main/div/section[1]/form/button")
         register.click()
-        time.sleep(5)
+        time.sleep(3)
         print("\n\n progresso criado\n\n")
         
         # --- CENÁRIO 1 (FAVORÁVEL): Editar registro de progresso com sucesso ---
@@ -148,239 +175,125 @@ class MySeleniumTests(StaticLiveServerTestCase):
         self.get_water_input().clear()
         time.sleep(1)
         self.get_water_input().send_keys(10)
-        self.get_send_button()[0].click()
-        
-        time.sleep(5)
+        self.get_submit_button()[0].click()
         
         # --- CENÁRIO 2 (FAVORÁVEL): Excluir registro de progresso com sucesso ---
         
         delete = self.selenium.find_element(By.XPATH, "/html/body/main/div/section[3]/ul/li[1]/div/a[2]")
         delete.click()
-        self.get_send_button()[0].click()
+        self.get_submit_button()[0].click()
         
         
         # Confirma a exclusão (assume o primeiro botão [0] confirma)
-        self.get_send_button()[1].click()
+        self.get_submit_button()[1].click()
         time.sleep(5)
         
         # =========================================================================
         # 2. HISTÓRIA: GERENCIAR DIETAS
         # =========================================================================
-        
-        # Volta para a dashboard (assumindo que o caminho mais seguro é clicar na home/dietas)
-        self.running_page("dashboard") 
-        
-        # Acessa a tela de Dietas
-        diet_button = self.selenium.find_element(By.XPATH, "/html/body/main/div/section/a[3]")
-        diet_button.click()
-        
-        # Clica no botão de 'Criar Dieta'
-        create_button_xpath = "/html/body/main/div/div[2]/a"
-        create_button = wait.until(EC.element_to_be_clickable((By.XPATH, create_button_xpath)))
-        create_button.click()
-        
-        # --- CENÁRIO 3 (DESFAVORÁVEL): Tentar salvar sem preencher todos os dados ---
-        print("\n--- Teste de Dieta: Salvar Incompleto ---")
-        
-        # Tenta salvar sem preencher nada. (Botão de envio está em [1] na tela de criação de dieta)
-        self.get_send_button()[1].click() 
-        
-        time.sleep(3)
-        print("\n\n erro criar dieta\n\n")
-        # --- CENÁRIO 1 (FAVORÁVEL): Criar dieta personalizada com sucesso ---
-        print("--- Teste de Dieta: Criação Favorável ---")
-        
-        dietTitle = "Dieta de Teste Selenium"
-        
-        # Preenche Título e Descrição
-        self.find_by_name("dietTitle").send_keys(dietTitle)
-        self.find_by_name("dietDescription").send_keys("Dieta completa para validação.")
     
-        # Preenche nome, calorias, e horários (assumindo que o campo horário é obrigatório ou necessário)
-        self.find_by_name("food_name[]", size=1)[0].send_keys("Salada Proteica")
-        self.find_by_name("food_calories[]", size=1)[0].send_keys("500")
-        
-        # Salva a dieta
-        self.selenium.find_element(By.XPATH, "/html/body/main/div/form/div[5]/button").click()
-            
-        print("\n\nDieta criada\n\n")
-        time.sleep(5)
-    
-        # Acessa a página de dietas novamente (após o salvamento)
-        
-        # --- CENÁRIO 2 (FAVORÁVEL): Consultar dieta já criada ---
-        print("--- Teste de Dieta: Consulta Favorável ---")
-        
-        
-        # Espera até que o título da dieta recém-criada apareça na lista para consulta.
-        diet_link_xpath = "/html/body/main/div/section/a"
-        diet_link = wait.until(EC.element_to_be_clickable((By.XPATH, diet_link_xpath)))
-        diet_link.click()
-        
-        time.sleep(3)
+        self.gerenciar_dietas(True)
+        self.gerenciar_anotacoes(True)
         
         print("\n✅ Todos os cenários (Favoráveis e Desfavoráveis) foram testados com sucesso!")
         
-#         from django.test import TestCase
+    def gerenciar_dietas(self, isRegistered:bool=False):
+            if not isRegistered:
+                self.test_register()
+            else:
+                self.running_page("diet")
+                wait = WebDriverWait(self.selenium, 5)
+                
+                #========================================REPETINDO CENARIO:=============================================
+                create_button_xpath = "/html/body/main/div/div[2]/a"
+                create_button = wait.until(EC.element_to_be_clickable((By.XPATH, create_button_xpath)))
+                create_button.click()
+                print("--- Teste de Dieta: Criação Favorável ---")
 
-# from django.test import TestCase
-# from django.contrib.staticfiles.testing import StaticLiveServerTestCase
-# from django.contrib.auth import get_user_model
+                dietTitle = "Dieta de Teste Selenium"
+                
+                # Preenche Título e Descrição
+                self.find_by_name("dietTitle").send_keys(dietTitle)
+                self.find_by_name("dietDescription").send_keys("Dieta completa para validação.")
+            
+                # Preenche nome, calorias, e horários (assumindo que o campo horário é obrigatório ou necessário)
+                self.find_by_name("food_name[]", size=1)[0].send_keys("Salada Proteica")
+                self.find_by_name("food_calories[]", size=1)[0].send_keys("500")
+                
+                self.selenium.find_element(By.XPATH, "/html/body/main/div/form/div[5]/button").click()
+                self.selenium.find_element(By.XPATH, "/html/body/main/div/section/a").click()
+                #========================================================================================================
+                
+                
+                print("=====GERENCIAR DIETA: cenário desfavorável=====")
+                self.selenium.find_element(By.XPATH, "/html/body/main/div/div[3]/a[1]").click()
+                diet_edit = self.get_submit_button()[1]
+                diet_edit.click()
+                
+                print("\n✅ Cenário concluído!!") 
+                    
+                print("=====GERENCIAR DIETA: cenário favorável=====")
+                
+                diet_label_title = self.selenium.find_element(By.NAME, "dietTitle")
+                diet_label_text = self.selenium.find_element(By.NAME, "dietDescription")
+                index=0
 
-# #Imports normais do selenium
-# from selenium.webdriver.common.by import By
-# from selenium.webdriver.firefox.webdriver import WebDriver
+                diet_label_title.send_keys(" Agora ta editado")
+                diet_label_text.send_keys(" edição bora")
+                
+                meal = self.acoesPausadas().find_elements(By.XPATH, "/html/body/main/div/form/div[2]/div")
+                
+                for comida in meal:
+                    edtName = comida.find_element(By.NAME, f"meals-{index}-food_name")
+                    edtCal = comida.find_element(By.NAME, f"meals-{index}-calories")
+                    DELcomida = comida.find_element(By.NAME, f"meals-{index}-DELETE")
+                    
+                    edtName.send_keys(self.textos[index])
+                    edtCal.send_keys(random.randint(1, 1000))
+                    if index % 2 == 0:
+                        DELcomida.click()
+                    
+                    index+=1        
+                
+                self.acoesPausadas().find_element(By.NAME, "save_diet").click()
+                self.selenium.find_element(By.XPATH, "/html/body/main/div/div[3]/a[2]").click()
+                self.selenium.find_element(By.XPATH, "/html/body/main/div/form/div/button").click()
+            
+    def gerenciar_anotacoes(self, isRegistered:bool=False):
+        
+        if not isRegistered:
+            self.test_register()
+        else:
+            self.running_page("notes")
+            
+            self.selenium.find_element(By.CSS_SELECTOR, "a[class='btn-new-note']").click()
+            
+            tituloInp = self.find_by_name("title")
+            contentInp = self.find_by_name("content")
+            tituloInp.send_keys("alfredo")
+            contentInp.send_keys("Dieta completa para validação.")
+            
+            self.get_submit_button()[1].click()
+            
+            print("✅ Criação de notas concluido!!")
+            
+            self.selenium.find_element(By.CSS_SELECTOR, "a[class='btn-edit']").click()
+            
+            #==================REPETICAO DO BLOCO DE INPUT======================
 
-# #Meus imports
-# import time
-# import string
-
-# class MySeleniumTests(StaticLiveServerTestCase):
-#     fixtures = ["user-data.json"]
-
-#     @classmethod
-#     def setUpTestData(cls):
-        
-#         # Deve haver um rehashing, pois os IDs não são iguais!! (gerados em momentos diferentes)
-#         User = get_user_model()
-#         user_arthur = User.objects.get(username="arthur")
-        
-#         # Define a senha com o texto puro, o Django a hasheia e a salva no DB do teste.
-#         # Use a senha que você tem certeza que usou (ex: 'minhasenha')
-#         cls.raw_password = 'arthur'
-#         user_arthur.set_password(cls.raw_password)
-#         user_arthur.save()
-
-#     @classmethod
-#     def setUpClass(cls):
-#         super().setUpClass()
-        
-#         # AQUI, o usuário já existe e está pronto para ser usado
-#         cls.selenium = WebDriver()
-#         cls.selenium.implicitly_wait(10)
-
-#     def running_page(self, page=""):
-#         self.selenium.get(f"{self.live_server_url}/{page}/")
-
-#     def test_login(self, username="", password=""):
-        
-#         #Caso queira rodar apenas o login, descomente as linhas abaixo
-#         #self.running_page("login")
-#         # username = "arthur"
-#         # password = "arthur"
-    
-#         username_input = self.selenium.find_element(By.NAME, "username")
-#         username_input.send_keys(username)
-#         password_input = self.selenium.find_element(By.NAME, "password")
-#         password_input.send_keys(password)
-#         self.selenium.find_element(By.XPATH, '//button[@type="submit"]').click()
-#         time.sleep(5)        
-        
-#     def test_register(self):
-        
-#         email = "jones@gmail.com"
-#         username = "jonesManoel"
-#         password = "jamesBond"
-        
-#         self.selenium.get(f"{self.live_server_url}/register/")
-#         username_input = self.selenium.find_element(By.NAME, "username")
-#         username_input.send_keys(username)
-
-#         email_input = self.selenium.find_element(By.NAME, "email")
-#         email_input.send_keys(email)        
-
-#         password_input = self.selenium.find_element(By.NAME, "password")
-#         password_input.send_keys(password)
-
-#         self.selenium.find_element(By.XPATH, '//button[@type="submit"]').click()
-#         #time.sleep(5)
-        
-#         self.test_login(username, password)
-    
-#     #=========POM=============
-    
-#     def get_water_input(self):
-#         return self.selenium.find_element(By.NAME, "water_ml")
-    
-#     def get_send_button(self):
-#         return self.selenium.find_elements(By.XPATH, "//button[@type='submit']")
-    
-#     def find_by_name(self, name, size=0):
-#         if size == 0:
-#             return self.selenium.find_element(By.NAME, f"{name}")
-#         if size == 1:
-#             return self.selenium.find_elements(By.NAME, f"{name}")
-        
-#     #===============REGISTRANDO PROGRESSO=============
-    
-#     def test_register_progress(self):
-        
-#         self.test_register()
-        
-#         progress_button = self.selenium.find_element(By.XPATH, "/html/body/main/div/section/a[2]")
-#         progress_button.click()
-        
-#         weight = 400
-#         water = 700
-#         calories = 12
-        
-#         weight_label = self.selenium.find_element(By.NAME, "weight")
-#         weight_label.send_keys(weight)
-        
-#         water_label = self.selenium.find_element(By.NAME, "water_ml")
-#         water_label.send_keys(water)
-        
-#         calories_label = self.selenium.find_element(By.NAME, "calories")
-#         calories_label.send_keys(calories)
-        
-#         send = self.selenium.find_elements(By.XPATH, "//button[@type='submit']")
-#         send[1].click()
-        
-#         #Edição e exclusão
-#         edit = self.selenium.find_element(By.XPATH, "/html/body/main/div/section[3]/ul/li[1]/div/a[1]")
-#         edit.click()
-        
-#         self.get_water_input().clear()
-#         time.sleep(1)
-#         self.get_water_input().send_keys(10)
-#         self.get_send_button()[0].click()
-        
-#         time.sleep(5)
-        
-#         delete = self.selenium.find_element(By.XPATH, "/html/body/main/div/section[3]/ul/li[1]/div/a[2]")
-#         delete.click()
-#         self.get_send_button()[0].click()
-        
-#     def test_diet(self):
-        
-#         self.test_register()
-        
-#         dietTitle = "m"
-#         dietDescription = "p"
-#         index = 0
-#         add_qtd = 1
-#         entries = string.ascii_lowercase
-        
-#         diet_button = self.selenium.find_element(By.XPATH, "/html/body/main/div/section/a[3]")
-#         diet_button.click()
-        
-#         create_button = self.selenium.find_element(By.XPATH, "/html/body/main/div/div[2]/a")
-#         create_button.click()
-        
-#         self.find_by_name("dietTitle").send_keys(dietTitle)
-#         self.find_by_name("dietDescription").send_keys(dietDescription)
-        
-#         add_food_button = self.selenium.find_element(By.ID, "add-food-btn")
-#         for i in range(add_qtd):
-#             add_food_button.click()
-        
-#         for prato in self.selenium.find_elements(By.NAME, "food_name[]"):
-#             prato.send_keys(entries[index])
-#             index += 1
-        
-#         index = 0    
-#         for calorias in self.selenium.find_elements(By.NAME, "food_calories[]"):
-#             calorias.send_keys(index)
-#             index += 1
-        
-#         self.get_send_button()[1].click()
+            tituloInp = self.find_by_name("title")
+            contentInp = self.find_by_name("content")
+            tituloInp.send_keys("ABU")
+            contentInp.send_keys("nibber")
+            
+            #===================================================================
+                    
+            self.get_submit_button()[1].click()
+            
+            print("❌ Deletar conteúdo")
+            self.selenium.find_element(By.CSS_SELECTOR, "a[class='btn-delete']").click()
+            self.get_submit_button()[1].click()
+            
+            print("✅ Deletar concluído!!")
+            
+            

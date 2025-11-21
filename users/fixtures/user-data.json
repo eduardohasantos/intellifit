@@ -17,94 +17,23 @@
     "user_permissions": []
   }
 },
-{
-  "model": "auth.user",
-  "pk": 2,
-  "fields": {
-    "password": "pbkdf2_sha256$1000000$5D1vB4cpo0CSZbLEeEQ39u$H1tiyrBuFUb6sMYy4GsBUmMPLQSwzGpRy8bGlkX8eG0=",
-    "last_login": "2025-10-14T01:23:59.944Z",
-    "is_superuser": false,
-    "username": "darabond",
-    "first_name": "",
-    "last_name": "",
-    "email": "luizekman@jones.app",
-    "is_staff": false,
-    "is_active": true,
-    "date_joined": "2025-10-14T01:23:51.925Z",
-    "groups": [],
-    "user_permissions": []
+ {
+    "model": "diet.dietpersist",
+    "pk": 1,
+    "fields": {
+      "dietTitle": "Dieta de teste",
+      "dietDescription": "geraaaaaaa",
+      "dietData": "2024-11-17",
+      "user": 1
+    }
+  },
+  {
+    "model": "diet.dietmeal",
+    "pk": 1,
+    "fields": {
+      "diet": 1,
+      "food_name": "bife de avestruz",
+      "calories": 500
+    }
   }
-},
-{
-  "model": "auth.user",
-  "pk": 3,
-  "fields": {
-    "password": "pbkdf2_sha256$1000000$2ABY4OZzL0zFb8kfGWKWSY$h253wFd8I5Zum4ZWIvu1WYiXint5whdB5vvD8OFlLuM=",
-    "last_login": null,
-    "is_superuser": true,
-    "username": "jones",
-    "first_name": "",
-    "last_name": "",
-    "email": "manoel@hotmail.com",
-    "is_staff": true,
-    "is_active": true,
-    "date_joined": "2025-10-14T01:26:03.667Z",
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "auth.user",
-  "pk": 4,
-  "fields": {
-    "password": "pbkdf2_sha256$1000000$afkhLlyyZeTg8xbvePAzF9$UXE/rzLSBrEBwndz4NWRC/AzTTLt5SQFjzJPhFpAcc0=",
-    "last_login": "2025-10-20T14:20:47.793Z",
-    "is_superuser": false,
-    "username": "arthur",
-    "first_name": "",
-    "last_name": "",
-    "email": "arthurMatias@gmail.com",
-    "is_staff": false,
-    "is_active": true,
-    "date_joined": "2025-10-14T11:39:10.640Z",
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "auth.user",
-  "pk": 5,
-  "fields": {
-    "password": "pbkdf2_sha256$1000000$T9zO72ufBDzRCur1kz9DOe$3SehC79sYgzRA+rP3iIX/Pp4JxxSEPG2PdRGL5f6etU=",
-    "last_login": null,
-    "is_superuser": false,
-    "username": "fipaclipes",
-    "first_name": "",
-    "last_name": "",
-    "email": "fipa@gmail.com",
-    "is_staff": false,
-    "is_active": true,
-    "date_joined": "2025-10-19T18:31:47.951Z",
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "auth.user",
-  "pk": 6,
-  "fields": {
-    "password": "pbkdf2_sha256$1000000$KB1OOa2S76RGyk1950vbWE$9I8ystgeApXQ7bqGuMeX5Ypnpm2RBL3eicPeXJp8WVw=",
-    "last_login": "2025-10-19T18:32:44.221Z",
-    "is_superuser": false,
-    "username": "elton",
-    "first_name": "",
-    "last_name": "",
-    "email": "elton@gmail.com",
-    "is_staff": false,
-    "is_active": true,
-    "date_joined": "2025-10-19T18:32:33.010Z",
-    "groups": [],
-    "user_permissions": []
-  }
-}
 ]

@@ -1,6 +1,5 @@
-name: Build and Deploy to EC2
+name: Build, Test and Deploy to EC2
 
-# Definindo quando o workflow será executado
 on:
   push:
     branches:
@@ -12,17 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      # Checkout do código do repositório
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Configuração do Python 3.12
       - name: Set up Python 3.12
         uses: actions/setup-python@v4
         with:
           python-version: '3.12'
           
-      # Cache das dependências pip para otimizar builds futuros
       - name: Cache pip packages
         uses: actions/cache@v3
         with:
@@ -31,7 +27,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-
 
-      # Instalação das dependências
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
@@ -42,17 +37,39 @@ jobs:
           python manage.py makemigrations
           python manage.py migrate
 
+  tests:
+    name: Selenium Tests
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Install Chrome
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y chromium-browser chromium-chromedriver
+
+      - name: Run Selenium tests
+        run: pytest tests/selenium
+
   deploy:
     name: Deploy
-    needs: build  # Garante que o deploy só rode após o build
+    needs: tests
     runs-on: ubuntu-latest
     
     steps:
-      # Checkout do código para ter acesso aos arquivos atualizados
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Configurar a chave SSH para conexão com EC2
       - name: Configure SSH key
         run: |
           mkdir -p ~/.ssh
@@ -60,38 +77,22 @@ jobs:
           chmod 600 ~/.ssh/ec2.key
           echo "StrictHostKeyChecking no" > ~/.ssh/config
 
-      # Conectar via SSH e executar o deploy
       - name: Deploy to EC2
         env:
           EC2_HOST: 3.150.112.118
           EC2_USER: ubuntu
         run: |
           ssh -i ~/.ssh/ec2.key $EC2_USER@$EC2_HOST '
-            # Navegar até o diretório do projeto
             cd intellifit
-
-            # Atualizar o código do repositório
             git pull origin main
-
-            # Ativar o ambiente virtual (assumindo que existe)
             source venv/bin/activate
-
-            # Executar migrações do Django
             python3 manage.py makemigrations intellifit
             python3 manage.py migrate
-
-            # Matar qualquer processo rodando na porta 8000 (caso exista)
             sudo lsof -t -i:8000 | xargs -r sudo kill -9
-            
-            # Iniciar o servidor Django em background
             nohup python3 manage.py runserver 0.0.0.0:8000 > django.log 2>&1 &
-            
-            # Aguardar alguns segundos para o servidor iniciar
             sleep 5
           '
 
-      # Verificar se o serviço está respondendo
       - name: Health check
         run: |
-          # Tentar acessar o site
           curl --fail http://3.150.112.118:8000 || exit 1

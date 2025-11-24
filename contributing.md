@@ -122,3 +122,4 @@ Dúvidas, sugestões ou problemas? Entre em contato com o time:
 - [**Sophia Maria Brito Serafim de Araujo**](https://github.com/sophiabritoa) | [LinkedIn](https://www.linkedin.com/in/sophia-brito-02b445346/) | E-mail: smbsa@cesar.school
 - [**Mariana Maliu**](https://github.com/marianamaliu) | [LinkedIn](https://www.linkedin.com/in/mariana-maliu-montarroyos-6572a035a/) | E-mail: mmam@cesar.school
 - [**Gabrielle Capezzera Vital de Castro**](https://github.com/marianamaliu) | [LinkedIn](https://www.linkedin.com/in/gabriellecvital/) | E-mail:gcvc@cesar.school
+- [**Arthur Coelho**](https://github.com/ArthurMatias57) | [LinkedIn](https://www.linkedin.com/in/arthur-c-m-20079a335/) | E-mail:acmm@cesar.school

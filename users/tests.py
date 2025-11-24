@@ -126,6 +126,9 @@ class MySeleniumTests(StaticLiveServerTestCase):
 
     def test_intellifit_stories(self):
         
+        #Tempo para me preparar para o screencast
+        time.sleep(15)
+        
         # Prepara o ambiente: Registra e loga o usuário
         self.test_register()
         
@@ -266,7 +269,7 @@ class MySeleniumTests(StaticLiveServerTestCase):
         else:
             self.running_page("notes")
             
-            self.selenium.find_element(By.CSS_SELECTOR, "a[class='btn-new-note']").click()
+            self.acoesPausadas().find_element(By.CSS_SELECTOR, "a[class='btn-new-note']").click()
             
             tituloInp = self.find_by_name("title")
             contentInp = self.find_by_name("content")
@@ -277,7 +280,7 @@ class MySeleniumTests(StaticLiveServerTestCase):
             
             print("✅ Criação de notas concluido!!")
             
-            self.selenium.find_element(By.CSS_SELECTOR, "a[class='btn-edit']").click()
+            self.acoesPausadas().find_element(By.CSS_SELECTOR, "a[class='btn-edit']").click()
             
             #==================REPETICAO DO BLOCO DE INPUT======================
 
@@ -291,7 +294,7 @@ class MySeleniumTests(StaticLiveServerTestCase):
             self.get_submit_button()[1].click()
             
             print("❌ Deletar conteúdo")
-            self.selenium.find_element(By.CSS_SELECTOR, "a[class='btn-delete']").click()
+            self.acoesPausadas().find_element(By.CSS_SELECTOR, "a[class='btn-delete']").click()
             self.get_submit_button()[1].click()
             
             print("✅ Deletar concluído!!")

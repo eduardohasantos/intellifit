@@ -62,7 +62,6 @@ class MySeleniumTests(StaticLiveServerTestCase):
         options.add_argument("--disable-dev-shm-usage")
 
         cls.selenium = WebDriver(options=options)
-
         cls.selenium.implicitly_wait(10)
         
 
@@ -136,7 +135,7 @@ class MySeleniumTests(StaticLiveServerTestCase):
     def test_intellifit_stories(self):
         
         #Tempo para me preparar para o screencast
-        time.sleep(15)
+        time.sleep(10)
         
         # Prepara o ambiente: Registra e loga o usuário
         self.test_register()
@@ -145,10 +144,101 @@ class MySeleniumTests(StaticLiveServerTestCase):
         wait = WebDriverWait(self.selenium, 10)
         
         # =========================================================================
-        # 1. HISTÓRIA: GERENCIAR PROCESSO FÍSICO
+        # 1. HISTÓRIA: CRIAR TREINO
+        # =========================================================================
+        
+        self.running_page("workout/add")
+        print("Acessando página de criação de treino...")
+
+        # -------------------------------------------------------------------------
+        # CD → CENÁRIO DESFAVORÁVEL: TENTAR CRIAR TREINO SEM PREENCHER NADA
+        # -------------------------------------------------------------------------
+
+        print(" Tentando criar treino SEM preencher campos...")
+        self.get_submit_button()[1].click()
+        print("Esperado: mensagem de erro de validação deve aparecer.")
+        time.sleep(2)
+
+        # -------------------------------------------------------------------------
+        # CF → CENÁRIO FAVORÁVEL: PREENCHER OS CAMPOS CORRETAMENTE
+        # -------------------------------------------------------------------------
+
+        print("[CF] Preenchendo dados válidos do treino...")
+        self.find_by_name("name").send_keys("Cardio")
+        self.find_by_name("description").send_keys("45")
+        self.get_submit_button()[1].click()
+        print("Treino criado com sucesso (parte inicial).")
+
+        # -------------------------------------------------------------------------
+        # CD → CENÁRIO DESFAVORÁVEL: TENTAR ADICIONAR EXERCÍCIO SEM PREENCHER
+        # -------------------------------------------------------------------------
+
+        print("Tentando adicionar exercício sem preencher nada...")
+        self.get_submit_button()[1].click()
+        print("Esperado: sistema deve impedir o envio.")
+
+        # -------------------------------------------------------------------------
+        # CF → ADICIONAR EXERCÍCIO COM SUCESSO
+        # -------------------------------------------------------------------------
+
+        print("Adicionando exercício válido: 'Corrida'...")
+        self.find_by_name("exercise_name").send_keys("Corrida")
+        self.get_submit_button()[1].click()
+        print("Exercício 'Corrida' adicionado com sucesso!")
+        time.sleep(2)
+
+        print("Adicionando exercício válido: 'Pular Corda'...")
+        self.find_by_name("exercise_name").send_keys("Pular Corda")
+        self.get_submit_button()[1].click()
+        print("Exercício 'Pular Corda' adicionado com sucesso!")
+        time.sleep(2)
+
+        # FINALIZAR
+        self.selenium.find_element(By.CLASS_NAME, "finish-btn").click()
+        print("🎉 Criação completa do treino finalizada com sucesso!")
+
+        # =========================================================================
+        # 2. HISTÓRIA: GERENCIAR TREINOS
+        # =========================================================================
+
+        self.running_page("workout/1/edit")
+        print("\n📌 Acessando página de edição do treino (ID=1)...")
+
+        # -------------------------------------------------------------------------
+        # CF → CENÁRIO FAVORÁVEL: EDIÇÃO DE TREINO FUNCIONANDO
+        # -------------------------------------------------------------------------
+
+        print("--- Teste de Edição (CF - Cenário Favorável) ---")
+        print("Alterando nome e descrição do treino com sucesso...")
+        self.find_by_name("name").send_keys(" - Editado")
+        self.find_by_name("description").send_keys(" - Editado")
+
+        time.sleep(2)
+
+        print("Adicionando número válido de séries (4) ao exercício 2...")
+        self.find_by_name("sets_2").send_keys(4)
+
+        print("Salvando alterações...")
+        self.find_by_name("save_workout").click()
+        print("CF concluído: edição realizada com sucesso!")
+        time.sleep(3)
+        
+        # -------------------------------------------------------------------------
+        # CF → CENÁRIO FAVORÁVEL: EXCLUSÃO DE TREINO FUNCIONANDO
+        # -------------------------------------------------------------------------
+        
+        print("--- Teste de Exclusão (CF - Cenário Favorável) ---")
+        self.acoesPausadas().find_element(By.XPATH, "/html/body/main/div/div[4]/button").click()    
+        self.acoesPausadas().find_element(By.XPATH, "//*[@id='deleteModal']/div/div[3]/form/button").click()
+        print("CF concluído: exclusão realizada com sucesso!")
+        time.sleep(3)
+        
+        # =========================================================================
+        # 3. HISTÓRIA: GERENCIAR PROCESSO FÍSICO
         # =========================================================================
         
         # Acessa a tela de Gerenciar Processo Físico
+        self.running_page("dashboard")
         progress_button = self.selenium.find_element(By.XPATH, "/html/body/main/div/section/a[2]")
         progress_button.click()
         
@@ -194,6 +284,7 @@ class MySeleniumTests(StaticLiveServerTestCase):
         delete = self.selenium.find_element(By.XPATH, "/html/body/main/div/section[3]/ul/li[1]/div/a[2]")
         delete.click()
         self.get_submit_button()[0].click()
+        time.sleep(3)
         
         
         # Confirma a exclusão (assume o primeiro botão [0] confirma)
@@ -201,7 +292,7 @@ class MySeleniumTests(StaticLiveServerTestCase):
         time.sleep(5)
         
         # =========================================================================
-        # 2. HISTÓRIA: GERENCIAR DIETAS
+        # 4. HISTÓRIA: GERENCIAR DIETAS
         # =========================================================================
     
         self.gerenciar_dietas(True)
@@ -241,6 +332,7 @@ class MySeleniumTests(StaticLiveServerTestCase):
                 self.selenium.find_element(By.XPATH, "/html/body/main/div/div[3]/a[1]").click()
                 diet_edit = self.get_submit_button()[1]
                 diet_edit.click()
+                time.sleep(2)
                 
                 print("\n✅ Cenário concluído!!") 
                     
@@ -252,6 +344,7 @@ class MySeleniumTests(StaticLiveServerTestCase):
 
                 diet_label_title.send_keys(" Agora ta editado")
                 diet_label_text.send_keys(" edição bora")
+                time.sleep(2)
                 
                 meal = self.acoesPausadas().find_elements(By.XPATH, "/html/body/main/div/form/div[2]/div")
                 
@@ -270,6 +363,7 @@ class MySeleniumTests(StaticLiveServerTestCase):
                 self.acoesPausadas().find_element(By.NAME, "save_diet").click()
                 self.selenium.find_element(By.XPATH, "/html/body/main/div/div[3]/a[2]").click()
                 self.selenium.find_element(By.XPATH, "/html/body/main/div/form/div/button").click()
+                time.sleep(2)
             
     def gerenciar_anotacoes(self, isRegistered:bool=False):
         
@@ -277,6 +371,7 @@ class MySeleniumTests(StaticLiveServerTestCase):
             self.test_register()
         else:
             self.running_page("notes")
+            time.sleep(2)
             
             self.acoesPausadas().find_element(By.CSS_SELECTOR, "a[class='btn-new-note']").click()
             
@@ -284,12 +379,16 @@ class MySeleniumTests(StaticLiveServerTestCase):
             contentInp = self.find_by_name("content")
             tituloInp.send_keys("alfredo")
             contentInp.send_keys("Dieta completa para validação.")
+            time.sleep(2)
             
             self.get_submit_button()[1].click()
             
             print("✅ Criação de notas concluido!!")
             
             self.acoesPausadas().find_element(By.CSS_SELECTOR, "a[class='btn-edit']").click()
+            time.sleep(2)
+            self.get_submit_button()[1].click()
+            time.sleep(2)
             
             #==================REPETICAO DO BLOCO DE INPUT======================
 

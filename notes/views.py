@@ -36,26 +36,26 @@ def note_detail(request, pk):
 @login_required
 def edit_notes(request, pk):
     selected_note = get_object_or_404(Note, pk=pk, user=request.user)
-    
+
     if request.method == 'POST':
-        # Passa request.POST e a instância para o formulário
         form = editNotesForm(request.POST, instance=selected_note)
-        
+
         if form.is_valid():
-            form.save()
-            messages.success(request, "Nota editada com sucesso!")
-            return redirect("notes:note_list")  # Nome da URL, não caminho do HTML
+            # 👉 IMPORTANTE! Verifica se houve alteração real
+            if form.has_changed():  
+                form.save()
+                messages.success(request, "Nota editada com sucesso!")
+                return redirect("notes:note_list")
+            else:
+                messages.warning(request, "Você não alterou nada na anotação.")
         else:
-            messages.error(request, "Falha na edição. Por favor, verifique os campos obrigatórios.")
+            messages.error(request, "Falha na edição. Verifique os campos obrigatórios.")
     else:
-        # GET: Renderiza o formulário com os dados atuais
         form = editNotesForm(instance=selected_note)
-    
-    context = {
-        'note': selected_note,
-        'form': form
-    }
+
+    context = { 'note': selected_note, 'form': form }
     return render(request, 'notes/edit_notes.html', context)
+
 
 @login_required
 def delete_notes(request, pk):

@@ -53,7 +53,16 @@ class MySeleniumTests(StaticLiveServerTestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls.selenium = WebDriver()
+        
+        from selenium.webdriver.firefox.options import Options
+
+        options = Options()
+        options.add_argument("--headless")
+        options.add_argument("--no-sandbox")
+        options.add_argument("--disable-dev-shm-usage")
+
+        cls.selenium = WebDriver(options=options)
+
         cls.selenium.implicitly_wait(10)
         
 

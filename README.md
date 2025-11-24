@@ -161,13 +161,13 @@ Esse modelo de colaboração integrada provou , novamente , ser altamente eficaz
 
   ### Screencast - CI/CD Build, Deploy e Testes automatizados
   <p align="Left" style="">
-  <a href="VIDEO AQUI">
+  <a href="https://youtu.be/WJ2hDDE0s38">
     <img src="https://img.shields.io/badge/screencast-BF9056?style=for-the-badge&logo=youtube&logoColor=white" height="35px"/></a>
   </p>
 
   ### Screencast - Site atualizado - Últimas histórias
   <p align="Left" style="">
-  <a href="VIDEO AQUI">
+  <a href="https://youtu.be/2LA5GRcUJYk">
     <img src="https://img.shields.io/badge/screencast-BF9056?style=for-the-badge&logo=youtube&logoColor=white" height="35px"/></a>
   </p>
 

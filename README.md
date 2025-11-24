@@ -178,7 +178,10 @@ Esse modelo de colaboração integrada provou , novamente , ser altamente eficaz
   </p>
 
   # JIRA
-  Falta adicionar!
+  <img width="1866" height="920" alt="image" src="https://github.com/user-attachments/assets/94febb9c-64d9-4564-a228-5d23a9b01001" />
+
+  <img width="1865" height="925" alt="image" src="https://github.com/user-attachments/assets/3e4c84e0-e107-449f-a588-11d0a47ff105" />
+
 
   # 🐛 Issues / Bugs
   <img width="1651" height="611" alt="image" src="https://github.com/user-attachments/assets/90ab5e15-25b3-483d-93ca-ef3a429e6d00" />

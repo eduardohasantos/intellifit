@@ -120,4 +120,5 @@ Dúvidas, sugestões ou problemas? Entre em contato com o time:
 - [**Eduardo Henrique Alves dos Santos**](https://github.com/eduardohasantos) | [LinkedIn](https://www.linkedin.com/in/eduardohasantos/) | E-mail: ehas@cesar.school
 - [**Yan Ribeiro Nunes**](https://github.com/yan791) | [LinkedIn](https://www.linkedin.com/in/yan-ribeiro-nunes/) | E-mail: yrn@cesar.school
 - [**Sophia Maria Brito Serafim de Araujo**](https://github.com/sophiabritoa) | [LinkedIn](https://www.linkedin.com/in/sophia-brito-02b445346/) | E-mail: smbsa@cesar.school
+- [**Mariana Maliu**](https://github.com/marianamaliu) | [LinkedIn](https://www.linkedin.com/in/mariana-maliu-montarroyos-6572a035a/) | E-mail: mmam@cesar.school
 - [**Nome**](Link github) | [LinkedIn](link Linkedin) | E-mail: Email
